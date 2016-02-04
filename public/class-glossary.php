@@ -72,6 +72,7 @@ class Glossary {
 	 * @var      object
 	 */
 	protected $cpts = array( 'glossary' );
+	protected $settings = null;
 
 	/**
 	 * Initialize the plugin by setting localization and loading public scripts
@@ -103,6 +104,8 @@ class Glossary {
 
 		add_filter( 'the_content', array( $this, 'codeat_glossary_auto_link' ) );
 		add_filter( 'the_excerpt', array( $this, 'codeat_glossary_auto_link' ) );
+
+		$this->settings = get_option( $this->get_plugin_slug() . '-settings' );
 	}
 
 	/**
@@ -182,9 +185,14 @@ class Glossary {
 	}
 
 	public function codeat_glossary_auto_link( $text ) {
-
-		if ( is_singular( array( 'post', 'glossary' ) ) || is_home() || is_category() || is_tag() || is_post_type_archive( 'glossary' ) || is_tax( 'glossary_category' ) ) {
-
+		if (
+			$this->g_is_singular() ||
+			$this->g_is_home() ||
+			$this->g_is_category() ||
+			$this->g_is_tag() ||
+			$this->g_arc_glossary() ||
+			$this->g_tax_glossary()
+		) {
 			$gl_query = new WP_Query( array( 'post_type' => 'glossary', 'order' => 'ASC', 'orderby' => 'title' ) );
 
 			if ( $gl_query->have_posts() ) {
@@ -198,6 +206,54 @@ class Glossary {
 		}
 
 		return $text;
+	}
+
+	public function g_is_singular() {
+		if ( isset( $this->settings[ 'posttypes' ] ) && is_singular( $this->settings[ 'posttypes' ] ) ) {
+			return true;
+		} else {
+			return false;
+		}
+	}
+
+	public function g_is_home() {
+		if ( isset( $this->settings[ 'is' ] ) && in_array( 'home', $this->settings[ 'is' ] ) && is_home() ) {
+			return true;
+		} else {
+			return false;
+		}
+	}
+
+	public function g_is_category() {
+		if ( isset( $this->settings[ 'is' ] ) && in_array( 'category', $this->settings[ 'is' ] ) && is_category() ) {
+			return true;
+		} else {
+			return false;
+		}
+	}
+
+	public function g_is_tag() {
+		if ( isset( $this->settings[ 'is' ] ) && in_array( 'tag', $this->settings[ 'is' ] ) && is_tag() ) {
+			return true;
+		} else {
+			return false;
+		}
+	}
+
+	public function g_arc_glossary() {
+		if ( isset( $this->settings[ 'is' ] ) && in_array( 'arc_glossary', $this->settings[ 'is' ] ) && is_post_type_archive( 'glossary' ) ) {
+			return true;
+		} else {
+			return false;
+		}
+	}
+
+	public function g_tax_glossary() {
+		if ( isset( $this->settings[ 'is' ] ) && in_array( 'tax_glossary', $this->settings[ 'is' ] ) && is_tax( 'glossary-cat' ) ) {
+			return true;
+		} else {
+			return false;
+		}
 	}
 
 }

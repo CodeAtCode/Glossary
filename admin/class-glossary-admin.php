@@ -85,6 +85,9 @@ class Glossary_Admin {
 		 * https://github.com/WebDevStudios/CMB2
 		 */
 		require_once( plugin_dir_path( __FILE__ ) . '/includes/CMB2/init.php' );
+		require_once( plugin_dir_path( __FILE__ ) . '/includes/cmb2-extra.php' );
+		add_filter( 'multicheck_posttype_posttypes', array( $this, 'hide_glossary' ) );
+		
 		/*
 		 * Import Export settings
 		 */
@@ -251,5 +254,17 @@ class Glossary_Admin {
 		$query_args[ 'post_type' ] = array_merge( $query_args[ 'post_type' ], $this->cpts );
 		return $query_args;
 	}
+	
+	/**
+	 * Hide glossary post type from settings
+	 *
+	 * @since    1.0.0
+	 */
+	function hide_glossary( $cpts ) {
+		unset( $cpts[ 'glossary' ] );
+		unset( $cpts[ 'attachment' ] );
+		return $cpts;
+	}
+	
 
 }
