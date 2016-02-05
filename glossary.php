@@ -25,10 +25,9 @@
  * Domain Path:       /languages
  * WordPress-Plugin-Boilerplate-Powered: v1.1.7
  */
-
 // If this file is called directly, abort.
 if ( !defined( 'WPINC' ) ) {
-	die;
+    die;
 }
 
 /*
@@ -66,7 +65,7 @@ add_action( 'plugins_loaded', array( 'Glossary', 'get_instance' ), 9999 );
  * -----------------------------------------------------------------------------
  * Dashboard and Administrative Functionality
  * -----------------------------------------------------------------------------
-*/
+ */
 
 /*
  *
@@ -80,6 +79,6 @@ add_action( 'plugins_loaded', array( 'Glossary', 'get_instance' ), 9999 );
  */
 
 if ( is_admin() && (!defined( 'DOING_AJAX' ) || !DOING_AJAX ) ) {
-	require_once( plugin_dir_path( __FILE__ ) . 'admin/class-glossary-admin.php' );
-	add_action( 'plugins_loaded', array( 'Glossary_Admin', 'get_instance' ) );
+    require_once( plugin_dir_path( __FILE__ ) . 'admin/class-glossary-admin.php' );
+    add_action( 'plugins_loaded', array( 'Glossary_Admin', 'get_instance' ) );
 }
