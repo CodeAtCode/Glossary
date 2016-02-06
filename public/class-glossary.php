@@ -86,7 +86,8 @@ class Glossary {
         register_via_cpt_core(
                 array( __( 'Glossary', $this->get_plugin_slug() ), __( 'Glossary', $this->get_plugin_slug() ), 'glossary' ), array(
             'taxonomies' => array( 'glossary-cat' ),
-            'map_meta_cap' => true
+            'map_meta_cap' => true,
+            'menu_icon' => 'dashicons-book-alt'
                 )
         );
 
