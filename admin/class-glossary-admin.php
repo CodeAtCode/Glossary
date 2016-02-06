@@ -189,7 +189,7 @@ class Glossary_Admin {
          * Settings page in the menu
          * 
          */
-        $this->plugin_screen_hook_suffix = add_menu_page( __( 'Glossary', $this->plugin_slug ), $this->plugin_name, 'manage_options', $this->plugin_slug, array( $this, 'display_plugin_admin_page' ), 'dashicons-hammer', 90 );
+        $this->plugin_screen_hook_suffix = add_menu_page( __( 'Glossary', $this->plugin_slug ), $this->plugin_name, 'manage_options', $this->plugin_slug, array( $this, 'display_plugin_admin_page' ), 'dashicons-admin-generic', 90 );
     }
 
     /**
