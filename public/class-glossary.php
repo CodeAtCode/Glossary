@@ -107,6 +107,10 @@ class Glossary {
         add_filter( 'the_excerpt', array( $this, 'codeat_glossary_auto_link' ) );
 
         $this->settings = get_option( $this->get_plugin_slug() . '-settings' );
+
+        if ( isset( $this->settings[ 'tooltip' ] ) ) {
+            add_action( 'wp_enqueue_scripts', array( $this, 'enqueue_styles' ) );
+        }
     }
 
     /**
@@ -185,6 +189,15 @@ class Glossary {
         return $query;
     }
 
+    /**
+     * Register and enqueue public-facing style sheet.
+     *
+     * @since    1.0.0
+     */
+    public function enqueue_styles() {
+        wp_enqueue_style( $this->get_plugin_slug() . '-hint', plugins_url( 'assets/css/hint.base.min.css', __FILE__ ), array(), self::VERSION );
+    }
+
     public function codeat_glossary_auto_link( $text ) {
         if (
                 $this->g_is_singular() ||
@@ -198,15 +211,27 @@ class Glossary {
 
             while ( $gl_query->have_posts() ) : $gl_query->the_post();
                 $link = get_post_meta( get_the_ID(), $this->get_plugin_slug() . '_url', true );
+                //Get the post of the glossary loop
+                global $post;
                 if ( empty( $link ) ) {
                     $link = get_the_permalink();
                 }
                 $words[] = $this->search_string( get_the_title() );
-                $links[] = '<a href="' . $link . '">' . get_the_title() . '</a>';
-                $related = $this->related_post_meta( get_post_meta( get_the_ID(), $this->get_plugin_slug() . '_tag', true ) );
-                foreach ( $related as $key => $value ) {
-                    $words[] = $this->search_string( $value );
+                if ( isset( $this->settings[ 'tooltip' ] ) ) {
+                    $links[] = '<a class="hint--top" data-hint="' . $this->get_the_excerpt( $post ) . '" href="' . $link . '">' . $value . '</a>';
+                } else {
                     $links[] = '<a href="' . $link . '">' . $value . '</a>';
+                }
+                $related = $this->related_post_meta( get_post_meta( get_the_ID(), $this->get_plugin_slug() . '_tag', true ) );
+                if ( is_array( $related ) ) {
+                    foreach ( $related as $value ) {
+                        $words[] = $this->search_string( $value );
+                        if ( isset( $this->settings[ 'tooltip' ] ) ) {
+                            $links[] = '<a class="hint--top" data-hint="' . $this->get_the_excerpt( $post ) . '" href="' . $link . '">' . $value . '</a>';
+                        } else {
+                            $links[] = '<a href="' . $link . '">' . $value . '</a>';
+                        }
+                    }
                 }
             endwhile;
 
@@ -271,6 +296,14 @@ class Glossary {
 
     public function search_string( $title ) {
         return '/((?i)' . $title . '(?-i))(?![^<]*(<\/a>|" \/>))/';
+    }
+
+    public function get_the_excerpt( $post ) {
+        if ( empty( $post->post_excerpt ) ) {
+            return substr( $post->post_content, 0, intval( $this->settings[ 'excerpt_limit' ] ) );
+        } else {
+            return substr( $post->post_excerpt, 0, intval( $this->settings[ 'excerpt_limit' ] ) );
+        }
     }
 
 }

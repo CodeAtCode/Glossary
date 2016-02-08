@@ -52,6 +52,12 @@
                 'id' => 'tooltip',
                 'type' => 'checkbox',
             ) );
+            $cmb->add_field( array(
+                'name' => __( 'Excerpt char size', $this->plugin_slug ),
+                'id' => 'excerpt_limit',
+                'type' => 'text_number',
+                'default' => '60'
+            ) );
             cmb2_metabox_form( $this->plugin_slug . '_options', $this->plugin_slug . '-settings' );
             ?>
 
