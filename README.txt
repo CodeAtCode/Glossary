@@ -1,14 +1,14 @@
 === Glossary ===
-Contributors: (this should be a list of wordpress.org userids)
+Contributors: codeat, igenius, mte90
 Donate link: http://codeat.com/
-Tags: comments, spam
-Requires at least: 4.3
-Tested up to: 4.3
+Tags: glossary, vocabulary, dictionary, tooltips
+Requires at least: 4.1
+Tested up to: 4.4
 Stable tag: 1.0.0
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
-Here is a short description of the plugin.  This should be no more than 150 characters.  No markup here.
+Easily add and manage glossary with auto-link and tooltips. Improve your internal link building for a better SEO.
 
 == Description ==
 
@@ -38,10 +38,6 @@ that lacks those changes -- as long as the trunk's `readme.txt` points to the co
 you put the stable version, in order to eliminate any doubt.
 
 == Installation ==
-
-This section describes how to install the plugin and get it working.
-
-e.g.
 
 = Using The WordPress Dashboard =
 
@@ -85,19 +81,7 @@ directory take precedence. For example, `/assets/screenshot-1.png` would win ove
 == Changelog ==
 
 = 1.0 =
-* A change since the previous version.
-* Another change.
-
-= 0.5 =
-* List versions from most recent at top to oldest at bottom.
-
-== Upgrade Notice ==
-
-= 1.0 =
-Upgrade notices describe the reason a user should upgrade.  No more than 300 characters.
-
-= 0.5 =
-This version fixes a security related bug.  Upgrade immediately.
+* Published on WordPress repo
 
 == Arbitrary section ==
 
