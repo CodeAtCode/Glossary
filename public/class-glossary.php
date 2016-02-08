@@ -227,9 +227,9 @@ class Glossary {
                     foreach ( $related as $value ) {
                         $words[] = $this->search_string( $value );
                         if ( isset( $this->settings[ 'tooltip' ] ) ) {
-                            $links[] = $this->tooltip_html( $link, get_the_title(), $post );
+                            $links[] = $this->tooltip_html( $link, $value, $post );
                         } else {
-                            $links[] = '<a href="' . $link . '">' . get_the_title() . '</a>';
+                            $links[] = '<a href="' . $link . '">' . $value . '</a>';
                         }
                     }
                 }
@@ -311,7 +311,7 @@ class Glossary {
     }
 
     public function tooltip_html( $link, $title, $post ) {
-        $link_tooltip = '<span class="tooltip tooltip-effect-1">'
+        $link_tooltip = '<span class="tooltip">'
                 . "\n" . '<span class="tooltip-item">'
                 . "\n" . '<a href="' . $link . '">' . $title . '</a>'
                 . "\n" . '</span>'

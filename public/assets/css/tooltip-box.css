@@ -1,9 +1,7 @@
-@import url(http://fonts.googleapis.com/css?family=Indie+Flower);
-
 .tooltip {
 	display: inline;
 	position: relative;
-	z-index: 999;
+	z-index: 9999;
 }
 
 /* Trigger text */
@@ -37,15 +35,12 @@
 	text-align: left;
 	background: #2fa0ec;
 	opacity: 0;
-	font-size: 0.75em;
-	line-height: 1.5;
 	padding: 1.5em;
 	color: #fff;
 	border-bottom: 65px solid #2a3035;
 	cursor: default;
 	pointer-events: none;
 	border-radius: 5px;
-	font-family: 'Indie Flower', cursive;
 	-webkit-transform: translate3d(0,-0.5em,0);
 	transform: translate3d(0,-0.5em,0);
 	-webkit-transition: opacity 0.3s, -webkit-transform 0.3s;

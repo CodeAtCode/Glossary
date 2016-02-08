@@ -59,13 +59,7 @@
                 'options' => array(
                     'classic' => 'Classic',
                     'box' => 'Box',
-                    'bloated' => 'Bloated',
-                    'comic' => 'Comic',
-                    'curved' => 'Curved',
-                    'flip' => 'Flip',
                     'line' => 'Line',
-                    'round' => 'Round',
-                    'sharp' => 'Sharp',
                 )
             ) );
             $cmb->add_field( array(
