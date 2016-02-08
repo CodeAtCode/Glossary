@@ -53,6 +53,22 @@
                 'type' => 'checkbox',
             ) );
             $cmb->add_field( array(
+                'name' => __( 'Tooltip style', $this->plugin_slug ),
+                'id' => 'tooltip_style',
+                'type' => 'select',
+                'options' => array(
+                    'classic' => 'Classic',
+                    'box' => 'Box',
+                    'bloated' => 'Bloated',
+                    'comic' => 'Comic',
+                    'curved' => 'Curved',
+                    'flip' => 'Flip',
+                    'line' => 'Line',
+                    'round' => 'Round',
+                    'sharp' => 'Sharp',
+                )
+            ) );
+            $cmb->add_field( array(
                 'name' => __( 'Excerpt char size', $this->plugin_slug ),
                 'id' => 'excerpt_limit',
                 'type' => 'text_number',

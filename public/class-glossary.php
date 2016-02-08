@@ -195,7 +195,7 @@ class Glossary {
      * @since    1.0.0
      */
     public function enqueue_styles() {
-        wp_enqueue_style( $this->get_plugin_slug() . '-hint', plugins_url( 'assets/css/hint.base.min.css', __FILE__ ), array(), self::VERSION );
+        wp_enqueue_style( $this->get_plugin_slug() . '-hint', plugins_url( 'assets/css/tooltip-' . $this->settings[ 'tooltip_style' ] . '.css', __FILE__ ), array(), self::VERSION );
     }
 
     public function codeat_glossary_auto_link( $text ) {
@@ -218,7 +218,7 @@ class Glossary {
                 }
                 $words[] = $this->search_string( get_the_title() );
                 if ( isset( $this->settings[ 'tooltip' ] ) ) {
-                    $links[] = '<a class="hint--top" data-hint="' . $this->get_the_excerpt( $post ) . '" href="' . $link . '">' . get_the_title() . '</a>';
+                    $links[] = $this->tooltip_html( $link, get_the_title(), $post );
                 } else {
                     $links[] = '<a href="' . $link . '">' . get_the_title() . '</a>';
                 }
@@ -227,9 +227,9 @@ class Glossary {
                     foreach ( $related as $value ) {
                         $words[] = $this->search_string( $value );
                         if ( isset( $this->settings[ 'tooltip' ] ) ) {
-                            $links[] = '<a class="hint--top" data-hint="' . $this->get_the_excerpt( $post ) . '" href="' . $link . '">' . $value . '</a>';
+                            $links[] = $this->tooltip_html( $link, get_the_title(), $post );
                         } else {
-                            $links[] = '<a href="' . $link . '">' . $value . '</a>';
+                            $links[] = '<a href="' . $link . '">' . get_the_title() . '</a>';
                         }
                     }
                 }
@@ -293,7 +293,7 @@ class Glossary {
     public function related_post_meta( $related ) {
         $value = array_map( 'trim', explode( ',', $related ) );
         if ( empty( $value[ 0 ] ) ) {
-            $value= false;
+            $value = false;
         }
         return $value;
     }
@@ -308,6 +308,22 @@ class Glossary {
         } else {
             return substr( $post->post_excerpt, 0, intval( $this->settings[ 'excerpt_limit' ] ) );
         }
+    }
+
+    public function tooltip_html( $link, $title, $post ) {
+        $link_tooltip = '<span class="tooltip tooltip-effect-1">'
+                . "\n" . '<span class="tooltip-item">'
+                . "\n" . '<a href="' . $link . '">' . $title . '</a>'
+                . "\n" . '</span>'
+                . "\n" . '<span class="tooltip-content clearfix">';
+        $photo = wp_get_attachment_image( $post->ID, 'small' );
+        if ( !empty( $photo ) ) {
+            $link_tooltip .= $photo;
+        }
+        $link_tooltip .= "\n" . '<span class="tooltip-text">' . $this->get_the_excerpt( $post ) . '</span>'
+                . "\n" . '</span>'
+                . "\n" . '</span>';
+        return $link_tooltip;
     }
 
 }
