@@ -218,9 +218,9 @@ class Glossary {
                 }
                 $words[] = $this->search_string( get_the_title() );
                 if ( isset( $this->settings[ 'tooltip' ] ) ) {
-                    $links[] = '<a class="hint--top" data-hint="' . $this->get_the_excerpt( $post ) . '" href="' . $link . '">' . $value . '</a>';
+                    $links[] = '<a class="hint--top" data-hint="' . $this->get_the_excerpt( $post ) . '" href="' . $link . '">' . get_the_title() . '</a>';
                 } else {
-                    $links[] = '<a href="' . $link . '">' . $value . '</a>';
+                    $links[] = '<a href="' . $link . '">' . get_the_title() . '</a>';
                 }
                 $related = $this->related_post_meta( get_post_meta( get_the_ID(), $this->get_plugin_slug() . '_tag', true ) );
                 if ( is_array( $related ) ) {
@@ -291,7 +291,11 @@ class Glossary {
     }
 
     public function related_post_meta( $related ) {
-        return array_map( 'trim', explode( ',', $related ) );
+        $value = array_map( 'trim', explode( ',', $related ) );
+        if ( empty( $value[ 0 ] ) ) {
+            $value= false;
+        }
+        return $value;
     }
 
     public function search_string( $title ) {
