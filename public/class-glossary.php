@@ -105,6 +105,8 @@ class Glossary {
 
         add_filter( 'the_content', array( $this, 'codeat_glossary_auto_link' ) );
         add_filter( 'the_excerpt', array( $this, 'codeat_glossary_auto_link' ) );
+        
+        require_once( plugin_dir_path( __FILE__ ) . '/includes/Glossary_a2z_Archive.php' );
 
         $this->settings = get_option( $this->get_plugin_slug() . '-settings' );
 

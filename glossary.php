@@ -51,6 +51,7 @@ require_once( plugin_dir_path( __FILE__ ) . 'includes/CPT_Core/CPT_Core.php' );
 require_once( plugin_dir_path( __FILE__ ) . 'includes/Widgets-Helper/wph-widget-class.php' );
 require_once( plugin_dir_path( __FILE__ ) . 'includes/widgets/last_glossary.php' );
 require_once( plugin_dir_path( __FILE__ ) . 'includes/widgets/categories.php' );
+require_once( plugin_dir_path( __FILE__ ) . 'includes/widgets/a2z.php' );
 
 require_once( plugin_dir_path( __FILE__ ) . 'public/class-glossary.php' );
 /*
