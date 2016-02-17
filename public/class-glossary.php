@@ -84,7 +84,7 @@ class Glossary {
 
         // Create Custom Post Type https://github.com/jtsternberg/CPT_Core/blob/master/README.md
         register_via_cpt_core(
-                array( __( 'Glossary', $this->get_plugin_slug() ), __( 'Glossary', $this->get_plugin_slug() ), 'glossary' ), array(
+                array( __( 'Term to Glossary', $this->get_plugin_slug() ), __( 'Glossary Terms', $this->get_plugin_slug() ), 'glossary' ), array(
             'taxonomies' => array( 'glossary-cat' ),
             'map_meta_cap' => true,
             'menu_icon' => 'dashicons-book-alt'
@@ -95,7 +95,7 @@ class Glossary {
 
         // Create Custom Taxonomy https://github.com/jtsternberg/Taxonomy_Core/blob/master/README.md
         register_via_taxonomy_core(
-                array( __( 'Category', $this->get_plugin_slug() ), __( 'Categories', $this->get_plugin_slug() ), 'glossary-cat' ), array(
+                array( __( 'Term Category', $this->get_plugin_slug() ), __( 'Terms Categories', $this->get_plugin_slug() ), 'glossary-cat' ), array(
             'public' => true,
             'capabilities' => array(
                 'assign_terms' => 'edit_posts',
