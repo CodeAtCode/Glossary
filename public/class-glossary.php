@@ -87,7 +87,8 @@ class Glossary {
                 array( __( 'Term to Glossary', $this->get_plugin_slug() ), __( 'Glossary Terms', $this->get_plugin_slug() ), 'glossary' ), array(
             'taxonomies' => array( 'glossary-cat' ),
             'map_meta_cap' => true,
-            'menu_icon' => 'dashicons-book-alt'
+            'menu_icon' => 'dashicons-book-alt',
+            'supports' => 'thumbnail'
                 )
         );
 
@@ -105,7 +106,7 @@ class Glossary {
 
         add_filter( 'the_content', array( $this, 'codeat_glossary_auto_link' ) );
         add_filter( 'the_excerpt', array( $this, 'codeat_glossary_auto_link' ) );
-        
+
         require_once( plugin_dir_path( __FILE__ ) . '/includes/Glossary_a2z_Archive.php' );
 
         $this->settings = get_option( $this->get_plugin_slug() . '-settings' );
