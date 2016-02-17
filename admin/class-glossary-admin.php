@@ -279,7 +279,7 @@ class Glossary_Admin {
         // Start with an underscore to hide fields from custom fields list
         $cmb_demo = new_cmb2_box( array(
             'id' => 'glossary_metabox',
-            'title' => __( 'Glossary', $this->plugin_slug ),
+            'title' => __( 'Glossary auto-link settings', $this->plugin_slug ),
             'object_types' => $this->cpts,
             'context' => 'normal',
             'priority' => 'high',
