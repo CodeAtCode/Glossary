@@ -88,7 +88,11 @@ class Glossary {
             'taxonomies' => array( 'glossary-cat' ),
             'map_meta_cap' => true,
             'menu_icon' => 'dashicons-book-alt',
-            'supports' => 'thumbnail'
+            'supports' => array( 'thumbnail', 'editor', 'title' ),
+            'rewrite' => array(
+                'slug' => '/',
+                'with_front' => false,
+            )
                 )
         );
 
@@ -110,6 +114,8 @@ class Glossary {
         require_once( plugin_dir_path( __FILE__ ) . '/includes/Glossary_a2z_Archive.php' );
 
         $this->settings = get_option( $this->get_plugin_slug() . '-settings' );
+
+        add_filter( 'post_type_link', array( $this, 'remove_slug' ), 10, 3 );
 
         if ( isset( $this->settings[ 'tooltip' ] ) ) {
             add_action( 'wp_enqueue_scripts', array( $this, 'enqueue_styles' ) );
@@ -327,6 +333,14 @@ class Glossary {
                 . "\n" . '</span>'
                 . "\n" . '</span>';
         return $link_tooltip;
+    }
+
+    function remove_slug( $post_link, $post, $leavename ) {
+        if ( 'glossary' != $post->post_type || 'publish' != $post->post_status ) {
+            return $post_link;
+        }
+
+        return str_replace( '/' . $post->post_type . '/', '/', $post_link );
     }
 
 }
