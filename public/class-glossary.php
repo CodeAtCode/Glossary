@@ -324,7 +324,7 @@ class Glossary {
         if ( !empty( $photo ) ) {
             $link_tooltip .= $photo;
         }
-        $link_tooltip .= "\n" . '<span class="tooltip-text">' . $this->get_the_excerpt( $post ) . '</span>'
+        $link_tooltip .= "\n" . '<span class="tooltip-text">' . $this->get_the_excerpt( $post ) . ' ...</span>'
                 . "\n" . '</span>'
                 . "\n" . '</span>';
         return $link_tooltip;
