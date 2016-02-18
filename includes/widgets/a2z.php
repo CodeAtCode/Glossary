@@ -8,8 +8,8 @@ class a2z_Glossary_Widget extends WPH_Widget {
         $this->plugin_slug = $plugin->get_plugin_slug();
 
         $args = array(
-            'label' => __( 'Glossary a2z', $this->plugin_slug ),
-            'description' => __( 'Glossary a2z', $this->plugin_slug ),
+            'label' => __( 'List of alphabet taxonomies for glossary terms', $this->plugin_slug ),
+            'description' => __( 'List of alphabet taxonomies for glossary terms', $this->plugin_slug ),
         );
 
         $args[ 'fields' ] = array(
