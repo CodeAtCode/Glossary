@@ -235,8 +235,11 @@ class Glossary {
                     }
                 }
             endwhile;
-
-            $text = preg_replace( $words, $links, $text );
+            if ( isset( $this->settings[ 'first_occurence' ] ) ) {
+                $text = preg_replace( $words, $links, $text );
+            } else {
+                $text = preg_replace( $words, $links, $text, 1 );
+            }
             wp_reset_postdata();
         }
 

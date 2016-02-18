@@ -36,6 +36,11 @@
                 'type' => 'multicheck_posttype',
             ) );
             $cmb->add_field( array(
+                'name' => __( 'Link only the first occurence', $this->plugin_slug ),
+                'id' => 'first_occurence',
+                'type' => 'checkbox',
+            ) );
+            $cmb->add_field( array(
                 'name' => __( 'Choose when enable', $this->plugin_slug ),
                 'id' => 'is',
                 'type' => 'multicheck',
