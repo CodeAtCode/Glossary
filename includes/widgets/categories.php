@@ -40,17 +40,9 @@ class Categories_Glossary_Widget extends WPH_Widget {
 		$terms = get_terms( 'glossary-cat', $opt );
 
 		if ( !empty( $terms ) && !is_wp_error( $terms ) ) {
-			$count = count( $terms );
-			$i = 0;
 			$term_list = '<ul class="widget-glossary-category-list">';
 			foreach ( $terms as $term ) {
-				$i++;
 				$term_list .= '<li><a href="' . get_term_link( $term ) . '" title="' . sprintf( __( 'View all post filed under %s', 'codeat_glossary' ), $term->name ) . '">' . $term->name . '</a></li>';
-				if ( $count != $i ) {
-					$term_list .= ' &middot; ';
-				} else {
-					$term_list .= '</ul>';
-				}
 			}
 			$out .= $term_list;
 		}
