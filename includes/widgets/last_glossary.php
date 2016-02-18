@@ -44,7 +44,7 @@ class Last_Glossary_Widget extends WPH_Widget {
 		$out .= $instance[ 'title' ];
 		$out .= $args[ 'after_title' ];
 
-		$glossari = new WP_Query( array( 'post_type' => 'glossary', 'order' => 'ASC', 'orderby' => 'title', 'posts_per_page' => $instance[ 'number' ] ) );
+		$glossari = new WP_Query( array( 'post_type' => 'glossary', 'order' => 'DESC', 'orderby' => 'date', 'posts_per_page' => $instance[ 'number' ] ) );
 		if ( $glossari->have_posts() ) {
 			$out .= '<dl class="widget-glossary-terms-list">';
 			while ( $glossari->have_posts() ) : $glossari->the_post();
