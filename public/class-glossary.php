@@ -82,7 +82,6 @@ class Glossary {
      */
     private function __construct() {
 
-        // Create Custom Post Type https://github.com/jtsternberg/CPT_Core/blob/master/README.md
         register_via_cpt_core(
                 array( __( 'Term to Glossary', $this->get_plugin_slug() ), __( 'Glossary Terms', $this->get_plugin_slug() ), 'glossary' ), array(
             'taxonomies' => array( 'glossary-cat' ),
@@ -98,7 +97,6 @@ class Glossary {
 
         add_filter( 'pre_get_posts', array( $this, 'filter_search' ) );
 
-        // Create Custom Taxonomy https://github.com/jtsternberg/Taxonomy_Core/blob/master/README.md
         register_via_taxonomy_core(
                 array( __( 'Term Category', $this->get_plugin_slug() ), __( 'Terms Categories', $this->get_plugin_slug() ), 'glossary-cat' ), array(
             'public' => true,
@@ -221,12 +219,12 @@ class Glossary {
             while ( $gl_query->have_posts() ) : $gl_query->the_post();
                 $link = get_post_meta( get_the_ID(), $this->get_plugin_slug() . '_url', true );
                 //Get the post of the glossary loop
-                global $post;
                 if ( empty( $link ) ) {
                     $link = get_the_permalink();
                 }
                 $words[] = $this->search_string( get_the_title() );
                 if ( isset( $this->settings[ 'tooltip' ] ) ) {
+                    global $post;
                     $links[] = $this->tooltip_html( $link, get_the_title(), $post );
                 } else {
                     $links[] = '<a href="' . $link . '">' . get_the_title() . '</a>';
@@ -308,7 +306,7 @@ class Glossary {
     }
 
     public function search_string( $title ) {
-        return '/((?i)' . $title . '(?-i))(?![^<]*(<\/a>|" \/>))/';
+        return '/((?i)' . $title . '(?-i))(?![^<]*(<\/a>|<\/span>|" \/>))/';
     }
 
     public function get_the_excerpt( $post ) {
