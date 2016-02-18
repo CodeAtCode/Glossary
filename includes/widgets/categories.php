@@ -37,7 +37,7 @@ class Categories_Glossary_Widget extends WPH_Widget {
 
 		$opt = array( 'hide_empty' => 0 );
 
-		$terms = get_terms( 'glossary_category', $opt );
+		$terms = get_terms( 'glossary-cat', $opt );
 
 		if ( !empty( $terms ) && !is_wp_error( $terms ) ) {
 			$count = count( $terms );
