@@ -1,5 +1,5 @@
 === Glossary ===
-Contributors: codeat, igenius, mte90
+Contributors: codeat, iGenius, mte90
 Donate link: http://codeat.com/
 Tags: glossary, vocabulary, dictionary, tooltips
 Requires at least: 4.1
