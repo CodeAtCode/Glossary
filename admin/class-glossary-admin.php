@@ -265,7 +265,6 @@ class Glossary_Admin {
      * @since    1.0.0
      */
     function hide_glossary( $cpts ) {
-        unset( $cpts[ 'glossary' ] );
         unset( $cpts[ 'attachment' ] );
         return $cpts;
     }
