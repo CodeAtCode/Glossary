@@ -17,6 +17,10 @@
 	transition: background-color 0.3s, color 0.3s, transform 0.3s;
 }
 
+.tooltip:hover .tooltip-item a {
+	color:white;
+}
+
 .tooltip:hover .tooltip-item {
 	color: #fff;
 	-webkit-transform: translate3d(0,-0.5em,0);
