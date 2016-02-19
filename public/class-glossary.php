@@ -212,16 +212,25 @@ class Glossary {
 
             while ( $gl_query->have_posts() ) : $gl_query->the_post();
                 $link = get_post_meta( get_the_ID(), $this->get_plugin_slug() . '_url', true );
+                $target = get_post_meta( get_the_ID(), $this->get_plugin_slug() . '_target', true );
+                $nofollow = get_post_meta( get_the_ID(), $this->get_plugin_slug() . '_nofollow', true );
                 //Get the post of the glossary loop
                 if ( empty( $link ) ) {
                     $link = get_the_permalink();
                 }
+                if ( !empty( $link ) && !empty( $target )){
+                    $target = ' target="_blank"';
+                }
+                if ( !empty ( $link ) && !empty( $nofollow )){
+                    $nofollow = ' rel="nofollow"';
+                }
+
                 $words[] = $this->search_string( get_the_title() );
                 if ( isset( $this->settings[ 'tooltip' ] ) ) {
                     global $post;
                     $links[] = $this->tooltip_html( $link, get_the_title(), $post );
                 } else {
-                    $links[] = '<a href="' . $link . '">' . get_the_title() . '</a>';
+                    $links[] = '<a href="' . $link . '"' . $target . $nofollow .'>' . get_the_title() . '</a>';
                 }
                 $related = $this->related_post_meta( get_post_meta( get_the_ID(), $this->get_plugin_slug() . '_tag', true ) );
                 if ( is_array( $related ) ) {
@@ -230,7 +239,7 @@ class Glossary {
                         if ( isset( $this->settings[ 'tooltip' ] ) ) {
                             $links[] = $this->tooltip_html( $link, $value, $post );
                         } else {
-                            $links[] = '<a href="' . $link . '">' . $value . '</a>';
+                            $links[] = '<a href="' . $link . '"' . $target . $nofollow .'>' . $value . '</a>';
                         }
                     }
                 }

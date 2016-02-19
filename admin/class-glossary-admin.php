@@ -296,6 +296,17 @@ class Glossary_Admin {
             'type' => 'text_url',
             'protocols' => array( 'http', 'https' ), 
         ) );
+        $cmb_demo->add_field( array(
+            'name' => __( 'Open external link in a new window', $this->plugin_slug ),
+            'id' => $this->plugin_slug . '_target',
+            'type' => 'checkbox'
+        ) );
+        $cmb_demo->add_field( array(
+            'name' => __( 'No Follow link', $this->plugin_slug ),
+            'desc' => __( 'Put rel="nofollow" in the markup for SEO purposes', $this->plugin_slug ),
+            'id' => $this->plugin_slug . '_nofollow',
+            'type' => 'checkbox'
+        ) );
     }
 
 }
