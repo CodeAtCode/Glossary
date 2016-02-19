@@ -24,13 +24,13 @@ class G_a2z_Archive {
     }
 
     public function query_vars( $query_vars ) {
-        array_push( $query_vars, 'a2z' );
+        array_push( $query_vars, 'az' );
         return $query_vars;
     }
 
     public function check_qv( $query ) {
         global $wp_query;
-        if ( $query->is_main_query() && isset( $wp_query->query_vars[ 'a2z' ] ) ) {
+        if ( $query->is_main_query() && isset( $wp_query->query_vars[ 'az' ] ) ) {
             // if we are on the main query and the query var 'a2z' exists, modify the where/orderby statements
             add_filter( 'posts_where', array( $this, 'modify_query_where' ) );
             add_filter( 'posts_orderby', array( $this, 'modify_query_orderby' ) );
@@ -39,7 +39,7 @@ class G_a2z_Archive {
 
     public function modify_query_where( $where ) {
         global $wp_query, $wpdb;
-        $where .= " AND substring( TRIM( LEADING 'A ' FROM TRIM( LEADING 'AN ' FROM TRIM( LEADING 'THE ' FROM UPPER( $wpdb->posts.post_title ) ) ) ), 1, 1) = '" . $wp_query->query_vars[ 'a2z' ] . "'";
+        $where .= " AND substring( TRIM( LEADING 'A ' FROM TRIM( LEADING 'AN ' FROM TRIM( LEADING 'THE ' FROM UPPER( $wpdb->posts.post_title ) ) ) ), 1, 1) = '" . $wp_query->query_vars[ 'az' ] . "'";
         return $where;
     }
 
