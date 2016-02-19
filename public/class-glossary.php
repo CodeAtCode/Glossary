@@ -87,7 +87,7 @@ class Glossary {
             'taxonomies' => array( 'glossary-cat' ),
             'map_meta_cap' => true,
             'menu_icon' => 'dashicons-book-alt',
-            'supports' => array( 'thumbnail', 'editor', 'title' )
+            'supports' => array( 'thumbnail', 'editor', 'title', 'genesis-seo', 'genesis-layouts', 'genesis-cpt-archive-settings'  )
                 )
         );
 
@@ -347,7 +347,7 @@ class Glossary {
 
 		// Only display excerpt if not a teaser
 		if ( !in_array( 'teaser', get_post_class() ) ) {
-			$excerpt = substr(wp_strip_all_tags(get_the_excerpt( )),0,-10) . '<a href="' . get_the_permalink() . '">' . __( 'Read More' ) . '</a>';
+			$excerpt = wp_strip_all_tags(get_the_excerpt( )) . ' <a href="' . get_the_permalink() . '">' . __( 'Read More' ) . '</a>';
 			echo '<p>' . $this->codeat_glossary_auto_link( $excerpt ) . '</p>';
 			remove_action( 'genesis_entry_content', 'genesis_do_post_content' );
 		}
