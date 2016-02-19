@@ -167,24 +167,6 @@ class Glossary_Admin {
      * @since    1.0.0
      */
     public function add_plugin_admin_menu() {
-
-        /*
-         * Add a settings page for this plugin to the Settings menu.
-         *
-         * NOTE:  Alternative menu locations are available via WordPress administration menu functions.
-         *
-         *        Administration Menus: http://codex.wordpress.org/Administration_Menus
-         *
-         * @TODO:
-         *
-         * - Change 'Page Title' to the title of your plugin admin page
-         * - Change '$this->plugin_name' to the text for menu item for the plugin settings page
-         * - Change 'manage_options' to the capability you see fit
-         *   For reference: http://codex.wordpress.org/Roles_and_Capabilities
-         */
-        $this->plugin_screen_hook_suffix = add_options_page(
-                __( 'Glossary', $this->plugin_slug ), $this->plugin_name, 'manage_options', $this->plugin_slug, array( $this, 'display_plugin_admin_page' )
-        );
         /*
          * Settings page in the menu
          * 
