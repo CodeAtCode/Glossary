@@ -229,7 +229,7 @@ class Glossary {
                 $words[] = $this->search_string( get_the_title() );
                 if ( isset( $this->settings[ 'tooltip' ] ) ) {
                     global $post;
-                    $links[] = $this->tooltip_html( $link, get_the_title(), $post );
+                    $links[] = $this->tooltip_html( $link, get_the_title(), $post, $target, $nofollow );
                 } else {
                     $links[] = '<a href="' . $link . '"' . $target . $nofollow .'>' . get_the_title() . '</a>';
                 }
@@ -238,7 +238,7 @@ class Glossary {
                     foreach ( $related as $value ) {
                         $words[] = $this->search_string( $value );
                         if ( isset( $this->settings[ 'tooltip' ] ) ) {
-                            $links[] = $this->tooltip_html( $link, $value, $post );
+                            $links[] = $this->tooltip_html( $link, $value, $post, $target, $nofollow );
                         } else {
                             $links[] = '<a href="' . $link . '"' . $target . $nofollow .'>' . $value . '</a>';
                         }
@@ -324,10 +324,10 @@ class Glossary {
         }
     }
 
-    public function tooltip_html( $link, $title, $post ) {
+    public function tooltip_html( $link, $title, $post, $target, $nofollow ) {
         $link_tooltip = '<span class="tooltip">'
                 . "\n" . '<span class="tooltip-item">'
-                . "\n" . '<a href="' . $link . '">' . $title . '</a>'
+                . "\n" . '<a href="' . $link . '"' . $target . $nofollow .'>' . $title . '</a>'
                 . "\n" . '</span>'
                 . "\n" . '<span class="tooltip-content clearfix">';
         $photo = wp_get_attachment_image( $post->ID, 'small' );
