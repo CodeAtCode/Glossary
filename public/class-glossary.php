@@ -102,8 +102,8 @@ class Glossary {
                 ), array( 'glossary' )
         );
 
-        add_filter( 'the_content', array( $this, 'codeat_glossary_auto_link' ) );
-        add_filter( 'the_excerpt', array( $this, 'codeat_glossary_auto_link' ) );
+        add_filter( 'the_content', array( $this, 'glossary_auto_link' ) );
+        add_filter( 'the_excerpt', array( $this, 'glossary_auto_link' ) );
 	  add_action( 'genesis_entry_content', array( $this, 'genesis_content' ), 9 );
 
         require_once( plugin_dir_path( __FILE__ ) . '/includes/Glossary_a2z_Archive.php' );
@@ -200,7 +200,7 @@ class Glossary {
         wp_enqueue_style( $this->get_plugin_slug() . '-hint', plugins_url( 'assets/css/tooltip-' . $this->settings[ 'tooltip_style' ] . '.css', __FILE__ ), array(), self::VERSION );
     }
 
-    public function codeat_glossary_auto_link( $text ) {
+    public function glossary_auto_link( $text ) {
         if (
                 $this->g_is_singular() ||
                 $this->g_is_home() ||
@@ -347,8 +347,10 @@ class Glossary {
 
 		// Only display excerpt if not a teaser
 		if ( !in_array( 'teaser', get_post_class() ) ) {
-			$excerpt = wp_strip_all_tags(get_the_excerpt( )) . ' <a href="' . get_the_permalink() . '">' . __( 'Read More' ) . '</a>';
-			echo '<p>' . $this->codeat_glossary_auto_link( $excerpt ) . '</p>';
+			remove_filter( 'the_content', array( $this, 'glossary_auto_link' ) );
+                  remove_filter( 'the_excerpt', array( $this, 'glossary_auto_link' ) );
+			$excerpt = wp_strip_all_tags(get_the_excerpt( ));
+			echo '<p>' . $this->glossary_auto_link( $excerpt ) . ' <a href="' . get_the_permalink() . '">' . __( 'Read More' ) . '</a></p>';
 			remove_action( 'genesis_entry_content', 'genesis_do_post_content' );
 		}
     }
