@@ -83,7 +83,7 @@ class Glossary {
     private function __construct() {
 
         register_via_cpt_core(
-                array( __( 'Term to Glossary', $this->get_plugin_slug() ), __( 'Glossary Terms', $this->get_plugin_slug() ), 'glossary' ), array(
+                array( __( 'Glossary Term', $this->get_plugin_slug() ), __( 'Glossary Terms', $this->get_plugin_slug() ), 'glossary' ), array(
             'taxonomies' => array( 'glossary-cat' ),
             'map_meta_cap' => true,
             'menu_icon' => 'dashicons-book-alt',
