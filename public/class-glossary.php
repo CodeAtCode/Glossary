@@ -318,9 +318,9 @@ class Glossary {
 
     public function get_the_excerpt( $post ) {
         if ( empty( $post->post_excerpt ) ) {
-            return substr( $post->post_content, 0, intval( $this->settings[ 'excerpt_limit' ] ) );
+            return substr( wp_strip_all_tags($post->post_content), 0, intval( $this->settings[ 'excerpt_limit' ] ) );
         } else {
-            return substr( $post->post_excerpt, 0, intval( $this->settings[ 'excerpt_limit' ] ) );
+            return substr( wp_strip_all_tags($post->post_excerpt), 0, intval( $this->settings[ 'excerpt_limit' ] ) );
         }
     }
 
@@ -347,7 +347,7 @@ class Glossary {
 
 		// Only display excerpt if not a teaser
 		if ( !in_array( 'teaser', get_post_class() ) ) {
-			$excerpt = substr(get_the_excerpt( ),0,-10) . '<a href="' . get_the_permalink() . '">' . __( 'Read More' ) . '</a>';
+			$excerpt = substr(wp_strip_all_tags(get_the_excerpt( )),0,-10) . '<a href="' . get_the_permalink() . '">' . __( 'Read More' ) . '</a>';
 			echo '<p>' . $this->codeat_glossary_auto_link( $excerpt ) . '</p>';
 			remove_action( 'genesis_entry_content', 'genesis_do_post_content' );
 		}
