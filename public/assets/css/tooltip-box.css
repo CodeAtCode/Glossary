@@ -71,3 +71,6 @@
 	transform: translate3d(0,0,0);
 }
 
+.tooltip:hover .tooltip {
+	display: none !important;
+}

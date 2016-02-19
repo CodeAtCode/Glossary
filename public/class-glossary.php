@@ -330,11 +330,11 @@ class Glossary {
                 . "\n" . '<a href="' . $link . '"' . $target . $nofollow .'>' . $title . '</a>'
                 . "\n" . '</span>'
                 . "\n" . '<span class="tooltip-content clearfix">';
-        $photo = wp_get_attachment_image( $post->ID, 'small' );
+        $photo = wp_get_attachment_image( $post->ID, 'thumb' );
         if ( !empty( $photo ) ) {
             $link_tooltip .= $photo;
         }
-        $link_tooltip .= "\n" . '<span class="tooltip-text">' . $this->get_the_excerpt( $post ) . ' ...</span>'
+        $link_tooltip .= "\n" . '<span class="tooltip-text">' . $this->get_the_excerpt( $post ) . ' ... <a href="' . get_the_permalink() . '">' . __( 'Read More' ) . '</a></span>'
                 . "\n" . '</span>'
                 . "\n" . '</span>';
         return $link_tooltip;

@@ -105,3 +105,7 @@
 .tooltip-text a {
 	font-weight: bold;
 }
+
+.tooltip:hover .tooltip {
+	display: none !important;
+}
