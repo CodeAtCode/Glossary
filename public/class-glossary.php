@@ -340,7 +340,7 @@ class Glossary {
         return $link_tooltip;
     }
     
-    public function be_grid_content() {
+    public function genesis_content() {
 		if ( !$this->g_arc_glossary() ) {
 			return;
 		}
