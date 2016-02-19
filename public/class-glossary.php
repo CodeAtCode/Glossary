@@ -104,6 +104,7 @@ class Glossary {
 
         add_filter( 'the_content', array( $this, 'codeat_glossary_auto_link' ) );
         add_filter( 'the_excerpt', array( $this, 'codeat_glossary_auto_link' ) );
+	  add_action( 'genesis_entry_content', array( $this, 'genesis_content' ), 9 );
 
         require_once( plugin_dir_path( __FILE__ ) . '/includes/Glossary_a2z_Archive.php' );
 
@@ -337,6 +338,19 @@ class Glossary {
                 . "\n" . '</span>'
                 . "\n" . '</span>';
         return $link_tooltip;
+    }
+    
+    public function be_grid_content() {
+		if ( !$this->g_arc_glossary() ) {
+			return;
+		}
+
+		// Only display excerpt if not a teaser
+		if ( !in_array( 'teaser', get_post_class() ) ) {
+			$excerpt = substr(get_the_excerpt( ),0,-10) . '<a href="' . get_the_permalink() . '">' . __( 'Read More' ) . '</a>';
+			echo '<p>' . $this->codeat_glossary_auto_link( $excerpt ) . '</p>';
+			remove_action( 'genesis_entry_content', 'genesis_do_post_content' );
+		}
     }
 
 }
