@@ -23,11 +23,23 @@ class G_a2z_Archive {
         add_action( 'pre_get_posts', array( $this, 'check_qv' ) );
     }
 
+    /**
+     * Add our value
+     * 
+     * @param array $query_vars
+     * @return array
+     */
     public function query_vars( $query_vars ) {
         array_push( $query_vars, 'az' );
         return $query_vars;
     }
 
+    /**
+     * Check our value
+     * 
+     * @global object $wp_query
+     * @param object $query
+     */
     public function check_qv( $query ) {
         global $wp_query;
         if ( $query->is_main_query() && isset( $wp_query->query_vars[ 'az' ] ) ) {
@@ -37,12 +49,27 @@ class G_a2z_Archive {
         }
     }
 
+    /**
+     * Alter the SQL
+     * 
+     * @global object $wp_query
+     * @global object $wpdb
+     * @param string $where
+     * @return string
+     */
     public function modify_query_where( $where ) {
         global $wp_query, $wpdb;
         $where .= " AND substring( TRIM( LEADING 'A ' FROM TRIM( LEADING 'AN ' FROM TRIM( LEADING 'THE ' FROM UPPER( $wpdb->posts.post_title ) ) ) ), 1, 1) = '" . $wp_query->query_vars[ 'az' ] . "'";
         return $where;
     }
 
+    /**
+     * Alter the SQL
+     * 
+     * @global object $wpdb
+     * @param string $orderby
+     * @return string
+     */
     public function modify_query_orderby( $orderby ) {
         global $wpdb;
         $orderby = "( TRIM( LEADING 'A ' FROM TRIM( LEADING 'AN ' FROM TRIM( LEADING 'THE ' FROM UPPER( $wpdb->posts.post_title ) ) ) ) )";

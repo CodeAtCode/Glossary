@@ -14,11 +14,6 @@
  * Plugin class. This class should ideally be used to work with the
  * public-facing side of the WordPress site.
  *
- * If you're interested in introducing administrative or dashboard
- * functionality, then refer to `class-glossary-admin.php`
- *
- * @package Glossary
- * @author  Codeat <mte90net@gmail.com>
  */
 class Glossary {
 
@@ -200,6 +195,14 @@ class Glossary {
         wp_enqueue_style( $this->get_plugin_slug() . '-hint', plugins_url( 'assets/css/tooltip-' . $this->settings[ 'tooltip_style' ] . '.css', __FILE__ ), array(), self::VERSION );
     }
 
+    /**
+     * 
+     * The magic function that add the glossary terms to your content
+     * 
+     * @global object $post
+     * @param string $text
+     * @return string
+     */
     public function glossary_auto_link( $text ) {
         if (
                 $this->g_is_singular() ||
@@ -258,6 +261,11 @@ class Glossary {
         return $text;
     }
 
+    /**
+     * Check the settings and if is a single page
+     * 
+     * @return boolean
+     */
     public function g_is_singular() {
         if ( isset( $this->settings[ 'posttypes' ] ) && is_singular( $this->settings[ 'posttypes' ] ) ) {
             return true;
@@ -266,6 +274,11 @@ class Glossary {
         }
     }
 
+    /**
+     * Check the settings and if is the home page
+     * 
+     * @return boolean
+     */
     public function g_is_home() {
         if ( isset( $this->settings[ 'is' ] ) && in_array( 'home', $this->settings[ 'is' ] ) && is_home() ) {
             return true;
@@ -274,6 +287,12 @@ class Glossary {
         }
     }
 
+
+    /**
+     * Check the settings and if is a category page
+     * 
+     * @return boolean
+     */
     public function g_is_category() {
         if ( isset( $this->settings[ 'is' ] ) && in_array( 'category', $this->settings[ 'is' ] ) && is_category() ) {
             return true;
@@ -282,6 +301,12 @@ class Glossary {
         }
     }
 
+
+    /**
+     * Check the settings and if is tag
+     * 
+     * @return boolean
+     */
     public function g_is_tag() {
         if ( isset( $this->settings[ 'is' ] ) && in_array( 'tag', $this->settings[ 'is' ] ) && is_tag() ) {
             return true;
@@ -290,6 +315,12 @@ class Glossary {
         }
     }
 
+
+    /**
+     * Check the settings and if is an archive glossary
+     * 
+     * @return boolean
+     */
     public function g_arc_glossary() {
         if ( isset( $this->settings[ 'is' ] ) && in_array( 'arc_glossary', $this->settings[ 'is' ] ) && is_post_type_archive( 'glossary' ) ) {
             return true;
@@ -298,6 +329,11 @@ class Glossary {
         }
     }
 
+    /**
+     * Check the settings and if is a tax glossary page
+     * 
+     * @return boolean
+     */
     public function g_tax_glossary() {
         if ( isset( $this->settings[ 'is' ] ) && in_array( 'tax_glossary', $this->settings[ 'is' ] ) && is_tax( 'glossary-cat' ) ) {
             return true;
@@ -306,6 +342,11 @@ class Glossary {
         }
     }
 
+    /**
+     * Check the settings and if is a single page
+     * 
+     * @return boolean
+     */
     public function related_post_meta( $related ) {
         $value = array_map( 'trim', explode( ',', $related ) );
         if ( empty( $value[ 0 ] ) ) {
@@ -314,10 +355,24 @@ class Glossary {
         return $value;
     }
 
+    /**
+     * 
+     * That method return the regular expression
+     * 
+     * @param string $title Terms.
+     * @return string 
+     */
     public function search_string( $title ) {
         return '/((?i)' . $title . '(?-i))(?![^<]*(<\/a>|<\/span>|" \/>))/';
     }
 
+    /**
+     * 
+     * Get the excerpt by our limit
+     * 
+     * @param object $post
+     * @return string
+     */
     public function get_the_excerpt( $post ) {
         if ( empty( $post->post_excerpt ) ) {
             return substr( wp_strip_all_tags($post->post_content), 0, intval( $this->settings[ 'excerpt_limit' ] ) );
@@ -326,6 +381,17 @@ class Glossary {
         }
     }
 
+    /**
+     * Add a tooltip for your terms
+     * 
+     * @param string $link
+     * @param string $title
+     * @param object $post
+     * @param string $target
+     * @param string $nofollow
+     * @param string $internal
+     * @return string
+     */
     public function tooltip_html( $link, $title, $post, $target, $nofollow, $internal ) {
         $link_tooltip = '<span class="tooltip">'
                 . "\n" . '<span class="tooltip-item">'
@@ -345,6 +411,11 @@ class Glossary {
         return $link_tooltip;
     }
     
+    /**
+     * Genesis hack to add the support for the archive content page
+     * 
+     * @return void
+     */
     public function genesis_content() {
         if ( !$this->g_arc_glossary() ) {
             return;

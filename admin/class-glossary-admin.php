@@ -14,11 +14,6 @@
  * Plugin class. This class should ideally be used to work with the
  * administrative side of the WordPress site.
  *
- * If you're interested in introducing public-facing
- * functionality, then refer to `class-glossary.php`
- *
- * @package Glossary_Admin
- * @author  Codeat <mte90net@gmail.com>
  */
 class Glossary_Admin {
 
@@ -47,15 +42,6 @@ class Glossary_Admin {
      * @since     1.0.0
      */
     private function __construct() {
-
-        /*
-         * @TODO :
-         *
-         * - Uncomment following lines if the admin class should only be available for super admins
-         */
-        /* if( ! is_super_admin() ) {
-          } */
-
         $plugin = Glossary::get_instance();
         $this->plugin_slug = $plugin->get_plugin_slug();
         $this->plugin_name = $plugin->get_plugin_name();
@@ -106,16 +92,6 @@ class Glossary_Admin {
      * @return    object    A single instance of this class.
      */
     public static function get_instance() {
-
-        /*
-         * @TODO :
-         *
-         * - Uncomment following lines if the admin class should only be available for super admins
-         */
-        /* if( ! is_super_admin() ) {
-          return;
-          } */
-
         // If the single instance hasn't been set, set it now.
         if ( null == self::$instance ) {
             self::$instance = new self;
@@ -129,7 +105,7 @@ class Glossary_Admin {
      *
      * @since     1.0.0
      *
-     * @return    null    Return early if no settings page is registered.
+     * @return    void    Return early if no settings page is registered.
      */
     public function enqueue_admin_styles() {
         if ( !isset( $this->plugin_screen_hook_suffix ) ) {
@@ -148,7 +124,7 @@ class Glossary_Admin {
      *
      * @since     1.0.0
      *
-     * @return    null    Return early if no settings page is registered.
+     * @return    void    Return early if no settings page is registered.
      */
     public function enqueue_admin_scripts() {
         if ( !isset( $this->plugin_screen_hook_suffix ) ) {
@@ -165,6 +141,8 @@ class Glossary_Admin {
      * Register the administration menu for this plugin into the WordPress Dashboard menu.
      *
      * @since    1.0.0
+     * 
+     * @return void
      */
     public function add_plugin_admin_menu() {
         /*
@@ -203,6 +181,8 @@ class Glossary_Admin {
      *        Reference:  http://wpsnipp.com/index.php/functions-php/wordpress-post-types-dashboard-at-glance-widget/
      *
      * @since    1.0.0
+     * 
+     * @return array
      */
     public function cpt_glance_dashboard_support( $items = array() ) {
         $post_types = $this->cpts;
@@ -231,6 +211,8 @@ class Glossary_Admin {
      * NOTE: add in $post_types your cpts
      *
      * @since    1.0.0
+     * 
+     * @return array
      */
     function cpt_activity_dashboard_support( $query_args ) {
         if ( !is_array( $query_args[ 'post_type' ] ) ) {
@@ -245,6 +227,7 @@ class Glossary_Admin {
      * Hide glossary post type from settings
      *
      * @since    1.0.0
+     * @return array
      */
     function hide_glossary( $cpts ) {
         unset( $cpts[ 'attachment' ] );
@@ -255,6 +238,8 @@ class Glossary_Admin {
      * NOTE:     Your metabox on Demo CPT
      *
      * @since    1.0.0
+     * 
+     * @return void
      */
     public function cmb_glossary() {
         // Start with an underscore to hide fields from custom fields list
