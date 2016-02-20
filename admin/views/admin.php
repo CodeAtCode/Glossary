@@ -120,7 +120,50 @@
             </div>
         </div>
     </div>
-
+    <!-- Begin MailChimp  -->
+    <div class="right-column-settings-page metabox-holder">
+        <div class="postbox codeat newsletter">
+            <h3 class="hndle"><span><?php _e( 'Codeat Newsletter', $this->plugin_slug ); ?></span></h3>
+            <div class="inside">
+            <!-- Begin MailChimp Signup Form -->
+                <div id="mc_embed_signup">
+                    <form action="//codeat.us12.list-manage.com/subscribe/post?u=07eeb6c8b7c0e093817bd29d1&amp;id=8e8f10fb4d" method="post" id="mc-embedded-subscribe-form" name="mc-embedded-subscribe-form" class="validate" target="_blank" novalidate>
+                        <div id="mc_embed_signup_scroll"> 
+                            <div class="mc-field-group">
+                                <label for="mce-EMAIL">Email Address </label>
+                                <input type="email" value="" name="EMAIL" class="required email" id="mce-EMAIL">
+                            </div>
+                            <div id="mce-responses" class="clear">
+                                <div class="response" id="mce-error-response" style="display:none"></div>
+                                <div class="response" id="mce-success-response" style="display:none"></div>
+                            </div>
+                            <div style="position: absolute; left: -5000px;" aria-hidden="true">
+                                <input type="text" name="b_07eeb6c8b7c0e093817bd29d1_8e8f10fb4d" tabindex="-1" value="">
+                            </div>
+                            <div class="clear">
+                                <input type="submit" value="Subscribe" name="subscribe" id="mc-embedded-subscribe" class="button">
+                            </div>
+                        </div>
+                    </form>
+                </div>
+                <script type='text/javascript' src='//s3.amazonaws.com/downloads.mailchimp.com/js/mc-validate.js'></script>
+                <script type='text/javascript'>(function($) {window.fnames = new Array(); window.ftypes = new Array();fnames[0]='EMAIL';ftypes[0]='email';fnames[1]='FNAME';ftypes[1]='text';fnames[2]='LNAME';ftypes[2]='text';}(jQuery));var $mcj = jQuery.noConflict(true);</script>
+            </div>
+        </div>
+    </div>
+    <!-- Begin Social Links -->
+    <div class="right-column-settings-page metabox-holder">
+        <div class="postbox codeat social">
+            <h3 class="hndle"><span><?php _e( 'Follow us', $this->plugin_slug ); ?></span></h3>
+            <div class="inside">
+                <a href="https://facebook.com/codeatco/" target="_blank"><img src="http://i2.wp.com/codeat.co/wp-content/uploads/2016/02/social-facebook-outline.png?w=52" alt="facebook"></a>
+                <a href="https://twitter.com/codeatco/" target="_blank"><img src="http://i0.wp.com/codeat.co/wp-content/uploads/2016/02/social-twitter-outline.png?w=52" alt="twitter"></a>
+                <a href="https://linkedin.com/company/codeat/" target="_blank"><img src="http://i1.wp.com/codeat.co/wp-content/uploads/2016/02/social-linkedin-outline.png?w=52" alt="linkedin"></a>
+                <a href="https://github.com/CodeAtCode/" target="_blank"><img src="http://i1.wp.com/codeat.co/wp-content/uploads/2016/02/social-github-outline.png?w=52" alt="github"></a>
+            </div>
+        </div>
+    </div>
+    <!-- Begin Plugin List -->
     <div class="right-column-settings-page metabox-holder">
         <div class="postbox codeat">
             <h3 class="hndle"><span><?php _e( 'A Codeat Plugin', $this->plugin_slug ); ?></span></h3>

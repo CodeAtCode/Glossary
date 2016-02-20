@@ -62,3 +62,21 @@
 	text-align: center;
 	display: block;
 }
+.metabox-holder .postbox.codeat.social {
+	min-width: 270px;
+}
+.metabox-holder .postbox.codeat.social .inside a img {
+	filter: invert(100%);
+}
+.metabox-holder .postbox.codeat.newsletter #mce-EMAIL {
+	width: 100%;
+}
+.metabox-holder .postbox.codeat.newsletter #mc-embedded-subscribe {
+	display: block;
+	margin: 10px auto 0;
+}
+.metabox-holder .postbox.codeat.newsletter .mc-field-group label,
+.metabox-holder .postbox.codeat.newsletter .mce-success-response,
+.metabox-holder .postbox.codeat.newsletter {
+	color: #fff;
+}
