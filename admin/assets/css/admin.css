@@ -50,15 +50,15 @@
 #dashboard_right_now a.demo-count:before{
 	content:"\f115";
 }
-.metabox-holder .postbox .inside {
+.metabox-holder .postbox.codeat .inside {
     margin: 0;
     background: #4E3A4C;
     padding: 20px 14px;
 }
-.metabox-holder .postbox .inside a img {
+.metabox-holder .postbox.codeat .inside a img {
 	margin-bottom: 16px;
 }
-.metabox-holder .hndle span {
+.metabox-holder .postbox.codeat .hndle span {
 	text-align: center;
 	display: block;
 }

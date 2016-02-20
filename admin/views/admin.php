@@ -15,7 +15,7 @@
 
 <div class="wrap">
 
-    <h2><?php echo esc_html( get_admin_page_title() ); ?></h2>
+    <h2>Glossary General Settings</h2>
 
     <div id="tabs" class="settings-tab">
         <ul>
@@ -31,17 +31,12 @@
                 'show_names' => true,
                     ) );
             $cmb->add_field( array(
-                'name' => __( 'Add support in specific post type', $this->plugin_slug ),
+                'name' => __( 'Enable in:', $this->plugin_slug ),
                 'id' => 'posttypes',
                 'type' => 'multicheck_posttype',
             ) );
             $cmb->add_field( array(
-                'name' => __( 'Link only the first occurence', $this->plugin_slug ),
-                'id' => 'first_occurence',
-                'type' => 'checkbox',
-            ) );
-            $cmb->add_field( array(
-                'name' => __( 'Choose when enable', $this->plugin_slug ),
+                'name' => __( 'Enable also in following archives:', $this->plugin_slug ),
                 'id' => 'is',
                 'type' => 'multicheck',
                 'options' => array(
@@ -53,12 +48,20 @@
                 )
             ) );
             $cmb->add_field( array(
-                'name' => __( 'Enable tooltip on terms', $this->plugin_slug ),
+                'name' => __( 'Link only the first occurence', $this->plugin_slug ),
+                'desc' => __('Prevent duplicate links and tooltips in the same post', $this->plugin_slug ),
+                'id' => 'first_occurence',
+                'type' => 'checkbox',
+            ) );
+            $cmb->add_field( array(
+                'name' => __( 'Enable tooltips on terms', $this->plugin_slug ),
+                'desc' => __('Tooltip will popup on hover', $this->plugin_slug ),
                 'id' => 'tooltip',
                 'type' => 'checkbox',
             ) );
             $cmb->add_field( array(
                 'name' => __( 'Tooltip style', $this->plugin_slug ),
+                'desc' => __('Only classic will show featured images', $this->plugin_slug ),
                 'id' => 'tooltip_style',
                 'type' => 'select',
                 'options' => array(
@@ -68,14 +71,14 @@
                 )
             ) );
             $cmb->add_field( array(
-                'name' => __( 'Excerpt char size', $this->plugin_slug ),
+                'name' => __( 'Excerpt length', $this->plugin_slug ),
                 'id' => 'excerpt_limit',
                 'type' => 'text_number',
                 'default' => '60'
             ) );
             $cmb->add_field( array(
                 'name' => __( 'Enable image in tooltip', $this->plugin_slug ),
-                'description' => __( 'Check it if you want also term\'s featured image showing on hover', $this->plugin_slug ),
+                'desc' => __( 'Check it if you want also term\'s featured image in classic tooltips', $this->plugin_slug ),
                 'id' => 't_image',
                 'type' => 'checkbox',
             ) );
@@ -119,7 +122,7 @@
     </div>
 
     <div class="right-column-settings-page metabox-holder">
-        <div class="postbox">
+        <div class="postbox codeat">
             <h3 class="hndle"><span><?php _e( 'A Codeat Plugin', $this->plugin_slug ); ?></span></h3>
             <div class="inside">
                 <a href="http://codeat.co" target="_blank"><img src="http://i2.wp.com/codeat.co/wp-content/uploads/2016/02/cropped-logo-light.png?w=236" alt="Codeat"></a>

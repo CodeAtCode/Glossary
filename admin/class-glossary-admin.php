@@ -253,12 +253,13 @@ class Glossary_Admin {
                 ) );
         $cmb_demo->add_field( array(
             'name' => __( 'Related search terms', $this->plugin_slug ),
-            'desc' => __( 'separated comma', $this->plugin_slug ),
+            'desc' => __( 'More than one: Comma Separated Values', $this->plugin_slug ),
             'id' => $this->plugin_slug . '_tag',
             'type' => 'text'
         ) );
         $cmb_demo->add_field( array(
-            'name' => __( 'External url', $this->plugin_slug ),
+            'name' => __( 'External URL', $this->plugin_slug ),
+            'desc' => __( 'Redirects links to an external/affliate URL', $this->plugin_slug ),
             'id' => $this->plugin_slug . '_url',
             'type' => 'text_url',
             'protocols' => array( 'http', 'https' ), 
@@ -270,7 +271,7 @@ class Glossary_Admin {
         ) );
         $cmb_demo->add_field( array(
             'name' => __( 'No Follow link', $this->plugin_slug ),
-            'desc' => __( 'Put rel="nofollow" in the markup for SEO purposes', $this->plugin_slug ),
+            'desc' => __( 'Put rel="nofollow" in the link for SEO purposes', $this->plugin_slug ),
             'id' => $this->plugin_slug . '_nofollow',
             'type' => 'checkbox'
         ) );
