@@ -8,7 +8,7 @@ Stable tag: 1.0.0
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
-Easily add and manage a glossary with auto-link, tooltips and more. Improve your internal link building for a better SEO.
+Easily add and manage a glossary with auto-link, tooltips and more. Improve your internal site link building for a better SEO.
 
 == Description ==
 
