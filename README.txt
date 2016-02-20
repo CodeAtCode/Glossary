@@ -51,29 +51,18 @@ Using this plugin you can also use some affiliations URL in your terms and write
 
 == Frequently Asked Questions ==
 
-= A question that someone might have =
+= Could I use more than a term title pointing to the same term page? =
 
-An answer to that question.
+Yes, you are able to use how many term titles you want using the "Related search terms" field into your WordPress Glossary Editor Page. In this way you'll be able to auto-link more than one term to the same page (E.g. Call To Action, CTA, Action Button)
+
+= Could I use your auto-link engine for affiliation purposes? =
+
+Yes, and we encourage you to do it.
+E.g. Amazon Glossary Term links to your Amazon affiliation URL. Everytime one of your users hover on the Amazon link is able to see your tooltip but if they clicks suddenly will redirected on your affiliate link.
 
 == Screenshots ==
-
-1. This screen shot description corresponds to screenshot-1.(png|jpg|jpeg|gif). Note that the screenshot is taken from
-the /assets directory or the directory that contains the stable readme.txt (tags or trunk). Screenshots in the /assets
-directory take precedence. For example, `/assets/screenshot-1.png` would win over `/tags/4.3/screenshot-1.png`
-(or jpg, jpeg, gif).
-2. This is the second screen shot
 
 == Changelog ==
 
 = 1.0 =
 * Published on WordPress repo
-
-== Arbitrary section ==
-
-You may provide arbitrary sections, in the same format as the ones above.  This may be of use for extremely complicated
-plugins where more information needs to be conveyed that doesn't fit into the categories of "description" or
-"installation."  Arbitrary sections will be shown below the built-in sections outlined above.
-
-== Updates ==
-
-The basic structure of this plugin was cloned from the [WordPress-Plugin-Boilerplate](https://github.com/tommcfarlin/WordPress-Plugin-Boilerplate) project.
