@@ -61,7 +61,7 @@
             ) );
             $cmb->add_field( array(
                 'name' => __( 'Tooltip style', $this->plugin_slug ),
-                'desc' => __('Only classic will show featured images', $this->plugin_slug ),
+                'desc' => __('Only classic shows featured images', $this->plugin_slug ),
                 'id' => 'tooltip_style',
                 'type' => 'select',
                 'options' => array(

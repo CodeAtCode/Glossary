@@ -4,8 +4,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Glossary by Codeat\n"
 "Report-Msgid-Bugs-To: http://wordpress.org/plugins/plugin-name\n"
-"POT-Creation-Date: 2016-02-20 22:04+0100\n"
-"PO-Revision-Date: 2016-02-20 22:04+0100\n"
+"POT-Creation-Date: 2016-02-20 22:09+0100\n"
+"PO-Revision-Date: 2016-02-20 22:09+0100\n"
 "Last-Translator: Eugenio Petullà <eugeniopetulla@yahoo.it>\n"
 "Language-Team: Eugenio Petullà - Codeat <support@codeat.co>\n"
 "Language: it_IT\n"
@@ -137,9 +137,9 @@ msgid "Tooltip style"
 msgstr "Stile del Tooltip"
 
 #: admin/views/admin.php:64
-msgid "Only classic will show featured images"
+msgid "Only classic shows featured images"
 msgstr ""
-"Solo quello classico è in grado di mostrare anche l'immagine in eveidenza"
+"Solo quello classico è in grado di mostrare anche l'immagine in evidenza"
 
 #: admin/views/admin.php:74
 msgid "Excerpt length"
@@ -269,3 +269,7 @@ msgstr "Tutto"
 #: public/class-glossary.php:429
 msgid "Read More"
 msgstr "Leggi Tutto"
+
+#~ msgid "Only classic will show featured images"
+#~ msgstr ""
+#~ "Solo quello classico è in grado di mostrare anche l'immagine in eveidenza"
