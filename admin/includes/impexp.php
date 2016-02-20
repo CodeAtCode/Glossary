@@ -3,10 +3,10 @@
  * Provide Import and Export of the settings of the plugin
  *
  * @package   Glossary
- * @author  Mte90 <mte90net@gmail.com>
+ * @author    Codeat <support@codeat.co>
  * @license   GPL-2.0+
- * @copyright 2014-2015
- * @since    1.0.0
+ * @link      http://codeat.co
+ * @copyright 2016 GPL 2.0+
  */
 
 class G_ImpExp {

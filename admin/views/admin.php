@@ -6,9 +6,9 @@
  * The User Interface to the end user.
  *
  * @package   Glossary
- * @author    Codeat <mte90net@gmail.com>
+ * @author    Codeat <support@codeat.co>
  * @license   GPL-2.0+
- * @link      http://codeat.com
+ * @link      http://codeat.co
  * @copyright 2016 GPL 2.0+
  */
 ?>

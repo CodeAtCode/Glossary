@@ -1,24 +1,19 @@
 <?php
 
 /**
- * The WordPress Plugin Boilerplate.
- *
- * A foundation off of which to build well-documented WordPress plugins that
- * also follow WordPress Coding Standards and PHP best practices.
  *
  * @package   Glossary
- * @author    Codeat <mte90net@gmail.com>
+ * @author    Codeat <support@codeat.co>
  * @license   GPL-2.0+
- * @link      http://codeat.com
+ * @link      http://codeat.co
  * @copyright 2016 GPL 2.0+
  *
- * @wordpress-plugin
  * Plugin Name:       Glossary
- * Plugin URI:        @TODO
- * Description:       @TODO
+ * Plugin URI:        http://codeat.co/glossary
+ * Description:       Easily add and manage a glossary with auto-link, tooltips and more. Improve your internal link building for a better SEO.
  * Version:           1.0.0
  * Author:            Codeat
- * Author URI:        http://codeat.com
+ * Author URI:        http://codeat.co
  * Text Domain:       glossary
  * License:           GPL-2.0+
  * License URI:       http://www.gnu.org/licenses/gpl-2.0.txt

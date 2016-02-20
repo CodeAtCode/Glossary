@@ -3,10 +3,10 @@
 /**
  * Glossary
  *
- * @package   Glossary_Admin
- * @author    Codeat <mte90net@gmail.com>
+ * @package   Glossary
+ * @author    Codeat <support@codeat.co>
  * @license   GPL-2.0+
- * @link      http://codeat.com
+ * @link      http://codeat.co
  * @copyright 2016 GPL 2.0+
  */
 

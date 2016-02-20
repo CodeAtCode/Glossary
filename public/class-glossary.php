@@ -4,9 +4,9 @@
  * Glossary
  *
  * @package   Glossary
- * @author    Codeat <mte90net@gmail.com>
+ * @author    Codeat <support@codeat.co>
  * @license   GPL-2.0+
- * @link      http://codeat.com
+ * @link      http://codeat.co
  * @copyright 2016 GPL 2.0+
  */
 
@@ -215,9 +215,11 @@ class Glossary {
                 $link = get_post_meta( get_the_ID(), $this->get_plugin_slug() . '_url', true );
                 $target = get_post_meta( get_the_ID(), $this->get_plugin_slug() . '_target', true );
                 $nofollow = get_post_meta( get_the_ID(), $this->get_plugin_slug() . '_nofollow', true );
+                $internal = '';
                 //Get the post of the glossary loop
                 if ( empty( $link ) ) {
                     $link = get_the_permalink();
+                    $internal = true;
                 }
                 if ( !empty( $link ) && !empty( $target )){
                     $target = ' target="_blank"';
@@ -229,7 +231,7 @@ class Glossary {
                 $words[] = $this->search_string( get_the_title() );
                 if ( isset( $this->settings[ 'tooltip' ] ) ) {
                     global $post;
-                    $links[] = $this->tooltip_html( $link, get_the_title(), $post, $target, $nofollow );
+                    $links[] = $this->tooltip_html( $link, get_the_title(), $post, $target, $nofollow, $internal );
                 } else {
                     $links[] = '<a href="' . $link . '"' . $target . $nofollow .'>' . get_the_title() . '</a>';
                 }
@@ -238,7 +240,7 @@ class Glossary {
                     foreach ( $related as $value ) {
                         $words[] = $this->search_string( $value );
                         if ( isset( $this->settings[ 'tooltip' ] ) ) {
-                            $links[] = $this->tooltip_html( $link, $value, $post, $target, $nofollow );
+                            $links[] = $this->tooltip_html( $link, $value, $post, $target, $nofollow, $internal );
                         } else {
                             $links[] = '<a href="' . $link . '"' . $target . $nofollow .'>' . $value . '</a>';
                         }
@@ -324,7 +326,7 @@ class Glossary {
         }
     }
 
-    public function tooltip_html( $link, $title, $post, $target, $nofollow ) {
+    public function tooltip_html( $link, $title, $post, $target, $nofollow, $internal ) {
         $link_tooltip = '<span class="tooltip">'
                 . "\n" . '<span class="tooltip-item">'
                 . "\n" . '<a href="' . $link . '"' . $target . $nofollow .'>' . $title . '</a>'
@@ -334,7 +336,10 @@ class Glossary {
         if ( !empty( $photo ) && !empty( $this->settings[ 't_image' ] )) {
             $link_tooltip .= $photo;
         }
-        $link_tooltip .= "\n" . '<span class="tooltip-text">' . $this->get_the_excerpt( $post ) . ' ... <a href="' . get_the_permalink() . '">' . __( 'Read More' ) . '</a></span>'
+        if ( empty( $internal )) {
+            $readmore = ' <a href="' . get_the_permalink() . '">' . __( 'More' ) . '</a>';
+        }
+        $link_tooltip .= "\n" . '<span class="tooltip-text">' . $this->get_the_excerpt( $post ) . ' ...' . $readmore .'</span>'
                 . "\n" . '</span>'
                 . "\n" . '</span>';
         return $link_tooltip;
@@ -354,3 +359,4 @@ class Glossary {
             remove_action( 'genesis_entry_content', 'genesis_do_post_content' );
         }
     }
+}

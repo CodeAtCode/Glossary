@@ -1,14 +1,14 @@
 <?php
 
 /**
- * A2Z Archive system
+ * A-Z Archive system
  * Based on https://github.com/NowellVanHoesen/a2z-alphabetical-archive-links/
  *
- * @package   DaTask
- * @author    Mte90 <mte90net@gmail.com>
+ * @package   Glossary
+ * @author    Codeat <support@codeat.co>
  * @license   GPL-2.0+
- * @link      http://mte90.net
- * @copyright 2015 GPL
+ * @link      http://codeat.co
+ * @copyright 2016 GPL 2.0+
  */
 class G_a2z_Archive {
 
