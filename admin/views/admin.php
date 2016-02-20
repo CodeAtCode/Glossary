@@ -120,9 +120,9 @@
 
     <div class="right-column-settings-page metabox-holder">
         <div class="postbox">
-            <h3 class="hndle"><span><?php _e( 'Glossary', $this->plugin_slug ); ?></span></h3>
+            <h3 class="hndle"><span><?php _e( 'Plugin by', $this->plugin_slug ); ?></span></h3>
             <div class="inside">
-                <a href="https://github.com/Mte90/WordPress-Plugin-Boilerplate-Powered"><img src="https://github.com/Mte90/WordPress-Plugin-Boilerplate-Powered/raw/master/glossary/assets/icon-256x256.png" alt=""></a>
+                <a href="http://codeat.co"><img src="http://codeat.co/wp-content/uploads/2016/02/logo-light-admin.png" alt="Codeat"></a>
             </div>
         </div>
     </div>
