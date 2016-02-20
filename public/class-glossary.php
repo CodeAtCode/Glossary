@@ -104,7 +104,7 @@ class Glossary {
 
         add_filter( 'the_content', array( $this, 'glossary_auto_link' ) );
         add_filter( 'the_excerpt', array( $this, 'glossary_auto_link' ) );
-	  add_action( 'genesis_entry_content', array( $this, 'genesis_content' ), 9 );
+      add_action( 'genesis_entry_content', array( $this, 'genesis_content' ), 9 );
 
         require_once( plugin_dir_path( __FILE__ ) . '/includes/Glossary_a2z_Archive.php' );
 
@@ -330,8 +330,8 @@ class Glossary {
                 . "\n" . '<a href="' . $link . '"' . $target . $nofollow .'>' . $title . '</a>'
                 . "\n" . '</span>'
                 . "\n" . '<span class="tooltip-content clearfix">';
-        $photo = wp_get_attachment_image( $post->ID, 'thumb' );
-        if ( !empty( $photo ) ) {
+        $photo = get_the_post_thumbnail( $post->ID, 'thumbnail' );
+        if ( !empty( $photo ) && !empty( $this->settings[ 't_image' ] )) {
             $link_tooltip .= $photo;
         }
         $link_tooltip .= "\n" . '<span class="tooltip-text">' . $this->get_the_excerpt( $post ) . ' ... <a href="' . get_the_permalink() . '">' . __( 'Read More' ) . '</a></span>'
@@ -341,18 +341,16 @@ class Glossary {
     }
     
     public function genesis_content() {
-		if ( !$this->g_arc_glossary() ) {
-			return;
-		}
+        if ( !$this->g_arc_glossary() ) {
+            return;
+        }
 
-		// Only display excerpt if not a teaser
-		if ( !in_array( 'teaser', get_post_class() ) ) {
-			remove_filter( 'the_content', array( $this, 'glossary_auto_link' ) );
+        // Only display excerpt if not a teaser
+        if ( !in_array( 'teaser', get_post_class() ) ) {
+            remove_filter( 'the_content', array( $this, 'glossary_auto_link' ) );
                   remove_filter( 'the_excerpt', array( $this, 'glossary_auto_link' ) );
-			$excerpt = wp_strip_all_tags(get_the_excerpt( ));
-			echo '<p>' . $this->glossary_auto_link( $excerpt ) . ' <a href="' . get_the_permalink() . '">' . __( 'Read More' ) . '</a></p>';
-			remove_action( 'genesis_entry_content', 'genesis_do_post_content' );
-		}
+            $excerpt = wp_strip_all_tags(get_the_excerpt( ));
+            echo '<p>' . $this->glossary_auto_link( $excerpt ) . ' <a href="' . get_the_permalink() . '">' . __( 'Read More' ) . '</a></p>';
+            remove_action( 'genesis_entry_content', 'genesis_do_post_content' );
+        }
     }
-
-}

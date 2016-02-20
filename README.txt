@@ -12,30 +12,18 @@ Easily add and manage glossary with auto-link and tooltips. Improve your interna
 
 == Description ==
 
-This is the long description.  No limit, and you can use Markdown (as well as in the following sections).
+If you are looking for a plugin that provides the definitive Glossary Section for WordPress this is the right one!
 
-For backwards compatibility, if this section is missing, the full length of the short description will be used, and
-Markdown parsed.
+Write a glossary or a dictionary section in your WordPress website. Every term of the glossary and every variation of them (E.g. "Call To Action" and "CTA" also) will occur in posts, pages or custom post types will became automatically a link to the Term page or even an external URL.
 
-A few notes about the sections above:
+If you are looking for a solid strategy to improve your internal site link building and improve your SEO this is one of the best method we've tried and we incourage you to try this: it's for free!
 
-*   "Contributors" is a comma separated list of wp.org/wp-plugins.org usernames
-*   "Tags" is a comma separated list of tags that apply to the plugin
-*   "Requires at least" is the lowest version that the plugin will work on
-*   "Tested up to" is the highest version that you've *successfully used to test the plugin*. Note that it might work on
-higher versions... this is just the highest one you've verified.
-*   Stable tag should indicate the Subversion "tag" of the latest stable version, or "trunk," if you use `/trunk/` for
-stable.
+You can also choose to put some tooltips on the referenced words and improve your website user experience, we provided 3 beautiful tooltip's templates in order to make it fit your design.
 
-    Note that the `readme.txt` of the stable tag is the one that is considered the defining one for the plugin, so
-if the `/trunk/readme.txt` file says that the stable tag is `4.3`, then it is `/tags/4.3/readme.txt` that'll be used
-for displaying information about the plugin.  In this situation, the only thing considered from the trunk `readme.txt`
-is the stable tag pointer.  Thus, if you develop in trunk, you can update the trunk `readme.txt` to reflect changes in
-your in-development version, without having that information incorrectly disclosed about the current stable version
-that lacks those changes -- as long as the trunk's `readme.txt` points to the correct stable tag.
+Are you an affiliate marketing pro?
+Using this plugin you can also use some affiliations URL in your terms and write a description of them for the tooltip area that will popup on hover so you'll be able to convert more users.
 
-    If no stable tag is provided, it is assumed that trunk is stable, but you should specify "trunk" if that's where
-you put the stable version, in order to eliminate any doubt.
+[PLUGIN DEMO SITE](http://codeat.co/glossary), [SOURCECODE ON GITHUB](https://github.com/CodeAtCode/Glossary/), [SUPPORT (GITHUB ISSUES)](https://github.com/CodeAtCode/Glossary/issues)
 
 == Installation ==
 
@@ -60,15 +48,12 @@ you put the stable version, in order to eliminate any doubt.
 2. Extract the `glossary` directory to your computer
 3. Upload the `glossary` directory to the `/wp-content/plugins/` directory
 4. Activate the plugin in the Plugin dashboard
+
 == Frequently Asked Questions ==
 
 = A question that someone might have =
 
 An answer to that question.
-
-= What about foo bar? =
-
-Answer to foo bar dilemma.
 
 == Screenshots ==
 

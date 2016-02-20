@@ -73,6 +73,12 @@
                 'type' => 'text_number',
                 'default' => '60'
             ) );
+            $cmb->add_field( array(
+                'name' => __( 'Enable image in tooltip', $this->plugin_slug ),
+                'description' => __( 'Check it if you want also term\'s featured image showing on hover', $this->plugin_slug ),
+                'id' => 't_image',
+                'type' => 'checkbox',
+            ) );
             cmb2_metabox_form( $this->plugin_slug . '_options', $this->plugin_slug . '-settings' );
             ?>
 
