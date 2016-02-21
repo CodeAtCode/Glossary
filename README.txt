@@ -60,7 +60,20 @@ Yes, you are able to use how many term titles you want using the "Related search
 Yes, and we encourage you to do it.
 E.g. Amazon Glossary Term links to your Amazon affiliation URL. Everytime one of your users hover on the Amazon link is able to see your tooltip but if they clicks suddenly will redirected on your affiliate link.
 
+= Is it Glossary Genesis Compatible? =
+
+Yes, we love Genesis Framework and we care about other Genesis fans. SEO, Layout and Archive section are fully integrated.
+
 == Screenshots ==
+
+1. GLossary general settings
+2. Glossary Single auto-link setting
+3. Glossary Terms list in WordPress Dashboard
+4. Tooltip Line template
+5. Tooltip Box template
+6. Tooltip Classic template with featured image
+7. Tooltip Classic template without featured image
+8. Glossary features
 
 == Changelog ==
 
