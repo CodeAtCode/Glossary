@@ -1,0 +1,270 @@
+# Copyright (C) 2013 TODO
+# This file is distributed under the same license as the TODO package.
+msgid ""
+msgstr ""
+"Project-Id-Version: Glossary by Codeat\n"
+"Report-Msgid-Bugs-To: http://wordpress.org/plugins/plugin-name\n"
+"POT-Creation-Date: 2016-02-22 14:53+0100\n"
+"PO-Revision-Date: 2016-02-22 15:27+0100\n"
+"Language-Team: Eugenio Petullà - Codeat <support@codeat.co>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Poedit 1.8.7\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"X-Poedit-KeywordsList: __;_e;_n;_x;esc_html_e;esc_html__;esc_attr_e;"
+"esc_attr__;_ex:1,2c;_nx:4c,1,2;_nx_noop:4c,1,2;_x:1,2c;_n:1,2\n"
+"X-Poedit-Basepath: ..\n"
+"Plural-Forms: nplurals=2; plural=n != 1;\n"
+"Last-Translator: \n"
+"Language: es\n"
+"X-Poedit-SearchPath-0: .\n"
+"X-Poedit-SearchPathExcluded-0: admin/includes/CMB2\n"
+"X-Poedit-SearchPathExcluded-1: includes/CPT_Core\n"
+"X-Poedit-SearchPathExcluded-2: includes/Taxonomy_Core\n"
+"X-Poedit-SearchPathExcluded-3: includes/Widgets-Helper\n"
+"X-Poedit-SearchPathExcluded-4: public/includes/requirements.php\n"
+"X-Poedit-SearchPathExcluded-5: admin/includes/cmb2_post_search_field.php\n"
+"X-Poedit-SearchPathExcluded-6: admin/includes/CPT_Columns.php\n"
+"X-Poedit-SearchPathExcluded-7: admin/includes/cmb2_user_search_field.php\n"
+"X-Poedit-SearchPathExcluded-8: node_modules\n"
+
+#: admin/class-glossary-admin.php:152
+msgid "Glossary"
+msgstr "Glosario"
+
+#: admin/class-glossary-admin.php:172 admin/views/admin.php:22
+msgid "Settings"
+msgstr "Ajustes"
+
+#: admin/class-glossary-admin.php:197
+#, php-format
+msgid "%s "
+msgid_plural "%s "
+msgstr[0] "%s"
+msgstr[1] "%s"
+
+#: admin/class-glossary-admin.php:248
+msgid "Glossary auto-link settings"
+msgstr "Configuración auto-link de el glosario"
+
+#: admin/class-glossary-admin.php:255
+msgid "Related search terms"
+msgstr "Términos de búsqueda relacionados"
+
+#: admin/class-glossary-admin.php:256
+msgid "More than one: Comma Separated Values"
+msgstr "Más de uno: valores separados por comas"
+
+#: admin/class-glossary-admin.php:261
+msgid "External URL"
+msgstr "URL Externa"
+
+#: admin/class-glossary-admin.php:262
+msgid "Redirects links to an external/affliate URL"
+msgstr "Redireccione enlaces a un URL externo/afiliado"
+
+#: admin/class-glossary-admin.php:268
+msgid "Open external link in a new window"
+msgstr "Abrir este enlace en una nueva ventana"
+
+#: admin/class-glossary-admin.php:273
+msgid "No Follow link"
+msgstr "No Follow enlace"
+
+#: admin/class-glossary-admin.php:274
+msgid "Put rel=\"nofollow\" in the link for SEO purposes"
+msgstr "Poner rel=\"nofollow\" en el enlace para propósitos SEO"
+
+#: admin/includes/impexp.php:83
+msgid "Please upload a valid .json file"
+msgstr "Por favor, sube un archivo .json válido."
+
+#: admin/includes/impexp.php:89
+msgid "Please upload a file to import"
+msgstr "Por favor, sube un archivo a importar"
+
+#: admin/views/admin.php:23
+msgid "Import/Export"
+msgstr "Importar/Exportar"
+
+#: admin/views/admin.php:34
+msgid "Enable in:"
+msgstr "Activar en:"
+
+#: admin/views/admin.php:39
+msgid "Enable also in following archives:"
+msgstr "También permiten en los siguientes archivos:"
+
+#: admin/views/admin.php:43
+msgid "Home"
+msgstr "Inicio"
+
+#: admin/views/admin.php:44
+msgid "Category archive"
+msgstr "Archivo por categoría"
+
+#: admin/views/admin.php:45
+msgid "Tag archive"
+msgstr "Archivo por etiquetas"
+
+#: admin/views/admin.php:46
+msgid "Glossary Archive"
+msgstr "Archivo de Glosario"
+
+#: admin/views/admin.php:47
+msgid "Glossary Taxonomy"
+msgstr "Taxonomía de Glosario"
+
+#: admin/views/admin.php:51
+msgid "Link only the first occurence"
+msgstr "Enlazar sólo a la primera ocurrencia"
+
+#: admin/views/admin.php:52
+msgid "Prevent duplicate links and tooltips in the same post"
+msgstr "Evitar enlaces duplicados  e tooltip en la misma entrada"
+
+#: admin/views/admin.php:57
+msgid "Enable tooltips on terms"
+msgstr "Activar sugerencias de los términos"
+
+#: admin/views/admin.php:58
+msgid "Tooltip will popup on hover"
+msgstr "Pasando por encima será emergente un tooltip"
+
+#: admin/views/admin.php:63
+msgid "Tooltip style"
+msgstr "Estilo Tooltip"
+
+#: admin/views/admin.php:64
+msgid "Only classic shows featured images"
+msgstr "Mostrar solamente imágenes destacadas clásicas"
+
+#: admin/views/admin.php:74
+msgid "Excerpt length"
+msgstr "Longitud del extracto"
+
+#: admin/views/admin.php:80
+msgid "Enable image in tooltip"
+msgstr "Habilitar la imagen en el tooltip"
+
+#: admin/views/admin.php:81
+msgid "Check it if you want also term's featured image in classic tooltips"
+msgstr "Compruebe si desea mostrar la imagen destacada en tooltip clásicos"
+
+#: admin/views/admin.php:92
+msgid "Export Settings"
+msgstr "Exportar ajustes"
+
+#: admin/views/admin.php:94
+msgid ""
+"Export the plugin settings for this site as a .json file. This allows you to "
+"easily import the configuration into another site."
+msgstr ""
+"Exportar la configuración del plugin de este sitio como un archivo .json. "
+"Esto le permite importar fácilmente la configuración en otro sitio."
+
+#: admin/views/admin.php:99
+msgid "Export"
+msgstr "Exportar"
+
+#: admin/views/admin.php:106
+msgid "Import Settings"
+msgstr "Importar Ajustes "
+
+#: admin/views/admin.php:108
+msgid ""
+"Import the plugin settings from a .json file. This file can be obtained by "
+"exporting the settings on another site using the form above."
+msgstr ""
+"Importar la configuración del plugin desde un archivo .json. Este archivo se "
+"puede obtener mediante la explotación de los ajustes en otro sitio usando el "
+"formulario de arriba."
+
+#: admin/views/admin.php:116
+msgid "Import"
+msgstr "Importar"
+
+#: admin/views/admin.php:126
+msgid "Codeat Newsletter"
+msgstr "Boletín Codeat"
+
+#: admin/views/admin.php:157
+msgid "Follow us"
+msgstr "Síguenos"
+
+#: admin/views/admin.php:169
+msgid "A Codeat Plugin"
+msgstr "Un Plugin de Codeat "
+
+#: includes/widgets/a2z.php:11 includes/widgets/a2z.php:12
+msgid "List of alphabet taxonomies for glossary terms"
+msgstr "Lista de las taxonomías alfabetica para los términos de el glosario"
+
+#: includes/widgets/a2z.php:17 includes/widgets/categories.php:17
+#: includes/widgets/last_glossary.php:17
+msgid "Title"
+msgstr "Titulo"
+
+#: includes/widgets/a2z.php:18 includes/widgets/categories.php:18
+#: includes/widgets/last_glossary.php:18
+msgid "Enter the widget title."
+msgstr "Ingresar el titulo para el widget."
+
+#: includes/widgets/a2z.php:26
+msgid "Show Counts"
+msgstr "Mostrar contador"
+
+#: includes/widgets/categories.php:11
+msgid "Glossary Categories"
+msgstr "Glosario de las categorías"
+
+#: includes/widgets/categories.php:12
+msgid "List of Glossary Categories"
+msgstr "Lista de las categorías de el glosario"
+
+#: includes/widgets/categories.php:22 includes/widgets/last_glossary.php:11
+#: includes/widgets/last_glossary.php:22
+msgid "Latest Glossary Terms"
+msgstr "Últimos términos de el glosario"
+
+#: includes/widgets/categories.php:45
+#, php-format
+msgid "View all post filed under %s"
+msgstr "Ver todas las entradas en %s"
+
+#: includes/widgets/last_glossary.php:12
+msgid "List of latest Glossary Terms"
+msgstr "Lista de los últimos términos de el Glosario"
+
+#: includes/widgets/last_glossary.php:27
+msgid "Number"
+msgstr "Numero"
+
+#: includes/widgets/last_glossary.php:28
+msgid "Select how many glossary to show."
+msgstr "Seleccione el número de terminos para mostrar."
+
+#: public/class-glossary.php:81
+msgid "Glossary Term"
+msgstr "Término del glosario"
+
+#: public/class-glossary.php:81
+msgid "Glossary Terms"
+msgstr "Términos del glosario"
+
+#: public/class-glossary.php:92
+msgid "Term Category"
+msgstr "Categoria del término"
+
+#: public/class-glossary.php:92
+msgid "Terms Categories"
+msgstr "Categorias del términos"
+
+#: public/class-glossary.php:406
+msgid "More"
+msgstr "Ampliar"
+
+#: public/class-glossary.php:429
+msgid "Read More"
+msgstr "Leer más"
