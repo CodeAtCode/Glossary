@@ -82,7 +82,7 @@ class Glossary {
             'taxonomies' => array( 'glossary-cat' ),
             'map_meta_cap' => true,
             'menu_icon' => 'dashicons-book-alt',
-            'supports' => array( 'thumbnail', 'editor', 'title', 'genesis-seo', 'genesis-layouts', 'genesis-cpt-archive-settings'  )
+            'supports' => array( 'thumbnail', 'editor', 'title', 'genesis-seo', 'genesis-layouts', 'genesis-cpt-archive-settings' )
                 )
         );
 
@@ -224,10 +224,10 @@ class Glossary {
                     $link = get_the_permalink();
                     $internal = true;
                 }
-                if ( !empty( $link ) && !empty( $target )){
+                if ( !empty( $link ) && !empty( $target ) ) {
                     $target = ' target="_blank"';
                 }
-                if ( !empty ( $link ) && !empty( $nofollow )){
+                if ( !empty( $link ) && !empty( $nofollow ) ) {
                     $nofollow = ' rel="nofollow"';
                 }
 
@@ -236,7 +236,7 @@ class Glossary {
                     global $post;
                     $links[] = $this->tooltip_html( $link, get_the_title(), $post, $target, $nofollow, $internal );
                 } else {
-                    $links[] = '<a href="' . $link . '"' . $target . $nofollow .'>' . get_the_title() . '</a>';
+                    $links[] = '<a href="' . $link . '"' . $target . $nofollow . '>' . get_the_title() . '</a>';
                 }
                 $related = $this->related_post_meta( get_post_meta( get_the_ID(), $this->get_plugin_slug() . '_tag', true ) );
                 if ( is_array( $related ) ) {
@@ -245,15 +245,17 @@ class Glossary {
                         if ( isset( $this->settings[ 'tooltip' ] ) ) {
                             $links[] = $this->tooltip_html( $link, $value, $post, $target, $nofollow, $internal );
                         } else {
-                            $links[] = '<a href="' . $link . '"' . $target . $nofollow .'>' . $value . '</a>';
+                            $links[] = '<a href="' . $link . '"' . $target . $nofollow . '>' . $value . '</a>';
                         }
                     }
                 }
             endwhile;
-            if ( isset( $this->settings[ 'first_occurence' ] ) ) {
-                $text = preg_replace( $words, $links, $text, 1 );
-            } else {
-                $text = preg_replace( $words, $links, $text );
+            if ( !empty( $words ) ) {
+                if ( isset( $this->settings[ 'first_occurence' ] ) ) {
+                    $text = preg_replace( $words, $links, $text, 1 );
+                } else {
+                    $text = preg_replace( $words, $links, $text );
+                }
             }
             wp_reset_postdata();
         }
@@ -287,7 +289,6 @@ class Glossary {
         }
     }
 
-
     /**
      * Check the settings and if is a category page
      * 
@@ -301,7 +302,6 @@ class Glossary {
         }
     }
 
-
     /**
      * Check the settings and if is tag
      * 
@@ -314,7 +314,6 @@ class Glossary {
             return false;
         }
     }
-
 
     /**
      * Check the settings and if is an archive glossary
@@ -375,9 +374,9 @@ class Glossary {
      */
     public function get_the_excerpt( $post ) {
         if ( empty( $post->post_excerpt ) ) {
-            return substr( wp_strip_all_tags($post->post_content), 0, intval( $this->settings[ 'excerpt_limit' ] ) );
+            return substr( wp_strip_all_tags( $post->post_content ), 0, intval( $this->settings[ 'excerpt_limit' ] ) );
         } else {
-            return substr( wp_strip_all_tags($post->post_excerpt), 0, intval( $this->settings[ 'excerpt_limit' ] ) );
+            return substr( wp_strip_all_tags( $post->post_excerpt ), 0, intval( $this->settings[ 'excerpt_limit' ] ) );
         }
     }
 
@@ -395,22 +394,22 @@ class Glossary {
     public function tooltip_html( $link, $title, $post, $target, $nofollow, $internal ) {
         $link_tooltip = '<span class="tooltip">'
                 . "\n" . '<span class="tooltip-item">'
-                . "\n" . '<a href="' . $link . '"' . $target . $nofollow .'>' . $title . '</a>'
+                . "\n" . '<a href="' . $link . '"' . $target . $nofollow . '>' . $title . '</a>'
                 . "\n" . '</span>'
                 . "\n" . '<span class="tooltip-content clearfix">';
         $photo = get_the_post_thumbnail( $post->ID, 'thumbnail' );
-        if ( !empty( $photo ) && !empty( $this->settings[ 't_image' ] )) {
+        if ( !empty( $photo ) && !empty( $this->settings[ 't_image' ] ) ) {
             $link_tooltip .= $photo;
         }
-        if ( empty( $internal )) {
+        if ( empty( $internal ) ) {
             $readmore = ' <a href="' . get_the_permalink() . '">' . __( 'More' ) . '</a>';
         }
-        $link_tooltip .= "\n" . '<span class="tooltip-text">' . $this->get_the_excerpt( $post ) . ' ...' . $readmore .'</span>'
+        $link_tooltip .= "\n" . '<span class="tooltip-text">' . $this->get_the_excerpt( $post ) . ' ...' . $readmore . '</span>'
                 . "\n" . '</span>'
                 . "\n" . '</span>';
         return $link_tooltip;
     }
-    
+
     /**
      * Genesis hack to add the support for the archive content page
      * 
@@ -424,10 +423,11 @@ class Glossary {
         // Only display excerpt if not a teaser
         if ( !in_array( 'teaser', get_post_class() ) ) {
             remove_filter( 'the_content', array( $this, 'glossary_auto_link' ) );
-                  remove_filter( 'the_excerpt', array( $this, 'glossary_auto_link' ) );
-            $excerpt = wp_strip_all_tags(get_the_excerpt( ));
+            remove_filter( 'the_excerpt', array( $this, 'glossary_auto_link' ) );
+            $excerpt = wp_strip_all_tags( get_the_excerpt() );
             echo '<p>' . $this->glossary_auto_link( $excerpt ) . ' <a href="' . get_the_permalink() . '">' . __( 'Read More' ) . '</a></p>';
             remove_action( 'genesis_entry_content', 'genesis_do_post_content' );
         }
     }
+
 }
