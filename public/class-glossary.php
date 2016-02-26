@@ -401,10 +401,11 @@ class Glossary {
         if ( !empty( $photo ) && !empty( $this->settings[ 't_image' ] ) ) {
             $link_tooltip .= $photo;
         }
+        $readmore = '';
         if ( $internal ) {
-            $readmore = ' <a href="' . get_the_permalink() . '">' . __( 'More' ) . '</a>';
+            $readmore = '... <a href="' . get_the_permalink() . '">' . __( 'More' ) . '</a>';
         }
-        $link_tooltip .= "\n" . '<span class="tooltip-text">' . $this->get_the_excerpt( $post ) . ' ...' . $readmore . '</span>'
+        $link_tooltip .= "\n" . '<span class="tooltip-text">' . $this->get_the_excerpt( $post ) . $readmore . '</span>'
                 . "\n" . '</span>'
                 . "\n" . '</span>';
         return $link_tooltip;
