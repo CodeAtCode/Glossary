@@ -1,5 +1,4 @@
-# Glossary
-
+=== Glossary ===
 Contributors: codeat, iGenius, mte90
 Donate link: http://codeat.com/
 Tags: glossary, vocabulary, dictionary, tooltips
@@ -11,7 +10,7 @@ License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
 Easily add and manage a glossary with auto-link, tooltips and more. Improve your internal site link building for a better SEO.
 
-## Description
+== Description ==
 
 If you are looking for a plugin that provides the definitive Glossary Section for WordPress this is the right one!
 
@@ -26,16 +25,16 @@ Using this plugin you can also use some affiliations URL in your terms and write
 
 [PLUGIN DEMO SITE](http://codeat.co/glossary), [SOURCECODE ON GITHUB](https://github.com/CodeAtCode/Glossary/), [SUPPORT (THROUGH GITHUB)](https://github.com/CodeAtCode/Glossary/issues)
 
-## Installation
+== Installation ==
 
-**Using The WordPress Dashboard**
+= Using The WordPress Dashboard =
 
 1. Navigate to the 'Add New' in the plugins dashboard
 2. Search for 'glossary'
 3. Click 'Install Now'
 4. Activate the plugin on the Plugin dashboard
 
-**Uploading in WordPress Dashboard**
+= Uploading in WordPress Dashboard =
 
 1. Navigate to the 'Add New' in the plugins dashboard
 2. Navigate to the 'Upload' area
@@ -43,29 +42,29 @@ Using this plugin you can also use some affiliations URL in your terms and write
 4. Click 'Install Now'
 5. Activate the plugin in the Plugin dashboard
 
-**Using FTP**
+= Using FTP =
 
 1. Download `glossary.zip`
 2. Extract the `glossary` directory to your computer
 3. Upload the `glossary` directory to the `/wp-content/plugins/` directory
 4. Activate the plugin in the Plugin dashboard
 
-## Frequently Asked Questions
+== Frequently Asked Questions ==
 
-**Could I use more than a term title pointing to the same term page?**
+= Could I use more than a term title pointing to the same term page? =
 
 Yes, you are able to use how many term titles you want using the "Related search terms" field into your WordPress Glossary Editor Page. In this way you'll be able to auto-link more than one term to the same page (E.g. Call To Action, CTA, Action Button)
 
-**Could I use your auto-link engine for affiliation purposes?**
+= Could I use your auto-link engine for affiliation purposes? =
 
 Yes, and we encourage you to do it.
 E.g. Amazon Glossary Term links to your Amazon affiliation URL. Everytime one of your users hover on the Amazon link is able to see your tooltip but if they clicks suddenly will redirected on your affiliate link.
 
-**Is it Glossary Genesis Compatible?**
+= Is it Glossary Genesis Compatible? =
 
 Yes, we love Genesis Framework and we care about other Genesis fans. SEO, Layout and Archive section are fully integrated.
 
-## Screenshots
+== Screenshots ==
 
 1. GLossary general settings
 2. Glossary Single auto-link setting
@@ -76,12 +75,10 @@ Yes, we love Genesis Framework and we care about other Genesis fans. SEO, Layout
 7. Tooltip Classic template without featured image
 8. Glossary features
 
-## Changelog
+== Changelog ==
 
-**1.0.1**
-
+= 1.0.1 =
 * Fix in case of missing glossary terms
 
-**1.0**
-
+= 1.0 =
 * Published on WordPress repo
