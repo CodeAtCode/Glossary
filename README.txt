@@ -2,9 +2,9 @@
 Contributors: codeat, iGenius, mte90
 Donate link: http://codeat.com/
 Tags: glossary, vocabulary, dictionary, tooltips
-Requires at least: 4.1
+Requires at least: 4.2
 Tested up to: 4.4
-Stable tag: 1.0.1
+Stable tag: 1.0.2
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -76,6 +76,11 @@ Yes, we love Genesis Framework and we care about other Genesis fans. SEO, Layout
 8. Glossary features
 
 == Changelog ==
+
+= 1.0.2 =
+* Fix to Flush the permalink on activation
+* Remove annoying warning by Rasmus Taarnby
+* Added composer file by Rasmus Taarnby
 
 = 1.0.1 =
 * Fix in case of missing glossary terms
