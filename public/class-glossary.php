@@ -175,7 +175,7 @@ class Glossary {
      *
      * @since    1.0.0
      *
-     * @param    object    $query   
+     * @param    object    $query
      */
     public function filter_search( $query ) {
         if ( $query->is_search ) {
@@ -196,9 +196,9 @@ class Glossary {
     }
 
     /**
-     * 
+     *
      * The magic function that add the glossary terms to your content
-     * 
+     *
      * @global object $post
      * @param string $text
      * @return string
@@ -218,7 +218,7 @@ class Glossary {
                 $link = get_post_meta( get_the_ID(), $this->get_plugin_slug() . '_url', true );
                 $target = get_post_meta( get_the_ID(), $this->get_plugin_slug() . '_target', true );
                 $nofollow = get_post_meta( get_the_ID(), $this->get_plugin_slug() . '_nofollow', true );
-                $internal = '';
+                $internal = false;
                 //Get the post of the glossary loop
                 if ( empty( $link ) ) {
                     $link = get_the_permalink();
@@ -265,7 +265,7 @@ class Glossary {
 
     /**
      * Check the settings and if is a single page
-     * 
+     *
      * @return boolean
      */
     public function g_is_singular() {
@@ -278,7 +278,7 @@ class Glossary {
 
     /**
      * Check the settings and if is the home page
-     * 
+     *
      * @return boolean
      */
     public function g_is_home() {
@@ -291,7 +291,7 @@ class Glossary {
 
     /**
      * Check the settings and if is a category page
-     * 
+     *
      * @return boolean
      */
     public function g_is_category() {
@@ -304,7 +304,7 @@ class Glossary {
 
     /**
      * Check the settings and if is tag
-     * 
+     *
      * @return boolean
      */
     public function g_is_tag() {
@@ -317,7 +317,7 @@ class Glossary {
 
     /**
      * Check the settings and if is an archive glossary
-     * 
+     *
      * @return boolean
      */
     public function g_arc_glossary() {
@@ -330,7 +330,7 @@ class Glossary {
 
     /**
      * Check the settings and if is a tax glossary page
-     * 
+     *
      * @return boolean
      */
     public function g_tax_glossary() {
@@ -343,7 +343,7 @@ class Glossary {
 
     /**
      * Check the settings and if is a single page
-     * 
+     *
      * @return boolean
      */
     public function related_post_meta( $related ) {
@@ -355,20 +355,20 @@ class Glossary {
     }
 
     /**
-     * 
+     *
      * That method return the regular expression
-     * 
+     *
      * @param string $title Terms.
-     * @return string 
+     * @return string
      */
     public function search_string( $title ) {
         return '/((?i)' . $title . '(?-i))(?![^<]*(<\/a>|<\/span>|" \/>))/';
     }
 
     /**
-     * 
+     *
      * Get the excerpt by our limit
-     * 
+     *
      * @param object $post
      * @return string
      */
@@ -382,7 +382,7 @@ class Glossary {
 
     /**
      * Add a tooltip for your terms
-     * 
+     *
      * @param string $link
      * @param string $title
      * @param object $post
@@ -401,10 +401,11 @@ class Glossary {
         if ( !empty( $photo ) && !empty( $this->settings[ 't_image' ] ) ) {
             $link_tooltip .= $photo;
         }
-        if ( empty( $internal ) ) {
-            $readmore = ' <a href="' . get_the_permalink() . '">' . __( 'More' ) . '</a>';
+        $readmore = '';
+        if ( $internal ) {
+            $readmore = '... <a href="' . get_the_permalink() . '">' . __( 'More' ) . '</a>';
         }
-        $link_tooltip .= "\n" . '<span class="tooltip-text">' . $this->get_the_excerpt( $post ) . ' ...' . $readmore . '</span>'
+        $link_tooltip .= "\n" . '<span class="tooltip-text">' . $this->get_the_excerpt( $post ) . $readmore . '</span>'
                 . "\n" . '</span>'
                 . "\n" . '</span>';
         return $link_tooltip;
@@ -412,7 +413,7 @@ class Glossary {
 
     /**
      * Genesis hack to add the support for the archive content page
-     * 
+     *
      * @return void
      */
     public function genesis_content() {
