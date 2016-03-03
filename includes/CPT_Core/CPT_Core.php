@@ -84,6 +84,10 @@ if ( ! class_exists( 'CPT_Core' ) ) :
 			if ( ! is_string( $cpt[0] ) || ! is_string( $cpt[1] ) || ! is_string( $cpt[2] ) ) {
 				wp_die( __( 'It is required to pass a single, plural and slug string to CPT_Core', 'cpt-core' ) );
 			}
+                  
+                  if ( post_type_exists( $cpt[2] ) ) {
+                      return;
+                  }
 
 			$this->singular  = $cpt[0];
 			$this->plural    = ! isset( $cpt[1] ) || ! is_string( $cpt[1] ) ? $cpt[0] .'s' : $cpt[1];
@@ -101,6 +105,7 @@ if ( ! class_exists( 'CPT_Core' ) ) :
 			$h = isset( $arg_overrides['hierarchical'] ) && $arg_overrides['hierarchical'] ? 'pages' : 'posts';
 			add_action( "manage_{$h}_custom_column", array( $this, 'columns_display' ), 10, 2 );
 			add_filter( 'enter_title_here', array( $this, 'title' ) );
+                  add_action( 'deactivated_plugin', array( $this, 'flush_permalink' ), 10, 2 );
 		}
 
 		/**
@@ -177,6 +182,7 @@ if ( ! class_exists( 'CPT_Core' ) ) :
 
 			// Add this post type to our custom_post_types array
 			self::$custom_post_types[ $this->post_type ] = $this;
+                  $this->flush_permalink();
 		}
 
 		/**
@@ -320,6 +326,14 @@ if ( ! class_exists( 'CPT_Core' ) ) :
 			$mofile = dirname( __FILE__ ) . '/languages/cpt-core-'. $locale .'.mo';
 			load_textdomain( 'cpt-core', $mofile );
 		}
+            
+            /**
+             * Flush the permalink
+             * @since  1.0.1
+             */
+            public function flush_permalink() {
+                flush_rewrite_rules();
+            }
 
 	}
 
