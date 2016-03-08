@@ -20,7 +20,7 @@
     <div id="tabs" class="settings-tab">
         <ul>
             <li><a href="#tabs-1"><?php _e( 'Settings' ); ?></a></li>
-            <li><a href="#tabs-3"><?php _e( 'Import/Export', $this->plugin_slug ); ?></a></li>
+            <li><a href="#tabs-2"><?php _e( 'Import/Export', $this->plugin_slug ); ?></a></li>
         </ul>
         <div id="tabs-1" class="wrap">
             <?php
@@ -46,6 +46,11 @@
                     'arc_glossary' => __( 'Glossary Archive', $this->plugin_slug ),
                     'tax_glossary' => __( 'Glossary Taxonomy', $this->plugin_slug )
                 )
+            ) );
+            $cmb->add_field( array(
+                'name' => __( 'Order Glossary terms archive alphabetically', $this->plugin_slug ),
+                'id' => 'order_terms',
+                'type' => 'checkbox',
             ) );
             $cmb->add_field( array(
                 'name' => __( 'Link only the first occurence', $this->plugin_slug ),
@@ -87,7 +92,7 @@
 
             <!-- @TODO: Provide other markup for your options page here. -->
         </div>
-        <div id="tabs-3" class="metabox-holder">
+        <div id="tabs-2" class="metabox-holder">
             <div class="postbox">
                 <h3 class="hndle"><span><?php _e( 'Export Settings', $this->plugin_slug ); ?></span></h3>
                 <div class="inside">
