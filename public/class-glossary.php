@@ -76,7 +76,6 @@ class Glossary {
      * @since     1.0.0
      */
     private function __construct() {
-
         register_via_cpt_core(
                 array( __( 'Glossary Term', $this->get_plugin_slug() ), __( 'Glossary Terms', $this->get_plugin_slug() ), 'glossary' ), array(
             'taxonomies' => array( 'glossary-cat' ),
