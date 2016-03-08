@@ -5,14 +5,14 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Glossary by Codeat\n"
 "Report-Msgid-Bugs-To: http://wordpress.org/plugins/plugin-name\n"
-"POT-Creation-Date: 2016-02-20 22:09+0100\n"
+"POT-Creation-Date: 2016-03-08 19:13+0100\n"
 "PO-Revision-Date: 2014-07-07 18:52+0100\n"
 "Last-Translator: Mte90 <mte90net@gmail.com>\n"
 "Language-Team: Eugenio Petullà - Codeat <support@codeat.co>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Poedit 1.8.6\n"
+"X-Generator: Poedit 1.8.7.1\n"
 "Plural-Forms: nplurals=2; plural=n == 1 ? 0 : 1;\n"
 "X-Poedit-KeywordsList: __;_e;_n;_x;esc_html_e;esc_html__;esc_attr_e;"
 "esc_attr__;_ex:1,2c;_nx:4c,1,2;_nx_noop:4c,1,2;_x:1,2c;_n:1,2\n"
@@ -117,78 +117,82 @@ msgid "Glossary Taxonomy"
 msgstr ""
 
 #: admin/views/admin.php:51
+msgid "Order Glossary terms archive alphabetically"
+msgstr ""
+
+#: admin/views/admin.php:56
 msgid "Link only the first occurence"
 msgstr ""
 
-#: admin/views/admin.php:52
+#: admin/views/admin.php:57
 msgid "Prevent duplicate links and tooltips in the same post"
 msgstr ""
 
-#: admin/views/admin.php:57
+#: admin/views/admin.php:62
 msgid "Enable tooltips on terms"
 msgstr ""
 
-#: admin/views/admin.php:58
+#: admin/views/admin.php:63
 msgid "Tooltip will popup on hover"
 msgstr ""
 
-#: admin/views/admin.php:63
+#: admin/views/admin.php:68
 msgid "Tooltip style"
 msgstr ""
 
-#: admin/views/admin.php:64
+#: admin/views/admin.php:69
 msgid "Only classic shows featured images"
 msgstr ""
 
-#: admin/views/admin.php:74
+#: admin/views/admin.php:79
 msgid "Excerpt length"
 msgstr ""
 
-#: admin/views/admin.php:80
+#: admin/views/admin.php:85
 msgid "Enable image in tooltip"
 msgstr ""
 
-#: admin/views/admin.php:81
+#: admin/views/admin.php:86
 msgid "Check it if you want also term's featured image in classic tooltips"
 msgstr ""
 
-#: admin/views/admin.php:92
+#: admin/views/admin.php:97
 msgid "Export Settings"
 msgstr ""
 
-#: admin/views/admin.php:94
+#: admin/views/admin.php:99
 msgid ""
 "Export the plugin settings for this site as a .json file. This allows you to "
 "easily import the configuration into another site."
 msgstr ""
 
-#: admin/views/admin.php:99
+#: admin/views/admin.php:104
 msgid "Export"
 msgstr ""
 
-#: admin/views/admin.php:106
+#: admin/views/admin.php:111
 msgid "Import Settings"
 msgstr ""
 
-#: admin/views/admin.php:108
+#: admin/views/admin.php:113
 msgid ""
 "Import the plugin settings from a .json file. This file can be obtained by "
 "exporting the settings on another site using the form above."
 msgstr ""
 
-#: admin/views/admin.php:116
+#: admin/views/admin.php:121
 msgid "Import"
 msgstr ""
 
-#: admin/views/admin.php:126
+#: admin/views/admin.php:131
 msgid "Codeat Newsletter"
 msgstr ""
 
-#: admin/views/admin.php:157
+#: admin/views/admin.php:162
 msgid "Follow us"
 msgstr ""
 
-#: admin/views/admin.php:169
+#: admin/views/admin.php:173
 msgid "A Codeat Plugin"
 msgstr ""
 
@@ -240,26 +244,26 @@ msgstr ""
 msgid "Select how many glossary to show."
 msgstr ""
 
-#: public/class-glossary.php:81
+#: public/class-glossary.php:80
 msgid "Glossary Term"
 msgstr ""
 
-#: public/class-glossary.php:81
+#: public/class-glossary.php:80
 msgid "Glossary Terms"
 msgstr ""
 
-#: public/class-glossary.php:92
+#: public/class-glossary.php:91
 msgid "Term Category"
 msgstr ""
 
-#: public/class-glossary.php:92
+#: public/class-glossary.php:91
 msgid "Terms Categories"
 msgstr ""
 
-#: public/class-glossary.php:406
+#: public/class-glossary.php:427
 msgid "More"
 msgstr ""
 
-#: public/class-glossary.php:429
+#: public/class-glossary.php:450
 msgid "Read More"
 msgstr ""
