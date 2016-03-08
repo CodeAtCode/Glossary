@@ -383,7 +383,7 @@ class Glossary {
    * @return string
    */
   public function search_string( $title ) {
-    return '/((?i)' . $title . '(?-i))(?![^<]*(<\/a>|<\/span>|" \/>))/';
+    return '/((?i)' . $title . '(?-i))(?=[ \.\,\:\;\*\"\'\)\!\?\/\%\$\£\|\^\<\>])(?![^<]*(<\/a>|<\/span>|" \/>|>))/';
   }
 
   /**
