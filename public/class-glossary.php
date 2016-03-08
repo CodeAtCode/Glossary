@@ -392,11 +392,11 @@ class Glossary {
      * @return string
      */
     public function tooltip_html( $link, $title, $post, $target, $nofollow, $internal ) {
-        $link_tooltip = '<span class="tooltip">'
-                . "\n" . '<span class="tooltip-item">'
+        $link_tooltip = '<span class="glossary-tooltip">'
+                . "\n" . '<span class="glossary-tooltip-item">'
                 . "\n" . '<a href="' . $link . '"' . $target . $nofollow . '>' . $title . '</a>'
                 . "\n" . '</span>'
-                . "\n" . '<span class="tooltip-content clearfix">';
+                . "\n" . '<span class="glossary-tooltip-content clearfix">';
         $photo = get_the_post_thumbnail( $post->ID, 'thumbnail' );
         if ( !empty( $photo ) && !empty( $this->settings[ 't_image' ] ) ) {
             $link_tooltip .= $photo;
@@ -405,7 +405,7 @@ class Glossary {
         if ( $internal ) {
             $readmore = '... <a href="' . get_the_permalink() . '">' . __( 'More' ) . '</a>';
         }
-        $link_tooltip .= "\n" . '<span class="tooltip-text">' . $this->get_the_excerpt( $post ) . $readmore . '</span>'
+        $link_tooltip .= "\n" . '<span class="glossary-tooltip-text">' . $this->get_the_excerpt( $post ) . $readmore . '</span>'
                 . "\n" . '</span>'
                 . "\n" . '</span>';
         return $link_tooltip;

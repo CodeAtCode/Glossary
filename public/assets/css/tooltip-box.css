@@ -1,4 +1,4 @@
-.tooltip {
+.glossary-tooltip {
 	display: inline;
 	position: relative;
 	z-index: 9999;
@@ -6,7 +6,7 @@
 
 /* Trigger text */
 
-.tooltip-item {
+.glossary-tooltip-item {
 	color: #2fa0ec;
 	cursor: pointer;
 	z-index: 100;
@@ -17,11 +17,11 @@
 	transition: background-color 0.3s, color 0.3s, transform 0.3s;
 }
 
-.tooltip:hover .tooltip-item a {
+.glossary-tooltip:hover .glossary-tooltip-item a {
 	color:white;
 }
 
-.tooltip:hover .tooltip-item {
+.glossary-tooltip:hover .glossary-tooltip-item {
 	color: #fff;
 	-webkit-transform: translate3d(0,-0.5em,0);
 	transform: translate3d(0,-0.5em,0);
@@ -29,7 +29,7 @@
 
 /* Tooltip */
 
-.tooltip-content {
+.glossary-tooltip-content {
 	position: absolute;
 	z-index: 99;
 	width: 360px;
@@ -51,11 +51,11 @@
 	transition: opacity 0.3s, transform 0.3s;
 }
 
-.tooltip-content a {
+.glossary-tooltip-content a {
 	color: #32434f;
 }
 
-.tooltip-text {
+.glossary-tooltip-text {
 	opacity: 0;
 	-webkit-transform: translate3d(0,1.5em,0);
 	transform: translate3d(0,1.5em,0);
@@ -63,14 +63,14 @@
 	transition: opacity 0.3s, transform 0.3s;
 }
 
-.tooltip:hover .tooltip-content,
-.tooltip:hover .tooltip-text {
+.glossary-tooltip:hover .glossary-tooltip-content,
+.glossary-tooltip:hover .glossary-tooltip-text {
 	pointer-events: auto;
 	opacity: 1;
 	-webkit-transform: translate3d(0,0,0);
 	transform: translate3d(0,0,0);
 }
 
-.tooltip:hover .tooltip {
+.glossary-tooltip:hover .glossary-tooltip {
 	display: none !important;
 }
