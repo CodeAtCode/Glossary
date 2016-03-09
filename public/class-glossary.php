@@ -426,10 +426,11 @@ class Glossary {
     if ( $internal ) {
       $readmore = '... <a href="' . get_the_permalink() . '">' . __( 'More' ) . '</a>';
     }
-    $link_tooltip .= "\n" . '<span class="glossary-tooltip-text">' . $this->get_the_excerpt( $post ) . $readmore . '</span>'
+    $excerpt = $this->get_the_excerpt( $post );
+    $link_tooltip .= "\n" . '<span class="glossary-tooltip-text">' . $excerpt . $readmore . '</span>'
             . "\n" . '</span>'
             . "\n" . '</span>';
-    return $link_tooltip;
+    return apply_filters( 'glossary_tooltip_html', $link_tooltip, $title, $excerpt, $photo, $post, $target, $nofollow, $internal );
   }
 
   /**
