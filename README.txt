@@ -1,7 +1,7 @@
 === Glossary ===
-Contributors: codeat, iGenius, mte90, agm65
+Contributors: codeat, iGenius, mte90
 Donate link: http://codeat.com/
-Tags: glossary, vocabulary, dictionary, tooltips
+Tags: glossary, vocabulary, dictionary, tooltips, terms,
 Requires at least: 4.2
 Tested up to: 4.4
 Stable tag: 1.0.4
