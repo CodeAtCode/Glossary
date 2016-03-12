@@ -4,7 +4,7 @@ Donate link: http://codeat.com/
 Tags: glossary, vocabulary, dictionary, tooltips
 Requires at least: 4.2
 Tested up to: 4.4
-Stable tag: 1.0.3
+Stable tag: 1.0.4
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -76,6 +76,10 @@ Yes, we love Genesis Framework and we care about other Genesis fans. SEO, Layout
 8. Glossary features
 
 == Changelog ==
+
+= 1.0.4 =
+* Fix to scan unlimit glossary terms
+* New filters `glossary_tooltip_html` and `glossary_excerpt`
 
 = 1.0.3 =
 * New settings to order the Glossary terms archive page alphabetically

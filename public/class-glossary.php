@@ -395,9 +395,9 @@ class Glossary {
    */
   public function get_the_excerpt( $post ) {
     if ( empty( $post->post_excerpt ) ) {
-      return substr( wp_strip_all_tags( $post->post_content ), 0, intval( $this->settings[ 'excerpt_limit' ] ) );
+      return apply_filters( 'glossary_excerpt', substr( wp_strip_all_tags( $post->post_content ), 0, intval( $this->settings[ 'excerpt_limit' ] ) ), $post );
     } else {
-      return substr( wp_strip_all_tags( $post->post_excerpt ), 0, intval( $this->settings[ 'excerpt_limit' ] ) );
+      return apply_filters( 'glossary_excerpt', substr( wp_strip_all_tags( $post->post_excerpt ), 0, intval( $this->settings[ 'excerpt_limit' ] ) ), $post );
     }
   }
 
