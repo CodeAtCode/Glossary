@@ -24,6 +24,12 @@ function ds_cmb_render_multicheck_posttype( $field, $escaped_value, $object_id, 
 			if ( in_array( $cpt, $values ) ) {
 				$args[ 'checked' ] = 'checked';
 			}
+
+			// @TODO Possibly find a solution if CMB2 trunk commit 1b3e251f8db429b3930e44ff43495838a9a39744
+			// is merged in to master, as this will no longer work becasue the function
+			// list_input is moved to another class.
+			//
+			// https://github.com/WebDevStudios/CMB2/commit/1b3e251f8db429b3930e44ff43495838a9a39744#diff-32fc356ab519c81b4a672288be3a1e46
 			$options .= $field_type_object->list_input( $args, $i );
 			$i++;
 		}
