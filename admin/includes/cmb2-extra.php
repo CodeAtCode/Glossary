@@ -12,7 +12,6 @@ function ds_cmb_render_multicheck_posttype( $field, $escaped_value, $object_id, 
   $options = '';
   $i = 1;
   $values = ( array ) $escaped_value;
-
   if ( $cpts ) {
     foreach ( $cpts as $cpt ) {
       $args = array(
@@ -29,6 +28,7 @@ function ds_cmb_render_multicheck_posttype( $field, $escaped_value, $object_id, 
       } else {
         $options .= $field_type_object->list_input( $args, $i );
       }
+      $options .= $field_type_object->list_input( $args, $i );
       $i++;
     }
   }
@@ -47,6 +47,5 @@ add_filter( 'cmb2_sanitize_text_number', 'sm_cmb2_sanitize_text_number', 10, 2 )
 
 function sm_cmb2_sanitize_text_number( $null, $new ) {
   $new = preg_replace( "/[^0-9]/", "", $new );
-
   return $new;
 }

@@ -255,18 +255,18 @@ class Glossary {
         $words[] = $this->search_string( get_the_title() );
         if ( isset( $this->settings[ 'tooltip' ] ) ) {
           global $post;
-          $links[] = $this->tooltip_html( $link, get_the_title(), $post, $target, $nofollow, $internal );
+          $links[] = $this->tooltip_html( $link, '$0', $post, $target, $nofollow, $internal );
         } else {
-          $links[] = '<a href="' . $link . '"' . $target . $nofollow . '>' . get_the_title() . '</a>';
+          $links[] = '<a href="' . $link . '"' . $target . $nofollow . '>$0</a>';
         }
         $related = $this->related_post_meta( get_post_meta( get_the_ID(), $this->get_plugin_slug() . '_tag', true ) );
         if ( is_array( $related ) ) {
           foreach ( $related as $value ) {
             $words[] = $this->search_string( $value );
             if ( isset( $this->settings[ 'tooltip' ] ) ) {
-              $links[] = $this->tooltip_html( $link, $value, $post, $target, $nofollow, $internal );
+              $links[] = $this->tooltip_html( $link, '$0', $post, $target, $nofollow, $internal );
             } else {
-              $links[] = '<a href="' . $link . '"' . $target . $nofollow . '>' . $value . '</a>';
+              $links[] = '<a href="' . $link . '"' . $target . $nofollow . '>$0</a>';
             }
           }
         }
