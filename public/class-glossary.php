@@ -255,7 +255,7 @@ class Glossary {
         $words[] = $this->search_string( get_the_title() );
         if ( isset( $this->settings[ 'tooltip' ] ) ) {
           global $post;
-          $links[] = $this->tooltip_html( $link, get_the_title(), $post, $target, $nofollow, $internal );
+          $links[] = $this->tooltip_html( $link, "$0", $post, $target, $nofollow, $internal );
         } else {
           $links[] = '<a href="' . $link . '"' . $target . $nofollow . '>' . get_the_title() . '</a>';
         }
