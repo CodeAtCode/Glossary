@@ -183,8 +183,9 @@ class Glossary {
   public function filter_search( $query ) {
     if ( $query->is_search ) {
       //Mantain support for post
-      $this->cpts[] = 'post';
-      $query->set( 'post_type', $this->cpts );
+      $cpts = $query->get( 'post_type' );
+      $cpts[] = $this->cpts;
+      $query->set( 'post_type', $cpts );
     }
     return $query;
   }
