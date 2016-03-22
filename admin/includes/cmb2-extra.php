@@ -28,7 +28,6 @@ function ds_cmb_render_multicheck_posttype( $field, $escaped_value, $object_id, 
       } else {
         $options .= $field_type_object->list_input( $args, $i );
       }
-      $options .= $field_type_object->list_input( $args, $i );
       $i++;
     }
   }
