@@ -235,7 +235,6 @@ class Glossary {
             $this->g_tax_glossary()
     ) {
       $gl_query = new WP_Query( array( 'post_type' => 'glossary', 'order' => 'ASC', 'orderby' => 'title', 'posts_per_page' => -1 ) );
-
       while ( $gl_query->have_posts() ) : $gl_query->the_post();
         $link = get_post_meta( get_the_ID(), $this->get_plugin_slug() . '_url', true );
         $target = get_post_meta( get_the_ID(), $this->get_plugin_slug() . '_target', true );
