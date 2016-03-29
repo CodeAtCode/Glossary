@@ -24,7 +24,7 @@ class Glossary {
    *
    * @var     string
    */
-  const VERSION = '1.0.5';
+  const VERSION = '1.0.6';
 
   /**
    * Unique identifier for your plugin.
@@ -383,7 +383,7 @@ class Glossary {
    * @return string
    */
   public function search_string( $title ) {
-    return '/((?i)' . $title . '(?-i))(?=[ \.\,\:\;\*\"\'\)\!\?\/\%\$\£\|\^\<\>])(?![^<]*(<\/a>|<\/span>|" \/>|>))/';
+    return '/(?<!\w)((?i)' . $title . '(?-i))(?=[ \.\,\:\;\*\"\)\!\?\/\%\$\£\|\^\<\>])(?![^<]*(<\/a>|<\/span>|" \/>|>))/';
   }
 
   /**
