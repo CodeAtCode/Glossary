@@ -395,10 +395,14 @@ class Glossary {
    */
   public function get_the_excerpt( $post ) {
     if ( empty( $post->post_excerpt ) ) {
-      return apply_filters( 'glossary_excerpt', substr( wp_strip_all_tags( $post->post_content ), 0, intval( $this->settings[ 'excerpt_limit' ] ) ), $post );
+      $excerpt = apply_filters( 'glossary_excerpt', wp_strip_all_tags( $post->post_content ), $post );
     } else {
-      return apply_filters( 'glossary_excerpt', substr( wp_strip_all_tags( $post->post_excerpt ), 0, intval( $this->settings[ 'excerpt_limit' ] ) ), $post );
+      $excerpt = apply_filters( 'glossary_excerpt', wp_strip_all_tags( $post->post_excerpt ), $post );
     }
+    if ( strlen( $excerpt ) >= absint( $this->settings[ 'excerpt_limit' ] ) ) {
+      return substr( $excerpt, 0, absint( $this->settings[ 'excerpt_limit' ] ) ) . '...';
+    }
+    return $excerpt;
   }
 
   /**
@@ -424,7 +428,7 @@ class Glossary {
     }
     $readmore = '';
     if ( $internal ) {
-      $readmore = '... <a href="' . get_the_permalink() . '">' . __( 'More' ) . '</a>';
+      $readmore = ' <a href="' . get_the_permalink() . '">' . __( 'More' ) . '</a>';
     }
     $excerpt = $this->get_the_excerpt( $post );
     $link_tooltip .= "\n" . '<span class="glossary-tooltip-text">' . $excerpt . $readmore . '</span>'
