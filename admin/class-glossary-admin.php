@@ -252,8 +252,8 @@ class Glossary_Admin {
             'show_names' => true,
                 ) );
         $cmb_demo->add_field( array(
-            'name' => __( 'Related search terms', $this->plugin_slug ),
-            'desc' => __( 'More than one: Comma Separated Values', $this->plugin_slug ),
+            'name' => __( 'Additional search terms', $this->plugin_slug ),
+            'desc' => __( 'Case-Insensitive! More than one: Comma Separated Values', $this->plugin_slug ),
             'id' => $this->plugin_slug . '_tag',
             'type' => 'text'
         ) );
