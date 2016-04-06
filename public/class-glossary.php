@@ -85,8 +85,6 @@ class Glossary {
             )
     );
 
-    add_filter( 'pre_get_posts', array( $this, 'filter_search' ) );
-
     register_via_taxonomy_core(
             array( __( 'Term Category', $this->get_plugin_slug() ), __( 'Terms Categories', $this->get_plugin_slug() ), 'glossary-cat' ), array(
         'public' => true,
@@ -171,21 +169,6 @@ class Glossary {
     }
 
     return self::$instance;
-  }
-
-  /**
-   * Add support for custom CPT on the search box
-   *
-   * @since    1.0.0
-   *
-   * @param    object    $query
-   */
-  public function filter_search( $query ) {
-    if ( $query->is_search ) {
-      //Mantain support for the post type available
-      $query->set( 'post_type', array_merge( $query->get( 'post_type' ), $this->cpts ) );
-    }
-    return $query;
   }
 
   /**
