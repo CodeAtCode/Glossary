@@ -182,10 +182,8 @@ class Glossary {
    */
   public function filter_search( $query ) {
     if ( $query->is_search ) {
-      //Mantain support for post
-      $cpts = $query->get( 'post_type' );
-      $cpts[] = $this->cpts;
-      $query->set( 'post_type', $cpts );
+      //Mantain support for the post type available
+      $query->set( 'post_type', array_merge( $query->get( 'post_type' ), $this->cpts ) );
     }
     return $query;
   }
