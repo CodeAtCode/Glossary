@@ -24,7 +24,7 @@ class Glossary {
    *
    * @var     string
    */
-  const VERSION = '1.0.6';
+  const VERSION = '1.1.0';
 
   /**
    * Unique identifier for your plugin.
@@ -85,6 +85,8 @@ class Glossary {
             )
     );
 
+    add_filter( 'pre_get_posts', array( $this, 'filter_search' ) );
+
     register_via_taxonomy_core(
             array( __( 'Term Category', $this->get_plugin_slug() ), __( 'Terms Categories', $this->get_plugin_slug() ), 'glossary-cat' ), array(
         'public' => true,
@@ -97,6 +99,9 @@ class Glossary {
     add_filter( 'the_content', array( $this, 'glossary_auto_link' ) );
     add_filter( 'the_excerpt', array( $this, 'glossary_auto_link' ) );
     add_action( 'genesis_entry_content', array( $this, 'genesis_content' ), 9 );
+
+    add_shortcode( 'glossary-terms', array( $this, 'glossary_terms_list_shortcode' ) );
+
 
     require_once( plugin_dir_path( __FILE__ ) . '/includes/Glossary_a2z_Archive.php' );
 
@@ -169,6 +174,21 @@ class Glossary {
     }
 
     return self::$instance;
+  }
+
+  /**
+   * Add support for custom CPT on the search box
+   *
+   * @since    1.0.0
+   *
+   * @param    object    $query
+   */
+  public function filter_search( $query ) {
+    if ( $query->is_search ) {
+      //Mantain support for the post type available
+      $query->set( 'post_type', array_merge( $query->get( 'post_type' ), $this->cpts ) );
+    }
+    return $query;
   }
 
   /**
@@ -436,6 +456,40 @@ class Glossary {
       echo '<p>' . $this->glossary_auto_link( $excerpt ) . ' <a href="' . get_the_permalink() . '">' . __( 'Read More' ) . '</a></p>';
       remove_action( 'genesis_entry_content', 'genesis_do_post_content' );
     }
+  }
+  
+
+  /**
+   * Shortcode for generate list of glossary terms
+   *
+   * @since    1.1.0
+   *
+   * @return list of glossary terms
+   */
+  function glossary_terms_list_shortcode( $atts ) {
+    $atts = extract( shortcode_atts( array(
+      'order' => 'asc',
+      'num' => '100',
+    ), $atts ) );
+
+    if($order == 'asc') {
+      $ord = 'ASC';
+    }
+    else {
+      $ord = 'DESC';
+    }
+
+    $glossari = new WP_Query( array( 'post_type' => 'glossary', 'order' => $ord , 'orderby' => 'title', 'posts_per_page' => $num ) );
+    if ( $glossari->have_posts() ) {
+      $out .= '<dl class="glossary-terms-list">';
+      while ( $glossari->have_posts() ) : $glossari->the_post();
+        $out .= '<dt><a href="' . get_the_permalink() . '">' . get_the_title() . '</a></dt>';
+      endwhile;
+      $out .= '</dl>';
+      wp_reset_query();
+    }
+
+    return $out;
   }
 
 }
