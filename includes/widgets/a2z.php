@@ -56,11 +56,10 @@ class a2z_Glossary_Widget extends WPH_Widget {
     }
     foreach ( $pt_initials AS $pt_rec ) {
 	$link = add_query_arg( 'az', $pt_rec[ 'initial' ], $base_url );
+	$item = '<li><a href="' . $link . '">' . $pt_rec[ 'initial' ] . '</a></li>';
 	if ( ( bool ) $instance[ 'show_counts' ] ) {
 	  $item = '<li class="count"><a href="' . $link . '">' . $pt_rec[ 'initial' ] . ' <span>(' . $pt_rec[ 'counts' ] . ')</span>' . '</a></li>';
-	} else {
-	  $item = '<li><a href="' . $link . '">' . $pt_rec[ 'initial' ] . '</a></li>';
-	}
+	} 
 	$initial_arr[] = $item;
     }
     $out .= '<ul>' . implode( '', $initial_arr ) . '</ul>';

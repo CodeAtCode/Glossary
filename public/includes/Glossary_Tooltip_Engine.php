@@ -45,13 +45,14 @@ class Glossary_Tooltip_Engine {
     ) {
 	$gl_query = new WP_Query( array( 'post_type' => 'glossary', 'order' => 'ASC', 'orderby' => 'title', 'posts_per_page' => -1, 'no_found_rows' => true, 'update_post_term_cache' => false ) );
 	while ( $gl_query->have_posts() ) : $gl_query->the_post();
-	  $link = get_post_meta( get_the_ID(), $this->plugin_slug . '_url', true );
+	  $url = get_post_meta( get_the_ID(), $this->plugin_slug . '_url', true );
+	  $type = get_post_meta( get_the_ID(), $this->plugin_slug . '_link_type', true );
+	  $link = get_glossary_term_url();
 	  $target = get_post_meta( get_the_ID(), $this->plugin_slug . '_target', true );
 	  $nofollow = get_post_meta( get_the_ID(), $this->plugin_slug . '_nofollow', true );
 	  $internal = false;
 	  //Get the post of the glossary loop
-	  if ( empty( $link ) ) {
-	    $link = get_the_permalink();
+	  if ( empty( $url ) && empty( $type ) ) {
 	    $internal = true;
 	  }
 	  if ( !empty( $link ) && !empty( $target ) ) {

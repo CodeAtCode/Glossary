@@ -11,7 +11,7 @@ function get_glossary_terms_list( $order, $num, $tax = '' ) {
     $args[ 'tax_query' ] = array(
 	  array(
 		'taxonomy' => 'glossary-cat',
-		'terms'    => $tax,
+		'terms' => $tax,
 		'field' => 'slug',
 	  ),
     );
@@ -35,11 +35,18 @@ function get_glossary_term_url( $id = '' ) {
   if ( empty( $id ) ) {
     $id = get_the_ID();
   }
+  $type = get_post_meta( $id, $plugin->get_plugin_slug() . '_link_type', true );
   $link = get_post_meta( $id, $plugin->get_plugin_slug() . '_url', true );
-  if ( empty( $link ) ) {
-    $link = get_the_permalink();
+  $cpt = get_post_meta( $id, $plugin->get_plugin_slug() . '_cpt', true );
+  if ( empty( $link ) && empty( $cpt ) ) {
+    return get_the_permalink( $id );
   }
-  return $link;
+  if ( $type === 'external' || empty( $type ) ) {
+    return $link;
+  }
+  if ( $type === 'internal' ) {
+    return get_the_permalink( $cpt );
+  }
 }
 
 function get_glossary_cats_list( $order = 'DESC', $num = '0' ) {
