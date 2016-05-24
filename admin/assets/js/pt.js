@@ -2,7 +2,7 @@
   'use strict';
   $(function () {
 	hide_text($('.cmb2-id-glossary-link-type input[type=radio]:checked').val());
-	$('.cmb2-id-glossary-link-type input[type=radio]:checked').change(function () {
+	$('.cmb2-id-glossary-link-type input[type=radio]').change(function () {
 	  hide_text(this.value);
 	});
 

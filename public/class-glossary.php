@@ -38,7 +38,15 @@ class Glossary {
    *
    * @var      string
    */
-  protected static $plugin_slug = 'glossary';
+  protected static $plugin_slug = 'glossary-by-codeat';
+  
+  /**
+   *
+   * @since    1.1.0
+   *
+   * @var      string
+   */
+  protected static $setting_slug = 'glossary';
 
   /**
    * Instance of this class.
@@ -66,7 +74,7 @@ class Glossary {
    * @since     1.0.0
    */
   private function __construct() {
-    $this->settings = get_option( $this->get_plugin_slug() . '-settings' );
+    $this->settings = get_option( $this->get_setting_slug() . '-settings' );
     $glossary_term_cpt = array(
 	  'taxonomies' => array( 'glossary-cat' ),
 	  'map_meta_cap' => true,
@@ -120,6 +128,17 @@ class Glossary {
    */
   public function get_plugin_slug() {
     return self::$plugin_slug;
+  }
+  
+  /**
+   * Return the setting slug.
+   *
+   * @since    1.0.0
+   *
+   * @return    Plugin slug variable.
+   */
+  public function get_setting_slug() {
+    return self::$setting_slug;
   }
 
   /**
@@ -192,7 +211,7 @@ class Glossary {
    * @since    1.0.0
    */
   public function enqueue_styles() {
-    wp_enqueue_style( $this->get_plugin_slug() . '-hint', plugins_url( 'assets/css/tooltip-' . $this->settings[ 'tooltip_style' ] . '.css', __FILE__ ), array(), self::VERSION );
+    wp_enqueue_style( $this->get_setting_slug() . '-hint', plugins_url( 'assets/css/tooltip-' . $this->settings[ 'tooltip_style' ] . '.css', __FILE__ ), array(), self::VERSION );
   }
 
 }

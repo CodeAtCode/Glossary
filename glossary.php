@@ -14,7 +14,7 @@
  * Version:           1.1.0
  * Author:            Codeat
  * Author URI:        http://codeat.co
- * Text Domain:       glossary
+ * Text Domain:       glossary-by-codeat
  * License:           GPL-2.0+
  * License URI:       http://www.gnu.org/licenses/gpl-2.0.txt
  * Domain Path:       /languages

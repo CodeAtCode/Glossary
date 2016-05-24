@@ -19,7 +19,7 @@ class G_ImpExp {
 	 */
 	public function __construct() {
 		$plugin = Glossary::get_instance();
-		$this->plugin_slug = $plugin->get_plugin_slug();
+		$this->setting_slug = $plugin->get_setting_slug();
 		//Add the export settings method
 		add_action( 'admin_init', array( $this, 'settings_export' ) );
 		//Add the import settings method
@@ -43,7 +43,7 @@ class G_ImpExp {
 		if ( !current_user_can( 'manage_options' ) ) {
 			return;
 		}
-		$settings[ 0 ] = get_option( $this->plugin_slug . '-settings' );
+		$settings[ 0 ] = get_option( $this->setting_slug . '-settings' );
 
 		ignore_user_abort( true );
 
@@ -79,13 +79,13 @@ class G_ImpExp {
 		$extension = end( explode( '.', $_FILES[ 'import_file' ][ 'name' ] ) );
 
 		if ( $extension != 'json' ) {
-			wp_die( __( 'Please upload a valid .json file', $this->plugin_slug ) );
+			wp_die( __( 'Please upload a valid .json file', $this->setting_slug ) );
 		}
 
 		$import_file = $_FILES[ 'import_file' ][ 'tmp_name' ];
 
 		if ( empty( $import_file ) ) {
-			wp_die( __( 'Please upload a file to import', $this->plugin_slug ) );
+			wp_die( __( 'Please upload a file to import', $this->setting_slug ) );
 		}
 
 		// Retrieve the settings from the file and convert the json object to an array.
@@ -93,7 +93,7 @@ class G_ImpExp {
 
 		update_option( $this->plugin_slug . '-settings', get_object_vars( $settings[ 0 ] ) );
 
-		wp_safe_redirect( admin_url( 'options-general.php?page=' . $this->plugin_slug ) );
+		wp_safe_redirect( admin_url( 'options-general.php?page=' . $this->setting_slug ) );
 		exit;
 	}
 }

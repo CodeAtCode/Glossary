@@ -44,6 +44,7 @@ class Glossary_Admin {
   private function __construct() {
     $plugin = Glossary::get_instance();
     $this->plugin_slug = $plugin->get_plugin_slug();
+    $this->setting_slug = $plugin->get_setting_slug();
     $this->cpts = $plugin->get_cpts();
 
     // Load admin style sheet and JavaScript.
@@ -61,7 +62,7 @@ class Glossary_Admin {
     add_action( 'admin_menu', array( $this, 'add_plugin_admin_menu' ) );
 
     // Add an action link pointing to the options page.
-    $plugin_basename = plugin_basename( plugin_dir_path( realpath( dirname( __FILE__ ) ) ) . $this->plugin_slug . '.php' );
+    $plugin_basename = plugin_basename( plugin_dir_path( realpath( dirname( __FILE__ ) ) ) . $this->setting_slug . '.php' );
     add_filter( 'plugin_action_links_' . $plugin_basename, array( $this, 'add_action_links' ) );
 
     /*
@@ -109,7 +110,7 @@ class Glossary_Admin {
   public function enqueue_admin_styles() {
     $screen = get_current_screen();
     if ( $this->plugin_screen_hook_suffix == $screen->id || strpos( $_SERVER[ 'REQUEST_URI' ], 'index.php' ) || strpos( $_SERVER[ 'REQUEST_URI' ], '/wp-admin/' ) !== -1 ) {
-	wp_enqueue_style( $this->plugin_slug . '-admin-styles', plugins_url( 'assets/css/admin.css', __FILE__ ), array( 'dashicons' ), Glossary::VERSION );
+	wp_enqueue_style( $this->setting_slug . '-admin-styles', plugins_url( 'assets/css/admin.css', __FILE__ ), array( 'dashicons' ), Glossary::VERSION );
     }
   }
 
@@ -125,7 +126,7 @@ class Glossary_Admin {
     $screen = get_current_screen();
     error_log( print_r( $screen, true ) );
     if ( $screen->post_type === 'glossary' ) {
-	wp_enqueue_script( $this->plugin_slug . '-admin-pt-script', plugins_url( 'assets/js/pt.js', __FILE__ ), array( 'jquery' ), Glossary::VERSION );
+	wp_enqueue_script( $this->setting_slug . '-admin-pt-script', plugins_url( 'assets/js/pt.js', __FILE__ ), array( 'jquery' ), Glossary::VERSION );
     }
 
     if ( !isset( $this->plugin_screen_hook_suffix ) ) {
@@ -133,7 +134,7 @@ class Glossary_Admin {
     }
 
     if ( $this->plugin_screen_hook_suffix === $screen->id ) {
-	wp_enqueue_script( $this->plugin_slug . '-admin-script', plugins_url( 'assets/js/admin.js', __FILE__ ), array( 'jquery', 'jquery-ui-tabs' ), Glossary::VERSION );
+	wp_enqueue_script( $this->setting_slug . '-admin-script', plugins_url( 'assets/js/admin.js', __FILE__ ), array( 'jquery', 'jquery-ui-tabs' ), Glossary::VERSION );
     }
   }
 
@@ -149,7 +150,7 @@ class Glossary_Admin {
      * Settings page in the menu
      * 
      */
-    $this->plugin_screen_hook_suffix = add_menu_page( __( 'Glossary', $this->plugin_slug ), "Glossary", 'manage_options', $this->plugin_slug, array( $this, 'display_plugin_admin_page' ), 'dashicons-admin-generic', 90 );
+    $this->plugin_screen_hook_suffix = add_menu_page( __( 'Glossary', $this->plugin_slug ), "Glossary", 'manage_options', $this->setting_slug, array( $this, 'display_plugin_admin_page' ), 'dashicons-admin-generic', 90 );
   }
 
   /**
@@ -254,12 +255,12 @@ class Glossary_Admin {
     $cmb_demo->add_field( array(
 	  'name' => __( 'Additional search terms', $this->plugin_slug ),
 	  'desc' => __( 'Case-Insensitive! More than one: Comma Separated Values', $this->plugin_slug ),
-	  'id' => $this->plugin_slug . '_tag',
+	  'id' => $this->setting_slug . '_tag',
 	  'type' => 'text'
     ) );
     $cmb_demo->add_field( array(
 	  'name' => __( 'What type of link?', $this->plugin_slug ),
-	  'id' => $this->plugin_slug . '_link_type',
+	  'id' => $this->setting_slug . '_link_type',
 	  'type' => 'radio',
 	  'default' => 'external',
 	  'options' => array(
@@ -270,27 +271,27 @@ class Glossary_Admin {
     $cmb_demo->add_field( array(
 	  'name' => __( 'External URL', $this->plugin_slug ),
 	  'desc' => __( 'Redirects links to an external/affliate URL', $this->plugin_slug ),
-	  'id' => $this->plugin_slug . '_url',
+	  'id' => $this->setting_slug . '_url',
 	  'type' => 'text_url',
 	  'protocols' => array( 'http', 'https' ),
     ) );
     $cmb_demo->add_field( array(
 	  'name' => __( 'Internal Post type', $this->plugin_slug ),
 	  'desc' => __( 'Select a post type of your site', $this->plugin_slug ),
-	  'id' => $this->plugin_slug . '_cpt',
+	  'id' => $this->setting_slug . '_cpt',
 	  'type' => 'post_search_text',
 	  'select_type' => 'radio',
 	  'onlyone' => true
     ) );
     $cmb_demo->add_field( array(
 	  'name' => __( 'Open external link in a new window', $this->plugin_slug ),
-	  'id' => $this->plugin_slug . '_target',
+	  'id' => $this->setting_slug . '_target',
 	  'type' => 'checkbox'
     ) );
     $cmb_demo->add_field( array(
 	  'name' => __( 'No Follow link', $this->plugin_slug ),
 	  'desc' => __( 'Put rel="nofollow" in the link for SEO purposes', $this->plugin_slug ),
-	  'id' => $this->plugin_slug . '_nofollow',
+	  'id' => $this->setting_slug . '_nofollow',
 	  'type' => 'checkbox'
     ) );
   }

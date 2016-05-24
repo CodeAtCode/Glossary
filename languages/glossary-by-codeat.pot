@@ -5,7 +5,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Glossary by Codeat\n"
 "Report-Msgid-Bugs-To: http://wordpress.org/plugins/plugin-name\n"
-"POT-Creation-Date: 2016-03-08 19:13+0100\n"
+"POT-Creation-Date: 2016-05-24 18:12+0200\n"
 "PO-Revision-Date: 2014-07-07 18:52+0100\n"
 "Last-Translator: Mte90 <mte90net@gmail.com>\n"
 "Language-Team: Eugenio Petullà - Codeat <support@codeat.co>\n"
@@ -23,64 +23,73 @@ msgstr ""
 "X-Poedit-SearchPathExcluded-1: includes/CPT_Core\n"
 "X-Poedit-SearchPathExcluded-2: includes/Taxonomy_Core\n"
 "X-Poedit-SearchPathExcluded-3: includes/Widgets-Helper\n"
-"X-Poedit-SearchPathExcluded-4: public/includes/requirements.php\n"
-"X-Poedit-SearchPathExcluded-5: admin/includes/cmb2_post_search_field.php\n"
-"X-Poedit-SearchPathExcluded-6: admin/includes/CPT_Columns.php\n"
-"X-Poedit-SearchPathExcluded-7: admin/includes/cmb2_user_search_field.php\n"
-"X-Poedit-SearchPathExcluded-8: node_modules\n"
+"X-Poedit-SearchPathExcluded-4: node_modules\n"
+"X-Poedit-SearchPathExcluded-5: admin/includes/cmb2-post-search-field.php\n"
 
-#: admin/class-glossary-admin.php:152
+#: admin/class-glossary-admin.php:153
 msgid "Glossary"
 msgstr ""
 
-#: admin/class-glossary-admin.php:172 admin/views/admin.php:22
+#: admin/class-glossary-admin.php:173 admin/views/admin.php:22
 msgid "Settings"
 msgstr ""
 
-#: admin/class-glossary-admin.php:197
+#: admin/class-glossary-admin.php:198
 #, php-format
 msgid "%s "
 msgid_plural "%s "
 msgstr[0] ""
 msgstr[1] ""
 
-#: admin/class-glossary-admin.php:248
+#: admin/class-glossary-admin.php:249
 msgid "Glossary auto-link settings"
 msgstr ""
 
-#: admin/class-glossary-admin.php:255
-msgid "Related search terms"
-msgstr ""
-
 #: admin/class-glossary-admin.php:256
-msgid "More than one: Comma Separated Values"
+msgid "Additional search terms"
 msgstr ""
 
-#: admin/class-glossary-admin.php:261
-msgid "External URL"
+#: admin/class-glossary-admin.php:257
+msgid "Case-Insensitive! More than one: Comma Separated Values"
 msgstr ""
 
 #: admin/class-glossary-admin.php:262
-msgid "Redirects links to an external/affliate URL"
+msgid "What type of link?"
 msgstr ""
 
-#: admin/class-glossary-admin.php:268
-msgid "Open external link in a new window"
+#: admin/class-glossary-admin.php:272
+msgid "External URL"
 msgstr ""
 
 #: admin/class-glossary-admin.php:273
+msgid "Redirects links to an external/affliate URL"
+msgstr ""
+
+#: admin/class-glossary-admin.php:279
+msgid "Internal Post type"
+msgstr ""
+
+#: admin/class-glossary-admin.php:280
+msgid "Select a post type of your site"
+msgstr ""
+
+#: admin/class-glossary-admin.php:287
+msgid "Open external link in a new window"
+msgstr ""
+
+#: admin/class-glossary-admin.php:292
 msgid "No Follow link"
 msgstr ""
 
-#: admin/class-glossary-admin.php:274
+#: admin/class-glossary-admin.php:293
 msgid "Put rel=\"nofollow\" in the link for SEO purposes"
 msgstr ""
 
-#: admin/includes/impexp.php:83
+#: admin/includes/impexp.php:82
 msgid "Please upload a valid .json file"
 msgstr ""
 
-#: admin/includes/impexp.php:89
+#: admin/includes/impexp.php:88
 msgid "Please upload a file to import"
 msgstr ""
 
@@ -156,43 +165,68 @@ msgstr ""
 msgid "Check it if you want also term's featured image in classic tooltips"
 msgstr ""
 
+#: admin/views/admin.php:91
+msgid "Glossary Terms slug"
+msgstr ""
+
 #: admin/views/admin.php:97
+msgid "Glossary category slug"
+msgstr ""
+
+#: admin/views/admin.php:103
+msgid "Disable Archive page for Glossary Terms"
+msgstr ""
+
+#: admin/views/admin.php:104
+msgid "Don't forget to flush the permalinks"
+msgstr ""
+
+#: admin/views/admin.php:109
+msgid "Add Glossary Terms post type in the website search"
+msgstr ""
+
+#: admin/views/admin.php:110
+msgid ""
+"Add the post type to the others, in few case only this post type is enabled"
+msgstr ""
+
+#: admin/views/admin.php:121
 msgid "Export Settings"
 msgstr ""
 
-#: admin/views/admin.php:99
+#: admin/views/admin.php:123
 msgid ""
 "Export the plugin settings for this site as a .json file. This allows you to "
 "easily import the configuration into another site."
 msgstr ""
 
-#: admin/views/admin.php:104
+#: admin/views/admin.php:128
 msgid "Export"
 msgstr ""
 
-#: admin/views/admin.php:111
+#: admin/views/admin.php:135
 msgid "Import Settings"
 msgstr ""
 
-#: admin/views/admin.php:113
+#: admin/views/admin.php:137
 msgid ""
 "Import the plugin settings from a .json file. This file can be obtained by "
 "exporting the settings on another site using the form above."
 msgstr ""
 
-#: admin/views/admin.php:121
+#: admin/views/admin.php:145
 msgid "Import"
 msgstr ""
 
-#: admin/views/admin.php:131
+#: admin/views/admin.php:155
 msgid "Codeat Newsletter"
 msgstr ""
 
-#: admin/views/admin.php:162
+#: admin/views/admin.php:186
 msgid "Follow us"
 msgstr ""
 
-#: admin/views/admin.php:173
+#: admin/views/admin.php:197
 msgid "A Codeat Plugin"
 msgstr ""
 
@@ -214,7 +248,7 @@ msgstr ""
 msgid "Show Counts"
 msgstr ""
 
-#: includes/widgets/categories.php:11
+#: includes/widgets/categories.php:11 includes/widgets/categories.php:22
 msgid "Glossary Categories"
 msgstr ""
 
@@ -222,14 +256,8 @@ msgstr ""
 msgid "List of Glossary Categories"
 msgstr ""
 
-#: includes/widgets/categories.php:22 includes/widgets/last_glossary.php:11
-#: includes/widgets/last_glossary.php:22
+#: includes/widgets/last_glossary.php:11 includes/widgets/last_glossary.php:22
 msgid "Latest Glossary Terms"
-msgstr ""
-
-#: includes/widgets/categories.php:45
-#, php-format
-msgid "View all post filed under %s"
 msgstr ""
 
 #: includes/widgets/last_glossary.php:12
@@ -244,26 +272,34 @@ msgstr ""
 msgid "Select how many glossary to show."
 msgstr ""
 
-#: public/class-glossary.php:80
+#: includes/widgets/last_glossary.php:36
+msgid "Taxonomy"
+msgstr ""
+
+#: includes/widgets/last_glossary.php:37
+msgid "Select the taxonomy."
+msgstr ""
+
+#: public/class-glossary.php:91
 msgid "Glossary Term"
 msgstr ""
 
-#: public/class-glossary.php:80
+#: public/class-glossary.php:91
 msgid "Glossary Terms"
 msgstr ""
 
-#: public/class-glossary.php:91
+#: public/class-glossary.php:103
 msgid "Term Category"
 msgstr ""
 
-#: public/class-glossary.php:91
+#: public/class-glossary.php:103
 msgid "Terms Categories"
 msgstr ""
 
-#: public/class-glossary.php:427
+#: public/includes/Glossary_Tooltip_Engine.php:236
 msgid "More"
 msgstr ""
 
-#: public/class-glossary.php:450
+#: public/includes/Glossary_Tooltip_Engine.php:260
 msgid "Read More"
 msgstr ""

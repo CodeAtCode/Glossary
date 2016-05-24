@@ -35,9 +35,9 @@ function get_glossary_term_url( $id = '' ) {
   if ( empty( $id ) ) {
     $id = get_the_ID();
   }
-  $type = get_post_meta( $id, $plugin->get_plugin_slug() . '_link_type', true );
-  $link = get_post_meta( $id, $plugin->get_plugin_slug() . '_url', true );
-  $cpt = get_post_meta( $id, $plugin->get_plugin_slug() . '_cpt', true );
+  $type = get_post_meta( $id, $plugin->get_setting_slug() . '_link_type', true );
+  $link = get_post_meta( $id, $plugin->get_setting_slug() . '_url', true );
+  $cpt = get_post_meta( $id, $plugin->get_setting_slug() . '_cpt', true );
   if ( empty( $link ) && empty( $cpt ) ) {
     return get_the_permalink( $id );
   }

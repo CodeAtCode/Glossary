@@ -87,6 +87,7 @@ Yes, we love Genesis Framework and we care about other Genesis fans. SEO, Layout
 * New option for filter by taxonomy in Last Glossary Terms widget
 * Choice between the external url or a internal post type for the term
 * Code improvements
+* Fixed glotpress detection
 
 = 1.0.6 =
 
