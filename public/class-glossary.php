@@ -105,11 +105,12 @@ class Glossary {
     add_filter( 'the_content', array( $this, 'glossary_auto_link' ) );
     add_filter( 'the_excerpt', array( $this, 'glossary_auto_link' ) );
     add_action( 'genesis_entry_content', array( $this, 'genesis_content' ), 9 );
-    
-    add_filter( 'pre_get_posts', array( $this, 'filter_search' ) );
+
+    if ( isset( $this->settings[ 'search' ] ) ) {
+	add_filter( 'pre_get_posts', array( $this, 'filter_search' ) );
+    }
 
     add_shortcode( 'glossary-terms', array( $this, 'glossary_terms_list_shortcode' ) );
-
 
     require_once( plugin_dir_path( __FILE__ ) . '/includes/Glossary_a2z_Archive.php' );
 
@@ -192,7 +193,11 @@ class Glossary {
   public function filter_search( $query ) {
     if ( $query->is_search ) {
 	//Mantain support for the post type available
-	$query->set( 'post_type', array_merge( $query->get( 'post_type' ), $this->cpts ) );
+	$cpt = $query->get( 'post_type' );
+	if ( empty( $cpt ) ) {
+	  $cpt = array();
+	}
+	$query->set( 'post_type', array_merge( $cpt, $this->cpts ) );
     }
     return $query;
   }
