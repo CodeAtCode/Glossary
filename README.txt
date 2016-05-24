@@ -77,6 +77,12 @@ Yes, we love Genesis Framework and we care about other Genesis fans. SEO, Layout
 
 == Changelog ==
 
+= 1.1.0 =
+
+* Search support as option
+* Option to change the slugs
+* Option to disable archive 
+
 = 1.0.6 =
 
 * Fix for search

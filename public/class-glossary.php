@@ -86,6 +86,9 @@ class Glossary {
     if ( !empty( $this->settings[ 'slug' ] ) ) {
 	$glossary_term_cpt[ 'rewrite' ][ 'slug' ] = $this->settings[ 'slug' ];
     }
+    if ( isset( $this->settings[ 'archive' ] ) ) {
+	$glossary_term_cpt[ 'has_archive' ] = false;
+    }
     register_via_cpt_core(
 		array( __( 'Glossary Term', $this->get_plugin_slug() ), __( 'Glossary Terms', $this->get_plugin_slug() ), 'glossary' ), $glossary_term_cpt
     );

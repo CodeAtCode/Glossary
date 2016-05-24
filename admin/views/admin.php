@@ -100,8 +100,14 @@
                 'default' => 'glossary-cat'
             ) );
             $cmb->add_field( array(
+                'name' => __( 'Disable Archive page for Glossary Terms', $this->plugin_slug ),
+                'desc' => __( 'Don\'t forget to flush the permalinks', $this->plugin_slug ),
+                'id' => 'archive',
+                'type' => 'checkbox',
+            ) );
+            $cmb->add_field( array(
                 'name' => __( 'Add Glossary Terms post type in the website search', $this->plugin_slug ),
-                'desc' => __( 'This add the post type to the others for the search, in few case enable only this post type for the search', $this->plugin_slug ),
+                'desc' => __( 'Add the post type to the others, in few case only this post type is enabled', $this->plugin_slug ),
                 'id' => 'search',
                 'type' => 'checkbox',
             ) );
