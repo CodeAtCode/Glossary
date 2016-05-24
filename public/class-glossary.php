@@ -113,8 +113,6 @@ class Glossary {
 	add_filter( 'pre_get_posts', array( $this, 'filter_search' ) );
     }
 
-    add_shortcode( 'glossary-terms', array( $this, 'glossary_terms_list_shortcode' ) );
-
     require_once( plugin_dir_path( __FILE__ ) . '/includes/Glossary_a2z_Archive.php' );
 
     if ( isset( $this->settings[ 'tooltip' ] ) ) {
@@ -206,7 +204,7 @@ class Glossary {
   }
 
   /**
-   * AOrder the glossary terms alphabetically
+   * Order the glossary terms alphabetically
    *
    * @since    1.0.0
    *
@@ -470,38 +468,6 @@ class Glossary {
 	echo '<p>' . $this->glossary_auto_link( $excerpt ) . ' <a href="' . get_the_permalink() . '">' . __( 'Read More' ) . '</a></p>';
 	remove_action( 'genesis_entry_content', 'genesis_do_post_content' );
     }
-  }
-
-  /**
-   * Shortcode for generate list of glossary terms
-   *
-   * @since    1.1.0
-   *
-   * @return list of glossary terms
-   */
-  function glossary_terms_list_shortcode( $atts ) {
-    $atts = extract( shortcode_atts( array(
-	  'order' => 'asc',
-	  'num' => '100',
-			  ), $atts ) );
-
-    if ( $order == 'asc' ) {
-	$ord = 'ASC';
-    } else {
-	$ord = 'DESC';
-    }
-
-    $glossari = new WP_Query( array( 'post_type' => 'glossary', 'order' => $ord, 'orderby' => 'title', 'posts_per_page' => $num ) );
-    if ( $glossari->have_posts() ) {
-	$out .= '<dl class="glossary-terms-list">';
-	while ( $glossari->have_posts() ) : $glossari->the_post();
-	  $out .= '<dt><a href="' . get_the_permalink() . '">' . get_the_title() . '</a></dt>';
-	endwhile;
-	$out .= '</dl>';
-	wp_reset_query();
-    }
-
-    return $out;
   }
 
 }

@@ -31,6 +31,8 @@ if ( !defined( 'WPINC' ) ) {
  * ------------------------------------------------------------------------------
  */
 require_once( plugin_dir_path( __FILE__ ) . 'includes/load_textdomain.php' );
+require_once( plugin_dir_path( __FILE__ ) . 'includes/functions.php' );
+require_once( plugin_dir_path( __FILE__ ) . 'includes/shortcode.php' );
 
 /*
  * Load library for simple and fast creation of Taxonomy and Custom Post Type
