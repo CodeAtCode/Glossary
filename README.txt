@@ -85,6 +85,7 @@ Yes, we love Genesis Framework and we care about other Genesis fans. SEO, Layout
 * [glossary-terms order="desc" num="20" tax="sport"] new shortcode
 * [glossary-cats order="desc" num="20"] new shortcode
 * New option for filter by taxonomy in Last Glossary Terms widget
+* Choice between the external url or a internal post type for the term
 * Code improvements
 
 = 1.0.6 =
