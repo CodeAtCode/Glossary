@@ -3,9 +3,9 @@
 	border-color:#ccc;
 	border-width:1px;
 	border-style:solid;
-	border-bottom-width:0px;
+	border-bottom-width:0;
 	padding:11px 0px;
-	background:none repeat scroll 0% 0% #e4e4e4;
+	background:none repeat scroll 0 0 #e4e4e4;
 }
 .ui-state-active{
 	border-bottom-color:#EFEFEF;
@@ -17,7 +17,6 @@
 }
 .ui-tabs-anchor{
 	text-decoration:none;
-	color:black;
 	font-weight:700;
 	font-size:15px;
 	line-height:24px;

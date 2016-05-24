@@ -58,14 +58,11 @@
 .glossary-tooltip-text {
 	border-bottom: 10px solid #fffaf0;
 	overflow: hidden;
-	-webkit-transform: scale3d(0,1,1);
-	transform: scale3d(0,1,1);
 	-webkit-transition: -webkit-transform 0.3s 0.3s;
-	transition: transform 0.3s 0.3s;background: rgba(85,61,61,0.95);
-	padding: 40px;
+	background: rgba(85,61,61,0.95);
 	-webkit-transform: translate3d(0,100%,0);
 	transform: translate3d(0,100%,0);
-	webkit-transition: -webkit-transform 0.3s;
+	-webkit-transition: -webkit-transform 0.3s 0.3s;
 	transition: transform 0.3s;
 	background: rgba(85,61,61,0.95);
 	padding: 20px;
