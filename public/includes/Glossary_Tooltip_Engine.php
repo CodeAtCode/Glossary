@@ -223,10 +223,10 @@ class Glossary_Tooltip_Engine {
    */
   public function tooltip_html( $link, $title, $post, $target, $nofollow, $internal ) {
     $link_tooltip = '<span class="glossary-tooltip">'
-		. "\n" . '<span class="glossary-tooltip-item">'
-		. "\n" . '<a href="' . $link . '"' . $target . $nofollow . '>' . $title . '</a>'
-		. "\n" . '</span>'
-		. "\n" . '<span class="glossary-tooltip-content clearfix">';
+		.  '<span class="glossary-tooltip-item">'
+		.  '<a href="' . $link . '"' . $target . $nofollow . '>' . $title . '</a>'
+		.  '</span>'
+		.  '<span class="glossary-tooltip-content clearfix">';
     $photo = get_the_post_thumbnail( $post->ID, 'thumbnail' );
     if ( !empty( $photo ) && !empty( $this->settings[ 't_image' ] ) ) {
 	$link_tooltip .= $photo;
@@ -236,9 +236,9 @@ class Glossary_Tooltip_Engine {
 	$readmore = ' <a href="' . get_the_permalink() . '">' . __( 'More' ) . '</a>';
     }
     $excerpt = $this->get_the_excerpt( $post );
-    $link_tooltip .= "\n" . '<span class="glossary-tooltip-text">' . $excerpt . $readmore . '</span>'
-		. "\n" . '</span>'
-		. "\n" . '</span>';
+    $link_tooltip .=  '<span class="glossary-tooltip-text">' . $excerpt . $readmore . '</span>'
+		.  '</span>'
+		.  '</span>';
     return apply_filters( 'glossary_tooltip_html', $link_tooltip, $title, $excerpt, $photo, $post, $target, $nofollow, $internal );
   }
 
