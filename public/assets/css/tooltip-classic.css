@@ -4,6 +4,10 @@
 	z-index: 999;
 }
 
+.glossary-tooltip br {
+	display: none;
+} 
+
 /* Trigger text */
 
 .glossary-tooltip-item {

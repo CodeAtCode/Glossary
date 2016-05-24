@@ -3,7 +3,9 @@
 	position: relative;
 	z-index: 9999;
 }
-
+.glossary-tooltip br {
+	display: none;
+} 
 /* Gap filler */
 .glossary-tooltip::after {
 	content: '';

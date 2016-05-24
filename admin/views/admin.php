@@ -25,7 +25,7 @@
         <div id="tabs-1" class="wrap">
             <?php
             $cmb = new_cmb2_box( array(
-                'id' => $this->plugin_slug . '_options',
+                'id' => $this->setting_slug . '_options',
                 'hookup' => false,
                 'show_on' => array( 'key' => 'options-page', 'value' => array( $this->plugin_slug ), ),
                 'show_names' => true,
@@ -111,7 +111,7 @@
                 'id' => 'search',
                 'type' => 'checkbox',
             ) );
-            cmb2_metabox_form( $this->plugin_slug . '_options', $this->plugin_slug . '-settings' );
+            cmb2_metabox_form( $this->setting_slug . '_options', $this->setting_slug . '-settings' );
             ?>
 
             <!-- @TODO: Provide other markup for your options page here. -->
