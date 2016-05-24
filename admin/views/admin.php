@@ -87,6 +87,18 @@
                 'id' => 't_image',
                 'type' => 'checkbox',
             ) );
+            $cmb->add_field( array(
+                'name' => __( 'Glossary Terms slug', $this->plugin_slug ),
+                'id' => 'slug',
+                'type' => 'text_small',
+                'default' => 'glossary'
+            ) );
+            $cmb->add_field( array(
+                'name' => __( 'Glossary category slug', $this->plugin_slug ),
+                'id' => 'slug-cat',
+                'type' => 'text_small',
+                'default' => 'glossary-cat'
+            ) );
             cmb2_metabox_form( $this->plugin_slug . '_options', $this->plugin_slug . '-settings' );
             ?>
 
