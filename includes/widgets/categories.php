@@ -19,7 +19,7 @@ class Categories_Glossary_Widget extends WPH_Widget {
 			'id' => 'title',
 			'type' => 'text',
 			'class' => 'widefat',
-			'std' => __( 'Latest Glossary Terms', $this->plugin_slug ),
+			'std' => __( 'Glossary Categories', $this->plugin_slug ),
 			'validate' => 'alpha_dash',
 			'filter' => 'strip_tags|esc_attr'
 		    )
