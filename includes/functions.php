@@ -8,7 +8,7 @@ function get_glossary_terms_list( $order, $num ) {
 
   $glossary = new WP_Query( array( 'post_type' => 'glossary', 'order' => $order, 'orderby' => 'title', 'posts_per_page' => $num, 'update_post_meta_cache' => false, 'fields' => 'ids' ) );
   if ( $glossary->have_posts() ) {
-    $out .= '<dl class="glossary-terms-list">';
+    $out = '<dl class="glossary-terms-list">';
     while ( $glossary->have_posts() ) : $glossary->the_post();
 	$out .= '<dt><a href="' . get_glossary_term_url( get_the_ID() ) . '">' . get_the_title() . '</a></dt>';
     endwhile;
@@ -31,7 +31,7 @@ function get_glossary_term_url( $id = '' ) {
   return $link;
 }
 
-function get_glossary_cats_list( $order, $num ) {
+function get_glossary_cats_list( $order = 'ASC', $num = '0' ) {
   $order = 'DESC';
   if ( $order === 'asc' ) {
     $order = 'ASC';
