@@ -83,6 +83,7 @@ Yes, we love Genesis Framework and we care about other Genesis fans. SEO, Layout
 * Option to change the slugs
 * Option to disable archive 
 * [glossary-terms order="desc" num="20"] new shortcode
+* [glossary-cats order="desc" num="20"] new shortcode
 
 = 1.0.6 =
 

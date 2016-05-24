@@ -30,3 +30,27 @@ function get_glossary_term_url( $id = '' ) {
   }
   return $link;
 }
+
+function get_glossary_cats_list( $order, $num ) {
+  $order = 'DESC';
+  if ( $order === 'asc' ) {
+    $order = 'ASC';
+  }
+
+  $taxs = get_terms( 'glossary-cat', array(
+	'hide_empty' => false,
+	'order' => $order,
+	'number' => $num,
+	'orderby' => 'title'
+	    ) );
+
+  $out = '<dl class="glossary-terms-list">';
+  if ( !empty( $taxs ) && !is_wp_error( $taxs ) ) {
+    foreach ( $taxs as $tax ) {
+	$out .= '<dt><a href="' . esc_url( get_term_link( $tax ) ) . '">' . $tax->name . '</a></dt>';
+    }
+    $out .= '</dl>';
+  }
+
+  return $out;
+}
