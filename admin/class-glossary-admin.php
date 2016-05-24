@@ -44,8 +44,6 @@ class Glossary_Admin {
     private function __construct() {
         $plugin = Glossary::get_instance();
         $this->plugin_slug = $plugin->get_plugin_slug();
-        $this->plugin_name = $plugin->get_plugin_name();
-        $this->version = $plugin->get_plugin_version();
         $this->cpts = $plugin->get_cpts();
 
         // Load admin style sheet and JavaScript.
@@ -108,12 +106,8 @@ class Glossary_Admin {
      * @return    void    Return early if no settings page is registered.
      */
     public function enqueue_admin_styles() {
-        if ( !isset( $this->plugin_screen_hook_suffix ) ) {
-            return;
-        }
-
         $screen = get_current_screen();
-        if ( $this->plugin_screen_hook_suffix == $screen->id || strpos( $_SERVER[ 'REQUEST_URI' ], 'index.php' ) || strpos( $_SERVER[ 'REQUEST_URI' ], get_bloginfo( 'wpurl' ) . '/wp-admin/' ) ) {
+        if ( $this->plugin_screen_hook_suffix == $screen->id || strpos( $_SERVER[ 'REQUEST_URI' ], 'index.php' ) || strpos( $_SERVER[ 'REQUEST_URI' ], '/wp-admin/' ) !== -1 ) {
             wp_enqueue_style( $this->plugin_slug . '-admin-styles', plugins_url( 'assets/css/admin.css', __FILE__ ), array( 'dashicons' ), Glossary::VERSION );
         }
     }
@@ -149,7 +143,7 @@ class Glossary_Admin {
          * Settings page in the menu
          * 
          */
-        $this->plugin_screen_hook_suffix = add_menu_page( __( 'Glossary', $this->plugin_slug ), $this->plugin_name, 'manage_options', $this->plugin_slug, array( $this, 'display_plugin_admin_page' ), 'dashicons-admin-generic', 90 );
+        $this->plugin_screen_hook_suffix = add_menu_page( __( 'Glossary', $this->plugin_slug ), "Glossary", 'manage_options', $this->plugin_slug, array( $this, 'display_plugin_admin_page' ), 'dashicons-admin-generic', 90 );
     }
 
     /**

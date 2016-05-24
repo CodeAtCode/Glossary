@@ -20,7 +20,6 @@ class G_ImpExp {
 	public function __construct() {
 		$plugin = Glossary::get_instance();
 		$this->plugin_slug = $plugin->get_plugin_slug();
-		$this->plugin_name = $plugin->get_plugin_name();
 		//Add the export settings method
 		add_action( 'admin_init', array( $this, 'settings_export' ) );
 		//Add the import settings method
