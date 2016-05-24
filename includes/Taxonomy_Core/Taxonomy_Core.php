@@ -180,7 +180,7 @@ if ( !class_exists( 'Taxonomy_Core' ) ) :
 
             // Add this taxonomy to our taxonomies array
             self::$taxonomies[ $this->taxonomy ] = $this;
-            $this->flush_permalink();
+            //$this->flush_permalink();
         }
 
         /**

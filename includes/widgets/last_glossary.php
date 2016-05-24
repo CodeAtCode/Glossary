@@ -32,6 +32,13 @@ class Last_Glossary_Widget extends WPH_Widget {
 		'std' => 5,
 		'filter' => 'strip_tags|esc_attr',
 	  ),
+	  array(
+		'name' => __( 'Taxonomy' ),
+		'desc' => __( 'Select the taxonomy.', $this->plugin_slug ),
+		'id' => 'tax',
+		'type' => 'taxonomyterm',
+		'taxonomy' => 'glossary-cat',
+	  ),
     );
 
     $this->create_widget( $args );
@@ -44,7 +51,7 @@ class Last_Glossary_Widget extends WPH_Widget {
     $out .= $instance[ 'title' ];
     $out .= $args[ 'after_title' ];
     $out .= '<div class="widget-glossary-terms-list">';
-    $out .= get_glossary_terms_list('ASC',$instance[ 'number' ]);
+    $out .= get_glossary_terms_list( 'ASC', $instance[ 'number' ], $instance[ 'tax' ] );
     $out .= '</div>';
     $out .= $args[ 'after_widget' ];
     echo $out;

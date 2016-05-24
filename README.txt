@@ -82,8 +82,9 @@ Yes, we love Genesis Framework and we care about other Genesis fans. SEO, Layout
 * Search support as option
 * Option to change the slugs
 * Option to disable archive 
-* [glossary-terms order="desc" num="20"] new shortcode
+* [glossary-terms order="desc" num="20" tax="sport"] new shortcode
 * [glossary-cats order="desc" num="20"] new shortcode
+* New option for filter by taxonomy in Last Glossary Terms widget
 * Code improvements
 
 = 1.0.6 =

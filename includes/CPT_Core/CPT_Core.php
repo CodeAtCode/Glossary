@@ -182,7 +182,7 @@ if ( ! class_exists( 'CPT_Core' ) ) :
 
 			// Add this post type to our custom_post_types array
 			self::$custom_post_types[ $this->post_type ] = $this;
-                  $this->flush_permalink();
+                  //$this->flush_permalink();
 		}
 
 		/**

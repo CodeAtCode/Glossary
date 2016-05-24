@@ -1,12 +1,23 @@
 <?php
 
-function get_glossary_terms_list( $order, $num ) {
-  $order = 'DESC';
+function get_glossary_terms_list( $order, $num, $tax = '' ) {
   if ( $order === 'asc' ) {
     $order = 'ASC';
   }
 
-  $glossary = new WP_Query( array( 'post_type' => 'glossary', 'order' => $order, 'orderby' => 'title', 'posts_per_page' => $num, 'update_post_meta_cache' => false, 'fields' => 'ids' ) );
+  $args = array( 'post_type' => 'glossary', 'order' => $order, 'orderby' => 'title', 'posts_per_page' => $num, 'update_post_meta_cache' => false, 'fields' => 'ids' );
+
+  if ( !empty( $tax ) ) {
+    $args[ 'tax_query' ] = array(
+	  array(
+		'taxonomy' => 'glossary-cat',
+		'terms'    => $tax,
+		'field' => 'slug',
+	  ),
+    );
+  }
+
+  $glossary = new WP_Query( $args );
   if ( $glossary->have_posts() ) {
     $out = '<dl class="glossary-terms-list">';
     while ( $glossary->have_posts() ) : $glossary->the_post();
@@ -14,9 +25,9 @@ function get_glossary_terms_list( $order, $num ) {
     endwhile;
     $out .= '</dl>';
     wp_reset_query();
-  }
 
-  return $out;
+    return $out;
+  }
 }
 
 function get_glossary_term_url( $id = '' ) {
@@ -31,17 +42,12 @@ function get_glossary_term_url( $id = '' ) {
   return $link;
 }
 
-function get_glossary_cats_list( $order = 'ASC', $num = '0' ) {
-  $order = 'DESC';
-  if ( $order === 'asc' ) {
-    $order = 'ASC';
-  }
-
+function get_glossary_cats_list( $order = 'DESC', $num = '0' ) {
   $taxs = get_terms( 'glossary-cat', array(
 	'hide_empty' => false,
 	'order' => $order,
 	'number' => $num,
-	'orderby' => 'title'
+	'orderby' => 'name'
 	    ) );
 
   $out = '<dl class="glossary-terms-list">';
@@ -50,7 +56,6 @@ function get_glossary_cats_list( $order = 'ASC', $num = '0' ) {
 	$out .= '<dt><a href="' . esc_url( get_term_link( $tax ) ) . '">' . $tax->name . '</a></dt>';
     }
     $out .= '</dl>';
+    return $out;
   }
-
-  return $out;
 }

@@ -10,7 +10,7 @@
  * @link      http://codeat.co
  * @copyright 2016 GPL 2.0+
  */
-class G_a2z_Archive {
+class Glossary_a2z_Archive {
 
   /**
    * Initialize the plugin by setting localization and loading public scripts
@@ -80,4 +80,4 @@ class G_a2z_Archive {
 
 }
 
-new G_a2z_Archive();
+new Glossary_a2z_Archive();
