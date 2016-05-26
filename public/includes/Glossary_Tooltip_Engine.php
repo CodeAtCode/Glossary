@@ -53,7 +53,7 @@ class Glossary_Tooltip_Engine {
 	  $nofollow = get_post_meta( get_the_ID(), $this->setting_slug . '_nofollow', true );
 	  $internal = false;
 	  //Get the post of the glossary loop
-	  if ( empty( $url ) && empty( $type ) ) {
+	  if ( empty( $url ) && empty( $type ) || $type === 'internal' ) {
 	    $internal = true;
 	  }
 	  if ( !empty( $link ) && !empty( $target ) ) {
@@ -198,14 +198,18 @@ class Glossary_Tooltip_Engine {
    * @param object $post
    * @return string
    */
-  public function get_the_excerpt( $post ) {
+  public function get_the_excerpt( $post, $internal = false ) {
     if ( empty( $post->post_excerpt ) ) {
 	$excerpt = apply_filters( 'glossary_excerpt', wp_strip_all_tags( $post->post_content ), $post );
     } else {
 	$excerpt = apply_filters( 'glossary_excerpt', wp_strip_all_tags( $post->post_excerpt ), $post );
     }
     if ( strlen( $excerpt ) >= absint( $this->settings[ 'excerpt_limit' ] ) ) {
-	return substr( $excerpt, 0, absint( $this->settings[ 'excerpt_limit' ] ) ) . '...';
+	$readmore = '';
+	if ( $internal ) {
+	  $readmore = ' <a href="' . get_the_permalink() . '">' . __( 'More' ) . '</a>';
+	}
+	return substr( $excerpt, 0, absint( $this->settings[ 'excerpt_limit' ] ) ) . '...' . $readmore;
     }
     return $excerpt;
   }
@@ -223,22 +227,19 @@ class Glossary_Tooltip_Engine {
    */
   public function tooltip_html( $link, $title, $post, $target, $nofollow, $internal ) {
     $link_tooltip = '<span class="glossary-tooltip">'
-		.  '<span class="glossary-tooltip-item">'
-		.  '<a href="' . $link . '"' . $target . $nofollow . '>' . $title . '</a>'
-		.  '</span>'
-		.  '<span class="glossary-tooltip-content clearfix">';
+		. '<span class="glossary-tooltip-item">'
+		. '<a href="' . $link . '"' . $target . $nofollow . '>' . $title . '</a>'
+		. '</span>'
+		. '<span class="glossary-tooltip-content clearfix">';
     $photo = get_the_post_thumbnail( $post->ID, 'thumbnail' );
     if ( !empty( $photo ) && !empty( $this->settings[ 't_image' ] ) ) {
 	$link_tooltip .= $photo;
     }
     $readmore = '';
-    if ( $internal ) {
-	$readmore = ' <a href="' . get_the_permalink() . '">' . __( 'More' ) . '</a>';
-    }
-    $excerpt = $this->get_the_excerpt( $post );
-    $link_tooltip .=  '<span class="glossary-tooltip-text">' . $excerpt . $readmore . '</span>'
-		.  '</span>'
-		.  '</span>';
+    $excerpt = $this->get_the_excerpt( $post, $internal );
+    $link_tooltip .= '<span class="glossary-tooltip-text">' . $excerpt . $readmore . '</span>'
+		. '</span>'
+		. '</span>';
     return apply_filters( 'glossary_tooltip_html', $link_tooltip, $title, $excerpt, $photo, $post, $target, $nofollow, $internal );
   }
 

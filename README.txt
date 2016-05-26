@@ -2,9 +2,9 @@
 Contributors: codeat, iGenius, mte90
 Donate link: http://codeat.com/
 Tags: glossary, vocabulary, dictionary, tooltips, terms,
-Requires at least: 4.2
-Tested up to: 4.4
-Stable tag: 1.1.0
+Requires at least: 4.4
+Tested up to: 4.5
+Stable tag: 1.1.1
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -76,6 +76,11 @@ Yes, we love Genesis Framework and we care about other Genesis fans. SEO, Layout
 8. Glossary features
 
 == Changelog ==
+
+= 1.1.1 =
+
+* Fix regression for related terms
+* Read more link it is showed only when the text is truncated
 
 = 1.1.0 =
 

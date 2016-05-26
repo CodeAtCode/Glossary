@@ -124,7 +124,6 @@ class Glossary_Admin {
    */
   public function enqueue_admin_scripts() {
     $screen = get_current_screen();
-    error_log( print_r( $screen, true ) );
     if ( $screen->post_type === 'glossary' ) {
 	wp_enqueue_script( $this->setting_slug . '-admin-pt-script', plugins_url( 'assets/js/pt.js', __FILE__ ), array( 'jquery' ), Glossary::VERSION );
     }
@@ -265,7 +264,7 @@ class Glossary_Admin {
 	  'default' => 'external',
 	  'options' => array(
 		'external' => 'External URL',
-		'internal' => 'Internel Post Type'
+		'internal' => 'Internal Post Type'
 	  )
     ) );
     $cmb_demo->add_field( array(
