@@ -70,7 +70,7 @@ class Glossary_Tooltip_Engine {
 	  } else {
 	    $links[] = '<a href="' . $link . '"' . $target . $nofollow . '>$0</a>';
 	  }
-	  $related = $this->related_post_meta( get_post_meta( get_the_ID(), $this->plugin_slug . '_tag', true ) );
+	  $related = $this->related_post_meta( get_post_meta( get_the_ID(), $this->setting_slug . '_tag', true ) );
 	  if ( is_array( $related ) ) {
 	    foreach ( $related as $value ) {
 		$words[] = $this->search_string( $value );
