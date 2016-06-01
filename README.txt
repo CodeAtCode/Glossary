@@ -77,6 +77,10 @@ Yes, we love Genesis Framework and we care about other Genesis fans. SEO, Layout
 
 == Changelog ==
 
+= 1.1.2 =
+
+* Fix force sanitization of the terms
+
 = 1.1.1 =
 
 * Fix regression for related terms

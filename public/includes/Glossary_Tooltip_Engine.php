@@ -188,7 +188,7 @@ class Glossary_Tooltip_Engine {
    * @return string
    */
   public function search_string( $title ) {
-    return '/(?<!\w)((?i)' . $title . '(?-i))(?=[ \.\,\:\;\*\"\)\!\?\/\%\$\£\|\^\<\>])(?![^<]*(<\/a>|<\/span>|" \/>|>))/';
+    return '/(?<!\w)((?i)' . preg_quote( $title ) . '(?-i))(?=[ \.\,\:\;\*\"\)\!\?\/\%\$\£\|\^\<\>])(?![^<]*(<\/a>|<\/span>|" \/>|>))/';
   }
 
   /**
