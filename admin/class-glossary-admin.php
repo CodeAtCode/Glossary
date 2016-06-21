@@ -149,7 +149,7 @@ class Glossary_Admin {
      * Settings page in the menu
      * 
      */
-    $this->plugin_screen_hook_suffix = add_menu_page( __( 'Glossary', $this->plugin_slug ), "Glossary", 'manage_options', $this->setting_slug, array( $this, 'display_plugin_admin_page' ), 'dashicons-admin-generic', 90 );
+    $this->plugin_screen_hook_suffix = add_submenu_page( 'edit.php?post_type=glossary', __( 'Settings', $this->plugin_slug ), __( 'Settings', $this->plugin_slug ), 'manage_options', $this->setting_slug, array( $this, 'display_plugin_admin_page' ));
   }
 
   /**
