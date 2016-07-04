@@ -60,11 +60,6 @@
 	transform: translate3d(0,0,0) rotate3d(0,0,0,0);
 }
 
-.glossary-tooltip.glossary-tooltip-effect-2:hover .glossary-tooltip-content {
-	-webkit-transform: perspective(1000px) rotate3d(1,0,0,0deg);
-	transform: perspective(1000px) rotate3d(1,0,0,0deg);
-}
-
 /* Arrow */
 
 .glossary-tooltip-content::after {

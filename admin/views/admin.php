@@ -21,6 +21,7 @@
         <ul>
             <li><a href="#tabs-1"><?php _e( 'Settings' ); ?></a></li>
             <li><a href="#tabs-2"><?php _e( 'Import/Export', $this->plugin_slug ); ?></a></li>
+		<?php do_action( 'glossary_settings_tabs' ); ?>
         </ul>
         <div id="tabs-1" class="wrap">
             <?php
@@ -148,6 +149,7 @@
                 </div>
             </div>
         </div>
+	   <?php do_action( 'glossary_settings_panels' ); ?>
     </div>
     <!-- Begin MailChimp  -->
     <div class="right-column-settings-page metabox-holder">
