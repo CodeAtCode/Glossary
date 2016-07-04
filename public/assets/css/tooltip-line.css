@@ -45,7 +45,6 @@
 
 .glossary-tooltip:hover .glossary-tooltip-content {
 	opacity: 1;
-	pointer-events: auto;
 	-webkit-transition-delay: 0s;
 	transition-delay: 0s;
 }

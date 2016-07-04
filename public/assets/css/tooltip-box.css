@@ -5,7 +5,7 @@
 }
 /* Trigger text */
 
-.glossary-tooltip-item {
+.glossary-tooltip-item a {
 	color: #2fa0ec;
 	cursor: pointer;
 	z-index: 100;
