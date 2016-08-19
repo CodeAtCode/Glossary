@@ -177,12 +177,13 @@ class Glossary {
    */
   public function filter_search( $query ) {
     if ( $query->is_search ) {
-	//Mantain support for the post type available
-	$cpt = $query->get( 'post_type' );
-	if ( empty( $cpt ) ) {
-	  $cpt = array();
+	$post_types = $query->get( 'post_type' );
+	if ( $post_types === 'post' ) {
+	  $post_types = array();
+	} elseif ( !is_array( $post_types ) && !empty( $post_types ) ) {
+	  $post_types = explode( ',', $post_types );
 	}
-	$query->set( 'post_type', array_merge( $cpt, $this->cpts ) );
+	$query->set( 'post_type', array_push( $post_types, $this->cpts ) );
     }
     return $query;
   }
