@@ -54,7 +54,7 @@ class a2z_Glossary_Widget extends WPH_Widget {
 	  $base_url = esc_url( get_permalink( get_option( 'page_for_posts' ) ) );
 	}
     }
-    foreach ( $pt_initials AS $pt_rec ) {
+    foreach ( $pt_initials as $pt_rec ) {
 	$link = add_query_arg( 'az', $pt_rec[ 'initial' ], $base_url );
 	$item = '<li><a href="' . $link . '">' . $pt_rec[ 'initial' ] . '</a></li>';
 	if ( ( bool ) $instance[ 'show_counts' ] ) {

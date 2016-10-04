@@ -1,4 +1,4 @@
-<?php
+ba<?php
 /**
  * Represents the view for the administration dashboard.
  *
@@ -24,96 +24,97 @@
 		<?php do_action( 'glossary_settings_tabs' ); ?>
         </ul>
         <div id="tabs-1" class="wrap">
-            <?php
-            $cmb = new_cmb2_box( array(
-                'id' => $this->setting_slug . '_options',
-                'hookup' => false,
-                'show_on' => array( 'key' => 'options-page', 'value' => array( $this->plugin_slug ), ),
-                'show_names' => true,
-                    ) );
-            $cmb->add_field( array(
-                'name' => __( 'Enable in:', $this->plugin_slug ),
-                'id' => 'posttypes',
-                'type' => 'multicheck_posttype',
-            ) );
-            $cmb->add_field( array(
-                'name' => __( 'Enable also in following archives:', $this->plugin_slug ),
-                'id' => 'is',
-                'type' => 'multicheck',
-                'options' => array(
-                    'home' => __( 'Home', $this->plugin_slug ),
-                    'category' => __( 'Category archive', $this->plugin_slug ),
-                    'tag' => __( 'Tag archive', $this->plugin_slug ),
-                    'arc_glossary' => __( 'Glossary Archive', $this->plugin_slug ),
-                    'tax_glossary' => __( 'Glossary Taxonomy', $this->plugin_slug )
-                )
-            ) );
-            $cmb->add_field( array(
-                'name' => __( 'Order Glossary terms archive alphabetically', $this->plugin_slug ),
-                'id' => 'order_terms',
-                'type' => 'checkbox',
-            ) );
-            $cmb->add_field( array(
-                'name' => __( 'Link only the first occurence', $this->plugin_slug ),
-                'desc' => __('Prevent duplicate links and tooltips in the same post', $this->plugin_slug ),
-                'id' => 'first_occurence',
-                'type' => 'checkbox',
-            ) );
-            $cmb->add_field( array(
-                'name' => __( 'Enable tooltips on terms', $this->plugin_slug ),
-                'desc' => __('Tooltip will popup on hover', $this->plugin_slug ),
-                'id' => 'tooltip',
-                'type' => 'checkbox',
-            ) );
-            $cmb->add_field( array(
-                'name' => __( 'Tooltip style', $this->plugin_slug ),
-                'desc' => __('Only classic shows featured images', $this->plugin_slug ),
-                'id' => 'tooltip_style',
-                'type' => 'select',
-                'options' => array(
-                    'classic' => 'Classic',
-                    'box' => 'Box',
-                    'line' => 'Line',
-                )
-            ) );
-            $cmb->add_field( array(
-                'name' => __( 'Excerpt length', $this->plugin_slug ),
-                'id' => 'excerpt_limit',
-                'type' => 'text_number',
-                'default' => '60'
-            ) );
-            $cmb->add_field( array(
-                'name' => __( 'Enable image in tooltip', $this->plugin_slug ),
-                'desc' => __( 'Check it if you want also term\'s featured image in classic tooltips', $this->plugin_slug ),
-                'id' => 't_image',
-                'type' => 'checkbox',
-            ) );
-            $cmb->add_field( array(
-                'name' => __( 'Glossary Terms slug', $this->plugin_slug ),
-                'id' => 'slug',
-                'type' => 'text_small',
-                'default' => 'glossary'
-            ) );
-            $cmb->add_field( array(
-                'name' => __( 'Glossary category slug', $this->plugin_slug ),
-                'id' => 'slug-cat',
-                'type' => 'text_small',
-                'default' => 'glossary-cat'
-            ) );
-            $cmb->add_field( array(
-                'name' => __( 'Disable Archive page for Glossary Terms', $this->plugin_slug ),
-                'desc' => __( 'Don\'t forget to flush the permalinks', $this->plugin_slug ),
-                'id' => 'archive',
-                'type' => 'checkbox',
-            ) );
-            $cmb->add_field( array(
-                'name' => __( 'Add Glossary Terms post type in the website search', $this->plugin_slug ),
-                'desc' => __( 'Add the post type to the others, in few case only this post type is enabled', $this->plugin_slug ),
-                'id' => 'search',
-                'type' => 'checkbox',
-            ) );
-            cmb2_metabox_form( $this->setting_slug . '_options', $this->setting_slug . '-settings' );
-            ?>
+		<?php
+		$cmb = new_cmb2_box( array(
+		    'id' => $this->setting_slug . '_options',
+		    'hookup' => false,
+		    'show_on' => array( 'key' => 'options-page', 'value' => array( $this->plugin_slug ), ),
+		    'show_names' => true,
+			  ) );
+		$cmb->add_field( array(
+		    'name' => __( 'Enable in:', $this->plugin_slug ),
+		    'id' => 'posttypes',
+		    'type' => 'multicheck_posttype',
+		) );
+		$cmb->add_field( array(
+		    'name' => __( 'Enable also in following archives:', $this->plugin_slug ),
+		    'id' => 'is',
+		    'type' => 'multicheck',
+		    'options' => array(
+			  'home' => __( 'Home', $this->plugin_slug ),
+			  'category' => __( 'Category archive', $this->plugin_slug ),
+			  'tag' => __( 'Tag archive', $this->plugin_slug ),
+			  'arc_glossary' => __( 'Glossary Archive', $this->plugin_slug ),
+			  'tax_glossary' => __( 'Glossary Taxonomy', $this->plugin_slug )
+		    )
+		) );
+		$cmb->add_field( array(
+		    'name' => __( 'Order Glossary terms archive alphabetically', $this->plugin_slug ),
+		    'id' => 'order_terms',
+		    'type' => 'checkbox',
+		) );
+		$cmb->add_field( array(
+		    'name' => __( 'Link only the first occurence', $this->plugin_slug ),
+		    'desc' => __( 'Prevent duplicate links and tooltips in the same post', $this->plugin_slug ),
+		    'id' => 'first_occurence',
+		    'type' => 'checkbox',
+		) );
+		$cmb->add_field( array(
+		    'name' => __( 'Enable tooltips on terms', $this->plugin_slug ),
+		    'desc' => __( 'Tooltip will popup on hover', $this->plugin_slug ),
+		    'id' => 'tooltip',
+		    'type' => 'checkbox',
+		) );
+		$themes = apply_filters( 'glossary-themes-dropdown', array(
+		    'classic' => 'Classic',
+		    'box' => 'Box',
+		    'line' => 'Line',
+		) );
+		$cmb->add_field( array(
+		    'name' => __( 'Tooltip style', $this->plugin_slug ),
+		    'desc' => __( 'Only classic shows featured images', $this->plugin_slug ),
+		    'id' => 'tooltip_style',
+		    'type' => 'select',
+		    'options' => $themes
+		) );
+		$cmb->add_field( array(
+		    'name' => __( 'Excerpt length', $this->plugin_slug ),
+		    'id' => 'excerpt_limit',
+		    'type' => 'text_number',
+		    'default' => '60'
+		) );
+		$cmb->add_field( array(
+		    'name' => __( 'Enable image in tooltip', $this->plugin_slug ),
+		    'desc' => __( 'Check it if you want also term\'s featured image in classic tooltips', $this->plugin_slug ),
+		    'id' => 't_image',
+		    'type' => 'checkbox',
+		) );
+		$cmb->add_field( array(
+		    'name' => __( 'Glossary Terms slug', $this->plugin_slug ),
+		    'id' => 'slug',
+		    'type' => 'text_small',
+		    'default' => 'glossary'
+		) );
+		$cmb->add_field( array(
+		    'name' => __( 'Glossary category slug', $this->plugin_slug ),
+		    'id' => 'slug-cat',
+		    'type' => 'text_small',
+		    'default' => 'glossary-cat'
+		) );
+		$cmb->add_field( array(
+		    'name' => __( 'Disable Archive page for Glossary Terms', $this->plugin_slug ),
+		    'desc' => __( 'Don\'t forget to flush the permalinks', $this->plugin_slug ),
+		    'id' => 'archive',
+		    'type' => 'checkbox',
+		) );
+		$cmb->add_field( array(
+		    'name' => __( 'Replace search result with glossary terms', $this->plugin_slug ),
+		    'desc' => __( 'Add the post type to the others, in few case only this post type is enabled', $this->plugin_slug ),
+		    'id' => 'search',
+		    'type' => 'checkbox',
+		) );
+		cmb2_metabox_form( $this->setting_slug . '_options', $this->setting_slug . '-settings' );
+		?>
 
             <!-- @TODO: Provide other markup for your options page here. -->
         </div>
@@ -125,8 +126,8 @@
                     <form method="post">
                         <p><input type="hidden" name="g_action" value="export_settings" /></p>
                         <p>
-                            <?php wp_nonce_field( 'g_export_nonce', 'g_export_nonce' ); ?>
-                            <?php submit_button( __( 'Export' ), 'secondary', 'submit', false ); ?>
+				    <?php wp_nonce_field( 'g_export_nonce', 'g_export_nonce' ); ?>
+				    <?php submit_button( __( 'Export' ), 'secondary', 'submit', false ); ?>
                         </p>
                     </form>
                 </div>
@@ -142,21 +143,21 @@
                         </p>
                         <p>
                             <input type="hidden" name="g_action" value="import_settings" />
-                            <?php wp_nonce_field( 'g_import_nonce', 'g_import_nonce' ); ?>
-                            <?php submit_button( __( 'Import' ), 'secondary', 'submit', false ); ?>
+				    <?php wp_nonce_field( 'g_import_nonce', 'g_import_nonce' ); ?>
+				    <?php submit_button( __( 'Import' ), 'secondary', 'submit', false ); ?>
                         </p>
                     </form>
                 </div>
             </div>
         </div>
-	   <?php do_action( 'glossary_settings_panels' ); ?>
+	  <?php do_action( 'glossary_settings_panels' ); ?>
     </div>
     <!-- Begin MailChimp  -->
     <div class="right-column-settings-page metabox-holder">
         <div class="postbox codeat newsletter">
             <h3 class="hndle"><span><?php _e( 'Codeat Newsletter', $this->plugin_slug ); ?></span></h3>
             <div class="inside">
-            <!-- Begin MailChimp Signup Form -->
+		    <!-- Begin MailChimp Signup Form -->
                 <div id="mc_embed_signup">
                     <form action="//codeat.us12.list-manage.com/subscribe/post?u=07eeb6c8b7c0e093817bd29d1&amp;id=8e8f10fb4d" method="post" id="mc-embedded-subscribe-form" name="mc-embedded-subscribe-form" class="validate" target="_blank" novalidate>
                         <div id="mc_embed_signup_scroll"> 
@@ -178,7 +179,17 @@
                     </form>
                 </div>
                 <script type='text/javascript' src='//s3.amazonaws.com/downloads.mailchimp.com/js/mc-validate.js'></script>
-                <script type='text/javascript'>(function($) {window.fnames = new Array(); window.ftypes = new Array();fnames[0]='EMAIL';ftypes[0]='email';fnames[1]='FNAME';ftypes[1]='text';fnames[2]='LNAME';ftypes[2]='text';}(jQuery));var $mcj = jQuery.noConflict(true);</script>
+                <script type='text/javascript'>(function ($) {
+					window.fnames = new Array();
+					window.ftypes = new Array();
+					fnames[0] = 'EMAIL';
+					ftypes[0] = 'email';
+					fnames[1] = 'FNAME';
+					ftypes[1] = 'text';
+					fnames[2] = 'LNAME';
+					ftypes[2] = 'text';
+				  }(jQuery));
+				  var $mcj = jQuery.noConflict(true);</script>
             </div>
         </div>
     </div>

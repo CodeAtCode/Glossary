@@ -39,7 +39,7 @@ class Glossary {
    * @var      string
    */
   protected static $plugin_slug = 'glossary-by-codeat';
-  
+
   /**
    *
    * @since    1.1.0
@@ -117,6 +117,8 @@ class Glossary {
     if ( isset( $this->settings[ 'order_terms' ] ) ) {
 	add_filter( 'pre_get_posts', array( $this, 'order_glossary' ) );
     }
+
+    add_filter( 'glossary-themes-url', array( $this, 'add_glossary_url' ) );
   }
 
   /**
@@ -129,7 +131,7 @@ class Glossary {
   public function get_plugin_slug() {
     return self::$plugin_slug;
   }
-  
+
   /**
    * Return the setting slug.
    *
@@ -210,7 +212,15 @@ class Glossary {
    * @since    1.0.0
    */
   public function enqueue_styles() {
-    wp_enqueue_style( $this->get_setting_slug() . '-hint', plugins_url( 'assets/css/tooltip-' . $this->settings[ 'tooltip_style' ] . '.css', __FILE__ ), array(), self::VERSION );
+    $url_themes = apply_filters( 'glossary-themes-url', array() );
+    wp_enqueue_style( $this->get_setting_slug() . '-hint', $url_themes[ $this->settings[ 'tooltip_style' ] ], array(), self::VERSION );
+  }
+
+  public function add_glossary_url( $themes ) {
+    $themes[ 'classic' ] = plugins_url( 'assets/css/tooltip-classic.css', __FILE__ );
+    $themes[ 'box' ] = plugins_url( 'assets/css/tooltip-box.css', __FILE__ );
+    $themes[ 'line' ] = plugins_url( 'assets/css/tooltip-line.css', __FILE__ );
+    return $themes;
   }
 
 }
