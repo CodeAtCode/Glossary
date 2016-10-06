@@ -11,19 +11,23 @@
  * Plugin Name:       Glossary
  * Plugin URI:        http://codeat.co/glossary
  * Description:       Easily add and manage a glossary with auto-link, tooltips and more. Improve your internal link building for a better SEO.
- * Version:           1.1.1
+ * Version:           1.2.0
  * Author:            Codeat
  * Author URI:        http://codeat.co
  * Text Domain:       glossary-by-codeat
  * License:           GPL-2.0+
  * License URI:       http://www.gnu.org/licenses/gpl-2.0.txt
  * Domain Path:       /languages
- * WordPress-Plugin-Boilerplate-Powered: v1.1.7
+ * WordPress-Plugin-Boilerplate-Powered: v2.0.0
  */
 // If this file is called directly, abort.
 if ( !defined( 'WPINC' ) ) {
     die;
 }
+
+define( 'GT_VERSION', '1.2.0' );
+define( 'GT_SETTINGS', 'glossary' );
+define( 'GT_TEXTDOMAIN', 'glossary-by-codeat' );
 
 /*
  * ------------------------------------------------------------------------------
@@ -51,12 +55,6 @@ require_once( plugin_dir_path( __FILE__ ) . 'includes/widgets/categories.php' );
 require_once( plugin_dir_path( __FILE__ ) . 'includes/widgets/a2z.php' );
 
 require_once( plugin_dir_path( __FILE__ ) . 'public/class-glossary.php' );
-
-/*
- * - 9999 is used for load the plugin as last for resolve some
- *   problems when the plugin use API of other plugins, remove
- *   if you don' want this
- */
 
 add_action( 'plugins_loaded', array( 'Glossary', 'get_instance' ), 9999 );
 

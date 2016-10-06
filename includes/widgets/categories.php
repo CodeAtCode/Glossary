@@ -3,23 +3,19 @@
 class Categories_Glossary_Widget extends WPH_Widget {
 
   function __construct() {
-
-    $plugin = Glossary::get_instance();
-    $this->plugin_slug = $plugin->get_plugin_slug();
-
     $args = array(
-	  'label' => __( 'Glossary Categories', $this->plugin_slug ),
-	  'description' => __( 'List of Glossary Categories', $this->plugin_slug ),
+	  'label' => __( 'Glossary Categories', GT_TEXTDOMAIN ),
+	  'description' => __( 'List of Glossary Categories', GT_TEXTDOMAIN ),
     );
 
     $args[ 'fields' ] = array(
 	  array(
-		'name' => __( 'Title', $this->plugin_slug ),
-		'desc' => __( 'Enter the widget title.', $this->plugin_slug ),
+		'name' => __( 'Title', GT_TEXTDOMAIN ),
+		'desc' => __( 'Enter the widget title.', GT_TEXTDOMAIN ),
 		'id' => 'title',
 		'type' => 'text',
 		'class' => 'widefat',
-		'std' => __( 'Glossary Categories', $this->plugin_slug ),
+		'std' => __( 'Glossary Categories', GT_TEXTDOMAIN ),
 		'validate' => 'alpha_dash',
 		'filter' => 'strip_tags|esc_attr'
 	  )

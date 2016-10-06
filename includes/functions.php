@@ -31,13 +31,12 @@ function get_glossary_terms_list( $order, $num, $tax = '' ) {
 }
 
 function get_glossary_term_url( $id = '' ) {
-  $plugin = Glossary::get_instance();
   if ( empty( $id ) ) {
     $id = get_the_ID();
   }
-  $type = get_post_meta( $id, $plugin->get_setting_slug() . '_link_type', true );
-  $link = get_post_meta( $id, $plugin->get_setting_slug() . '_url', true );
-  $cpt = get_post_meta( $id, $plugin->get_setting_slug() . '_cpt', true );
+  $type = get_post_meta( $id, GT_SETTINGS . '_link_type', true );
+  $link = get_post_meta( $id, GT_SETTINGS . '_url', true );
+  $cpt = get_post_meta( $id, GT_SETTINGS . '_cpt', true );
   if ( empty( $link ) && empty( $cpt ) ) {
     return get_the_permalink( $id );
   }

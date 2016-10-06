@@ -3,29 +3,25 @@
 class Last_Glossary_Widget extends WPH_Widget {
 
   function __construct() {
-
-    $plugin = Glossary::get_instance();
-    $this->plugin_slug = $plugin->get_plugin_slug();
-
     $args = array(
-	  'label' => __( 'Latest Glossary Terms', $this->plugin_slug ),
-	  'description' => __( 'List of latest Glossary Terms', $this->plugin_slug ),
+	  'label' => __( 'Latest Glossary Terms', GT_TEXTDOMAIN ),
+	  'description' => __( 'List of latest Glossary Terms', GT_TEXTDOMAIN ),
     );
 
     $args[ 'fields' ] = array(
 	  array(
-		'name' => __( 'Title', $this->plugin_slug ),
-		'desc' => __( 'Enter the widget title.', $this->plugin_slug ),
+		'name' => __( 'Title', GT_TEXTDOMAIN ),
+		'desc' => __( 'Enter the widget title.', GT_TEXTDOMAIN ),
 		'id' => 'title',
 		'type' => 'text',
 		'class' => 'widefat',
-		'std' => __( 'Latest Glossary Terms', $this->plugin_slug ),
+		'std' => __( 'Latest Glossary Terms', GT_TEXTDOMAIN ),
 		'validate' => 'alpha_dash',
 		'filter' => 'strip_tags|esc_attr'
 	  ),
 	  array(
 		'name' => __( 'Number' ),
-		'desc' => __( 'Select how many glossary to show.', $this->plugin_slug ),
+		'desc' => __( 'Select how many glossary to show.', GT_TEXTDOMAIN ),
 		'id' => 'number',
 		'type' => 'text',
 		'validate' => 'numeric',
@@ -34,7 +30,7 @@ class Last_Glossary_Widget extends WPH_Widget {
 	  ),
 	  array(
 		'name' => __( 'Taxonomy' ),
-		'desc' => __( 'Select the taxonomy.', $this->plugin_slug ),
+		'desc' => __( 'Select the taxonomy.', GT_TEXTDOMAIN ),
 		'id' => 'tax',
 		'type' => 'taxonomyterm',
 		'taxonomy' => 'glossary-cat',

@@ -18,10 +18,7 @@ class Glossary_Tooltip_Engine {
    * @since     1.0.0
    */
   public function __construct() {
-    $plugin = Glossary::get_instance();
-    $this->plugin_slug = $plugin->get_plugin_slug();
-    $this->setting_slug = $plugin->get_setting_slug();
-    $this->settings = get_option( $this->setting_slug . '-settings' );
+    $this->settings = get_option( GT_SETTINGS . '-settings' );
     add_filter( 'the_content', array( $this, 'glossary_auto_link' ) );
     add_filter( 'the_excerpt', array( $this, 'glossary_auto_link' ) );
     add_action( 'genesis_entry_content', array( $this, 'genesis_content' ), 9 );
@@ -46,11 +43,11 @@ class Glossary_Tooltip_Engine {
     ) {
 	$gl_query = new WP_Query( array( 'post_type' => 'glossary', 'order' => 'ASC', 'orderby' => 'title', 'posts_per_page' => -1, 'no_found_rows' => true, 'update_post_term_cache' => false ) );
 	while ( $gl_query->have_posts() ) : $gl_query->the_post();
-	  $url = get_post_meta( get_the_ID(), $this->setting_slug . '_url', true );
-	  $type = get_post_meta( get_the_ID(), $this->setting_slug . '_link_type', true );
+	  $url = get_post_meta( get_the_ID(), GT_SETTINGS . '_url', true );
+	  $type = get_post_meta( get_the_ID(), GT_SETTINGS . '_link_type', true );
 	  $link = get_glossary_term_url();
-	  $target = get_post_meta( get_the_ID(), $this->setting_slug . '_target', true );
-	  $nofollow = get_post_meta( get_the_ID(), $this->setting_slug . '_nofollow', true );
+	  $target = get_post_meta( get_the_ID(), GT_SETTINGS . '_target', true );
+	  $nofollow = get_post_meta( get_the_ID(), GT_SETTINGS . '_nofollow', true );
 	  $internal = false;
 	  //Get the post of the glossary loop
 	  if ( empty( $url ) && empty( $type ) || $type === 'internal' ) {
@@ -70,7 +67,7 @@ class Glossary_Tooltip_Engine {
 	  } else {
 	    $links[] = '<a href="' . $link . '"' . $target . $nofollow . '>$0</a>';
 	  }
-	  $related = $this->related_post_meta( get_post_meta( get_the_ID(), $this->setting_slug . '_tag', true ) );
+	  $related = $this->related_post_meta( get_post_meta( get_the_ID(), GT_SETTINGS . '_tag', true ) );
 	  if ( is_array( $related ) ) {
 	    foreach ( $related as $value ) {
 		$words[] = $this->search_string( $value );

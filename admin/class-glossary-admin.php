@@ -43,8 +43,6 @@ class Glossary_Admin {
    */
   private function __construct() {
     $plugin = Glossary::get_instance();
-    $this->plugin_slug = $plugin->get_plugin_slug();
-    $this->setting_slug = $plugin->get_setting_slug();
     $this->cpts = $plugin->get_cpts();
 
     // Load admin style sheet and JavaScript.
@@ -62,26 +60,14 @@ class Glossary_Admin {
     add_action( 'admin_menu', array( $this, 'add_plugin_admin_menu' ) );
 
     // Add an action link pointing to the options page.
-    $plugin_basename = plugin_basename( plugin_dir_path( realpath( dirname( __FILE__ ) ) ) . $this->setting_slug . '.php' );
+    $plugin_basename = plugin_basename( plugin_dir_path( realpath( dirname( __FILE__ ) ) ) . GT_SETTINGS . '.php' );
     add_filter( 'plugin_action_links_' . $plugin_basename, array( $this, 'add_action_links' ) );
-
-    /*
-     * CMB 2 for metabox and many other cool things!
-     * https://github.com/WebDevStudios/CMB2
-     */
-    require_once( plugin_dir_path( __FILE__ ) . '/includes/CMB2/init.php' );
-    require_once( plugin_dir_path( __FILE__ ) . '/includes/cmb2-extra.php' );
-    require_once( plugin_dir_path( __FILE__ ) . '/includes/cmb2-post-search-field.php' );
-    add_filter( 'multicheck_posttype_posttypes', array( $this, 'hide_glossary' ) );
-    /*
-     * Add metabox
-     */
-    add_action( 'cmb2_init', array( $this, 'cmb_glossary' ) );
 
     /*
      * Import Export settings
      */
-    require_once( plugin_dir_path( __FILE__ ) . 'includes/impexp.php' );
+    require_once( plugin_dir_path( __FILE__ ) . 'includes/GT_ImpExp.php' );
+    require_once( plugin_dir_path( __FILE__ ) . 'includes/GT_CMB.php' );
   }
 
   /**
@@ -110,7 +96,7 @@ class Glossary_Admin {
   public function enqueue_admin_styles() {
     $screen = get_current_screen();
     if ( $this->plugin_screen_hook_suffix == $screen->id || strpos( $_SERVER[ 'REQUEST_URI' ], 'index.php' ) || strpos( $_SERVER[ 'REQUEST_URI' ], '/wp-admin/' ) !== -1 ) {
-	wp_enqueue_style( $this->setting_slug . '-admin-styles', plugins_url( 'assets/css/admin.css', __FILE__ ), array( 'dashicons' ), Glossary::VERSION );
+	wp_enqueue_style( GT_SETTINGS . '-admin-styles', plugins_url( 'assets/css/admin.css', __FILE__ ), array( 'dashicons' ), GT_VERSION );
     }
   }
 
@@ -125,7 +111,7 @@ class Glossary_Admin {
   public function enqueue_admin_scripts() {
     $screen = get_current_screen();
     if ( $screen->post_type === 'glossary' ) {
-	wp_enqueue_script( $this->setting_slug . '-admin-pt-script', plugins_url( 'assets/js/pt.js', __FILE__ ), array( 'jquery' ), Glossary::VERSION );
+	wp_enqueue_script( GT_SETTINGS . '-admin-pt-script', plugins_url( 'assets/js/pt.js', __FILE__ ), array( 'jquery' ), GT_VERSION );
     }
 
     if ( !isset( $this->plugin_screen_hook_suffix ) ) {
@@ -133,7 +119,7 @@ class Glossary_Admin {
     }
 
     if ( $this->plugin_screen_hook_suffix === $screen->id ) {
-	wp_enqueue_script( $this->setting_slug . '-admin-script', plugins_url( 'assets/js/admin.js', __FILE__ ), array( 'jquery', 'jquery-ui-tabs' ), Glossary::VERSION );
+	wp_enqueue_script( GT_SETTINGS . '-admin-script', plugins_url( 'assets/js/admin.js', __FILE__ ), array( 'jquery', 'jquery-ui-tabs' ), GT_VERSION );
     }
   }
 
@@ -149,7 +135,7 @@ class Glossary_Admin {
      * Settings page in the menu
      * 
      */
-    $this->plugin_screen_hook_suffix = add_submenu_page( 'edit.php?post_type=glossary', __( 'Settings', $this->plugin_slug ), __( 'Settings', $this->plugin_slug ), 'manage_options', $this->setting_slug, array( $this, 'display_plugin_admin_page' ));
+    $this->plugin_screen_hook_suffix = add_submenu_page( 'edit.php?post_type=glossary', __( 'Settings', GT_TEXTDOMAIN ), __( 'Settings', GT_TEXTDOMAIN ), 'manage_options', GT_SETTINGS, array( $this, 'display_plugin_admin_page' ));
   }
 
   /**
@@ -169,7 +155,7 @@ class Glossary_Admin {
   public function add_action_links( $links ) {
     return array_merge(
 		array(
-	  'settings' => '<a href="' . admin_url( 'options-general.php?page=' . $this->plugin_slug ) . '">' . __( 'Settings' ) . '</a>',
+	  'settings' => '<a href="' . admin_url( 'options-general.php?page=' . GT_TEXTDOMAIN ) . '">' . __( 'Settings' ) . '</a>',
 		), $links
     );
   }
@@ -194,7 +180,7 @@ class Glossary_Admin {
 	if ( $num_posts ) {
 	  $published = intval( $num_posts->publish );
 	  $post_type = get_post_type_object( $type );
-	  $text = _n( '%s ' . $post_type->labels->singular_name, '%s ' . $post_type->labels->name, $published, $this->plugin_slug );
+	  $text = _n( '%s ' . $post_type->labels->singular_name, '%s ' . $post_type->labels->name, $published, GT_TEXTDOMAIN );
 	  $text = sprintf( $text, number_format_i18n( $published ) );
 	  if ( current_user_can( $post_type->cap->edit_posts ) ) {
 	    $items[] = '<a class="' . $post_type->name . '-count" href="edit.php?post_type=' . $post_type->name . '">' . sprintf( '%2$s', $type, $text ) . "</a>\n";
@@ -221,78 +207,6 @@ class Glossary_Admin {
     }
     $query_args[ 'post_type' ] = array_merge( $query_args[ 'post_type' ], $this->cpts );
     return $query_args;
-  }
-
-  /**
-   * Hide glossary post type from settings
-   *
-   * @since    1.0.0
-   * @return array
-   */
-  function hide_glossary( $cpts ) {
-    unset( $cpts[ 'attachment' ] );
-    return $cpts;
-  }
-
-  /**
-   * NOTE:     Your metabox on Demo CPT
-   *
-   * @since    1.0.0
-   * 
-   * @return void
-   */
-  public function cmb_glossary() {
-    // Start with an underscore to hide fields from custom fields list
-    $cmb_demo = new_cmb2_box( array(
-	  'id' => 'glossary_metabox',
-	  'title' => __( 'Glossary auto-link settings', $this->plugin_slug ),
-	  'object_types' => $this->cpts,
-	  'context' => 'normal',
-	  'priority' => 'high',
-	  'show_names' => true,
-		) );
-    $cmb_demo->add_field( array(
-	  'name' => __( 'Additional search terms', $this->plugin_slug ),
-	  'desc' => __( 'Case-Insensitive! More than one: Comma Separated Values', $this->plugin_slug ),
-	  'id' => $this->setting_slug . '_tag',
-	  'type' => 'text'
-    ) );
-    $cmb_demo->add_field( array(
-	  'name' => __( 'What type of link?', $this->plugin_slug ),
-	  'id' => $this->setting_slug . '_link_type',
-	  'type' => 'radio',
-	  'default' => 'external',
-	  'options' => array(
-		'external' => 'External URL',
-		'internal' => 'Internal Post Type'
-	  )
-    ) );
-    $cmb_demo->add_field( array(
-	  'name' => __( 'External URL', $this->plugin_slug ),
-	  'desc' => __( 'Redirects links to an external/affliate URL', $this->plugin_slug ),
-	  'id' => $this->setting_slug . '_url',
-	  'type' => 'text_url',
-	  'protocols' => array( 'http', 'https' ),
-    ) );
-    $cmb_demo->add_field( array(
-	  'name' => __( 'Internal Post type', $this->plugin_slug ),
-	  'desc' => __( 'Select a post type of your site', $this->plugin_slug ),
-	  'id' => $this->setting_slug . '_cpt',
-	  'type' => 'post_search_text',
-	  'select_type' => 'radio',
-	  'onlyone' => true
-    ) );
-    $cmb_demo->add_field( array(
-	  'name' => __( 'Open external link in a new window', $this->plugin_slug ),
-	  'id' => $this->setting_slug . '_target',
-	  'type' => 'checkbox'
-    ) );
-    $cmb_demo->add_field( array(
-	  'name' => __( 'No Follow link', $this->plugin_slug ),
-	  'desc' => __( 'Put rel="nofollow" in the link for SEO purposes', $this->plugin_slug ),
-	  'id' => $this->setting_slug . '_nofollow',
-	  'type' => 'checkbox'
-    ) );
   }
 
 }

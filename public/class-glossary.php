@@ -18,37 +18,6 @@
 class Glossary {
 
   /**
-   * Plugin version, used for cache-busting of style and script file references.
-   *
-   * @since   1.0.0
-   *
-   * @var     string
-   */
-  const VERSION = '1.1.0';
-
-  /**
-   * Unique identifier for your plugin.
-   *
-   *
-   * The variable name is used as the text domain when internationalizing strings
-   * of text. Its value should match the Text Domain file header in the main
-   * plugin file.
-   *
-   * @since    1.0.0
-   *
-   * @var      string
-   */
-  protected static $plugin_slug = 'glossary-by-codeat';
-
-  /**
-   *
-   * @since    1.1.0
-   *
-   * @var      string
-   */
-  protected static $setting_slug = 'glossary';
-
-  /**
    * Instance of this class.
    *
    * @since    1.0.0
@@ -74,7 +43,7 @@ class Glossary {
    * @since     1.0.0
    */
   private function __construct() {
-    $this->settings = get_option( $this->get_setting_slug() . '-settings' );
+    $this->settings = get_option( GT_SETTINGS . '-settings' );
     $glossary_term_cpt = array(
 	  'taxonomies' => array( 'glossary-cat' ),
 	  'map_meta_cap' => true,
@@ -88,7 +57,7 @@ class Glossary {
 	$glossary_term_cpt[ 'has_archive' ] = false;
     }
     register_via_cpt_core(
-		array( __( 'Glossary Term', $this->get_plugin_slug() ), __( 'Glossary Terms', $this->get_plugin_slug() ), 'glossary' ), $glossary_term_cpt
+		array( __( 'Glossary Term', GT_TEXTDOMAIN ), __( 'Glossary Terms', GT_TEXTDOMAIN ), 'glossary' ), $glossary_term_cpt
     );
     $glossary_term_tax = array(
 	  'public' => true,
@@ -100,7 +69,7 @@ class Glossary {
 	$glossary_term_tax[ 'rewrite' ][ 'slug' ] = $this->settings[ 'slug-cat' ];
     }
     register_via_taxonomy_core(
-		array( __( 'Term Category', $this->get_plugin_slug() ), __( 'Terms Categories', $this->get_plugin_slug() ), 'glossary-cat' ), $glossary_term_tax, array( 'glossary' )
+		array( __( 'Term Category', GT_TEXTDOMAIN ), __( 'Terms Categories', GT_TEXTDOMAIN ), 'glossary-cat' ), $glossary_term_tax, array( 'glossary' )
     );
 
     if ( isset( $this->settings[ 'search' ] ) ) {
@@ -119,28 +88,6 @@ class Glossary {
     }
 
     add_filter( 'glossary-themes-url', array( $this, 'add_glossary_url' ) );
-  }
-
-  /**
-   * Return the plugin slug.
-   *
-   * @since    1.0.0
-   *
-   * @return    Plugin slug variable.
-   */
-  public function get_plugin_slug() {
-    return self::$plugin_slug;
-  }
-
-  /**
-   * Return the setting slug.
-   *
-   * @since    1.0.0
-   *
-   * @return    Plugin slug variable.
-   */
-  public function get_setting_slug() {
-    return self::$setting_slug;
   }
 
   /**
@@ -213,7 +160,7 @@ class Glossary {
    */
   public function enqueue_styles() {
     $url_themes = apply_filters( 'glossary-themes-url', array() );
-    wp_enqueue_style( $this->get_setting_slug() . '-hint', $url_themes[ $this->settings[ 'tooltip_style' ] ], array(), self::VERSION );
+    wp_enqueue_style( GT_SETTINGS . '-hint', $url_themes[ $this->settings[ 'tooltip_style' ] ], array(), GT_VERSION );
   }
 
   public function add_glossary_url( $themes ) {

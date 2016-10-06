@@ -20,48 +20,48 @@ ba<?php
     <div id="tabs" class="settings-tab">
         <ul>
             <li><a href="#tabs-1"><?php _e( 'Settings' ); ?></a></li>
-            <li><a href="#tabs-2"><?php _e( 'Import/Export', $this->plugin_slug ); ?></a></li>
+            <li><a href="#tabs-2"><?php _e( 'Import/Export', GT_TEXTDOMAIN ); ?></a></li>
 		<?php do_action( 'glossary_settings_tabs' ); ?>
         </ul>
         <div id="tabs-1" class="wrap">
 		<?php
 		$cmb = new_cmb2_box( array(
-		    'id' => $this->setting_slug . '_options',
+		    'id' => GT_SETTINGS . '_options',
 		    'hookup' => false,
-		    'show_on' => array( 'key' => 'options-page', 'value' => array( $this->plugin_slug ), ),
+		    'show_on' => array( 'key' => 'options-page', 'value' => array( GT_TEXTDOMAIN ), ),
 		    'show_names' => true,
 			  ) );
 		$cmb->add_field( array(
-		    'name' => __( 'Enable in:', $this->plugin_slug ),
+		    'name' => __( 'Enable in:', GT_TEXTDOMAIN ),
 		    'id' => 'posttypes',
 		    'type' => 'multicheck_posttype',
 		) );
 		$cmb->add_field( array(
-		    'name' => __( 'Enable also in following archives:', $this->plugin_slug ),
+		    'name' => __( 'Enable also in following archives:', GT_TEXTDOMAIN ),
 		    'id' => 'is',
 		    'type' => 'multicheck',
 		    'options' => array(
-			  'home' => __( 'Home', $this->plugin_slug ),
-			  'category' => __( 'Category archive', $this->plugin_slug ),
-			  'tag' => __( 'Tag archive', $this->plugin_slug ),
-			  'arc_glossary' => __( 'Glossary Archive', $this->plugin_slug ),
-			  'tax_glossary' => __( 'Glossary Taxonomy', $this->plugin_slug )
+			  'home' => __( 'Home', GT_TEXTDOMAIN ),
+			  'category' => __( 'Category archive', GT_TEXTDOMAIN ),
+			  'tag' => __( 'Tag archive', GT_TEXTDOMAIN ),
+			  'arc_glossary' => __( 'Glossary Archive', GT_TEXTDOMAIN ),
+			  'tax_glossary' => __( 'Glossary Taxonomy', GT_TEXTDOMAIN )
 		    )
 		) );
 		$cmb->add_field( array(
-		    'name' => __( 'Order Glossary terms archive alphabetically', $this->plugin_slug ),
+		    'name' => __( 'Order Glossary terms archive alphabetically', GT_TEXTDOMAIN ),
 		    'id' => 'order_terms',
 		    'type' => 'checkbox',
 		) );
 		$cmb->add_field( array(
-		    'name' => __( 'Link only the first occurence', $this->plugin_slug ),
-		    'desc' => __( 'Prevent duplicate links and tooltips in the same post', $this->plugin_slug ),
+		    'name' => __( 'Link only the first occurence', GT_TEXTDOMAIN ),
+		    'desc' => __( 'Prevent duplicate links and tooltips in the same post', GT_TEXTDOMAIN ),
 		    'id' => 'first_occurence',
 		    'type' => 'checkbox',
 		) );
 		$cmb->add_field( array(
-		    'name' => __( 'Enable tooltips on terms', $this->plugin_slug ),
-		    'desc' => __( 'Tooltip will popup on hover', $this->plugin_slug ),
+		    'name' => __( 'Enable tooltips on terms', GT_TEXTDOMAIN ),
+		    'desc' => __( 'Tooltip will popup on hover', GT_TEXTDOMAIN ),
 		    'id' => 'tooltip',
 		    'type' => 'checkbox',
 		) );
@@ -71,58 +71,58 @@ ba<?php
 		    'line' => 'Line',
 		) );
 		$cmb->add_field( array(
-		    'name' => __( 'Tooltip style', $this->plugin_slug ),
-		    'desc' => __( 'Only classic shows featured images', $this->plugin_slug ),
+		    'name' => __( 'Tooltip style', GT_TEXTDOMAIN ),
+		    'desc' => __( 'Only classic shows featured images', GT_TEXTDOMAIN ),
 		    'id' => 'tooltip_style',
 		    'type' => 'select',
 		    'options' => $themes
 		) );
 		$cmb->add_field( array(
-		    'name' => __( 'Excerpt length', $this->plugin_slug ),
+		    'name' => __( 'Excerpt length', GT_TEXTDOMAIN ),
 		    'id' => 'excerpt_limit',
 		    'type' => 'text_number',
 		    'default' => '60'
 		) );
 		$cmb->add_field( array(
-		    'name' => __( 'Enable image in tooltip', $this->plugin_slug ),
-		    'desc' => __( 'Check it if you want also term\'s featured image in classic tooltips', $this->plugin_slug ),
+		    'name' => __( 'Enable image in tooltips', GT_TEXTDOMAIN ),
+		    'desc' => __( 'Check it if you want also term\'s featured image in classic tooltips', GT_TEXTDOMAIN ),
 		    'id' => 't_image',
 		    'type' => 'checkbox',
 		) );
 		$cmb->add_field( array(
-		    'name' => __( 'Glossary Terms slug', $this->plugin_slug ),
+		    'name' => __( 'Glossary Terms Slug', GT_TEXTDOMAIN ),
 		    'id' => 'slug',
 		    'type' => 'text_small',
 		    'default' => 'glossary'
 		) );
 		$cmb->add_field( array(
-		    'name' => __( 'Glossary category slug', $this->plugin_slug ),
+		    'name' => __( 'Glossary Category Slug', GT_TEXTDOMAIN ),
 		    'id' => 'slug-cat',
 		    'type' => 'text_small',
 		    'default' => 'glossary-cat'
 		) );
 		$cmb->add_field( array(
-		    'name' => __( 'Disable Archive page for Glossary Terms', $this->plugin_slug ),
-		    'desc' => __( 'Don\'t forget to flush the permalinks', $this->plugin_slug ),
+		    'name' => __( 'Disable Archive page for Glossary Terms', GT_TEXTDOMAIN ),
+		    'desc' => __( 'Don\'t forget to flush the permalinks', GT_TEXTDOMAIN ),
 		    'id' => 'archive',
 		    'type' => 'checkbox',
 		) );
 		$cmb->add_field( array(
-		    'name' => __( 'Replace search result with glossary terms', $this->plugin_slug ),
-		    'desc' => __( 'Add the post type to the others, in few case only this post type is enabled', $this->plugin_slug ),
+		    'name' => __( 'Replace search result with Glossary Terms', GT_TEXTDOMAIN ),
+		    'desc' => __( 'Add the post type to the others, in few case only this post type is enabled', GT_TEXTDOMAIN ),
 		    'id' => 'search',
 		    'type' => 'checkbox',
 		) );
-		cmb2_metabox_form( $this->setting_slug . '_options', $this->setting_slug . '-settings' );
+		cmb2_metabox_form( GT_SETTINGS . '_options', GT_SETTINGS . '-settings' );
 		?>
 
             <!-- @TODO: Provide other markup for your options page here. -->
         </div>
         <div id="tabs-2" class="metabox-holder">
             <div class="postbox">
-                <h3 class="hndle"><span><?php _e( 'Export Settings', $this->plugin_slug ); ?></span></h3>
+                <h3 class="hndle"><span><?php _e( 'Export Settings', GT_TEXTDOMAIN ); ?></span></h3>
                 <div class="inside">
-                    <p><?php _e( 'Export the plugin settings for this site as a .json file. This allows you to easily import the configuration into another site.', $this->plugin_slug ); ?></p>
+                    <p><?php _e( 'Export the plugin settings for this site as a .json file. This allows you to easily import the configuration into another site.', GT_TEXTDOMAIN ); ?></p>
                     <form method="post">
                         <p><input type="hidden" name="g_action" value="export_settings" /></p>
                         <p>
@@ -134,9 +134,9 @@ ba<?php
             </div>
 
             <div class="postbox">
-                <h3 class="hndle"><span><?php _e( 'Import Settings', $this->plugin_slug ); ?></span></h3>
+                <h3 class="hndle"><span><?php _e( 'Import Settings', GT_TEXTDOMAIN ); ?></span></h3>
                 <div class="inside">
-                    <p><?php _e( 'Import the plugin settings from a .json file. This file can be obtained by exporting the settings on another site using the form above.', $this->plugin_slug ); ?></p>
+                    <p><?php _e( 'Import the plugin settings from a .json file. This file can be obtained by exporting the settings on another site using the form above.', GT_TEXTDOMAIN ); ?></p>
                     <form method="post" enctype="multipart/form-data">
                         <p>
                             <input type="file" name="g_import_file"/>
@@ -155,7 +155,7 @@ ba<?php
     <!-- Begin MailChimp  -->
     <div class="right-column-settings-page metabox-holder">
         <div class="postbox codeat newsletter">
-            <h3 class="hndle"><span><?php _e( 'Codeat Newsletter', $this->plugin_slug ); ?></span></h3>
+            <h3 class="hndle"><span><?php _e( 'Codeat Newsletter', GT_TEXTDOMAIN ); ?></span></h3>
             <div class="inside">
 		    <!-- Begin MailChimp Signup Form -->
                 <div id="mc_embed_signup">
@@ -196,7 +196,7 @@ ba<?php
     <!-- Begin Social Links -->
     <div class="right-column-settings-page metabox-holder">
         <div class="postbox codeat social">
-            <h3 class="hndle"><span><?php _e( 'Follow us', $this->plugin_slug ); ?></span></h3>
+            <h3 class="hndle"><span><?php _e( 'Follow us', GT_TEXTDOMAIN ); ?></span></h3>
             <div class="inside">
                 <a href="https://facebook.com/codeatco/" target="_blank"><img src="http://i2.wp.com/codeat.co/wp-content/uploads/2016/02/social-facebook.png?w=52" alt="facebook"></a>
                 <a href="https://twitter.com/codeatco/" target="_blank"><img src="http://i0.wp.com/codeat.co/wp-content/uploads/2016/02/social-twitter.png?w=52" alt="twitter"></a>
@@ -207,7 +207,7 @@ ba<?php
     <!-- Begin Plugin List -->
     <div class="right-column-settings-page metabox-holder">
         <div class="postbox codeat">
-            <h3 class="hndle"><span><?php _e( 'A Codeat Plugin', $this->plugin_slug ); ?></span></h3>
+            <h3 class="hndle"><span><?php _e( 'A Codeat Plugin', GT_TEXTDOMAIN ); ?></span></h3>
             <div class="inside">
                 <a href="http://codeat.co" target="_blank"><img src="http://i2.wp.com/codeat.co/wp-content/uploads/2016/02/cropped-logo-light.png?w=236" alt="Codeat"></a>
                 <a href="http://codeat.co/glossary/" target="_blank"><img src="http://i0.wp.com/codeat.co/glossary/wp-content/uploads/sites/3/2016/02/cropped-Glossary_logo-ori-Lite-1.png?w=236" alt="Glossary For WordPress"></a>
