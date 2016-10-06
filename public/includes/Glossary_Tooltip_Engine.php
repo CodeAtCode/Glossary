@@ -196,18 +196,28 @@ class Glossary_Tooltip_Engine {
    * @return string
    */
   public function get_the_excerpt( $post, $internal = false ) {
+    $readmore = '';
     if ( empty( $post->post_excerpt ) ) {
 	$excerpt = apply_filters( 'glossary_excerpt', wp_strip_all_tags( $post->post_content ), $post );
     } else {
 	$excerpt = apply_filters( 'glossary_excerpt', wp_strip_all_tags( $post->post_excerpt ), $post );
     }
-    if ( strlen( $excerpt ) >= absint( $this->settings[ 'excerpt_limit' ] ) ) {
-	$readmore = '';
-	if ( $internal ) {
-	  $readmore = ' <a href="' . get_the_permalink() . '">' . __( 'More' ) . '</a>';
-	}
-	return substr( $excerpt, 0, absint( $this->settings[ 'excerpt_limit' ] ) ) . '...' . $readmore;
+
+    if ( $internal ) {
+	$readmore = ' <a href="' . get_the_permalink() . '">' . __( 'More' ) . '</a>';
     }
+
+    if ( isset( $this->settings[ 'excerpt_words' ] ) && $this->settings[ 'excerpt_words' ] ) {
+	$char_limit = absint( $this->settings[ 'excerpt_limit' ] );
+	if ( strlen( $excerpt ) >= $char_limit ) {
+	  $excerpt = wp_trim_words( $excerpt, $char_limit, '' ) . '...' . $readmore;
+	}
+    } else {
+	if ( strlen( $excerpt ) >= absint( $this->settings[ 'excerpt_limit' ] ) ) {
+	  $excerpt = substr( $excerpt, 0, absint( $this->settings[ 'excerpt_limit' ] ) ) . '...' . $readmore;
+	}
+    }
+
     return $excerpt;
   }
 

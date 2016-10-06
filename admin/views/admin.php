@@ -32,6 +32,11 @@ ba<?php
 		    'show_names' => true,
 			  ) );
 		$cmb->add_field( array(
+		    'name' => __( 'Post Types', GT_TEXTDOMAIN ),
+		    'id' => 'title_post_types',
+		    'type' => 'title'
+		) );
+		$cmb->add_field( array(
 		    'name' => __( 'Enable in:', GT_TEXTDOMAIN ),
 		    'id' => 'posttypes',
 		    'type' => 'multicheck_posttype',
@@ -51,42 +56,6 @@ ba<?php
 		$cmb->add_field( array(
 		    'name' => __( 'Order Glossary terms archive alphabetically', GT_TEXTDOMAIN ),
 		    'id' => 'order_terms',
-		    'type' => 'checkbox',
-		) );
-		$cmb->add_field( array(
-		    'name' => __( 'Link only the first occurence', GT_TEXTDOMAIN ),
-		    'desc' => __( 'Prevent duplicate links and tooltips in the same post', GT_TEXTDOMAIN ),
-		    'id' => 'first_occurence',
-		    'type' => 'checkbox',
-		) );
-		$cmb->add_field( array(
-		    'name' => __( 'Enable tooltips on terms', GT_TEXTDOMAIN ),
-		    'desc' => __( 'Tooltip will popup on hover', GT_TEXTDOMAIN ),
-		    'id' => 'tooltip',
-		    'type' => 'checkbox',
-		) );
-		$themes = apply_filters( 'glossary-themes-dropdown', array(
-		    'classic' => 'Classic',
-		    'box' => 'Box',
-		    'line' => 'Line',
-		) );
-		$cmb->add_field( array(
-		    'name' => __( 'Tooltip style', GT_TEXTDOMAIN ),
-		    'desc' => __( 'Only classic shows featured images', GT_TEXTDOMAIN ),
-		    'id' => 'tooltip_style',
-		    'type' => 'select',
-		    'options' => $themes
-		) );
-		$cmb->add_field( array(
-		    'name' => __( 'Excerpt length', GT_TEXTDOMAIN ),
-		    'id' => 'excerpt_limit',
-		    'type' => 'text_number',
-		    'default' => '60'
-		) );
-		$cmb->add_field( array(
-		    'name' => __( 'Enable image in tooltips', GT_TEXTDOMAIN ),
-		    'desc' => __( 'Check it if you want also term\'s featured image in classic tooltips', GT_TEXTDOMAIN ),
-		    'id' => 't_image',
 		    'type' => 'checkbox',
 		) );
 		$cmb->add_field( array(
@@ -113,10 +82,67 @@ ba<?php
 		    'type' => 'checkbox',
 		) );
 		$cmb->add_field( array(
+		    'name' => __( 'Behaviour', GT_TEXTDOMAIN ),
+		    'id' => 'title_behaviour',
+		    'type' => 'title'
+		) );
+		$cmb->add_field( array(
+		    'name' => __( 'Link only the first occurence', GT_TEXTDOMAIN ),
+		    'desc' => __( 'Prevent duplicate links and tooltips in the same post', GT_TEXTDOMAIN ),
+		    'id' => 'first_occurence',
+		    'type' => 'checkbox',
+		) );
+		$cmb->add_field( array(
 		    'name' => __( 'Replace search result with Glossary Terms', GT_TEXTDOMAIN ),
 		    'desc' => __( 'Add the post type to the others, in few case only this post type is enabled', GT_TEXTDOMAIN ),
 		    'id' => 'search',
 		    'type' => 'checkbox',
+		) );
+		$cmb->add_field( array(
+		    'name' => __( 'Tooltip', GT_TEXTDOMAIN ),
+		    'id' => 'title_tooltip',
+		    'type' => 'title'
+		) );
+		$cmb->add_field( array(
+		    'name' => __( 'Enable tooltips on terms', GT_TEXTDOMAIN ),
+		    'desc' => __( 'Tooltip will popup on hover', GT_TEXTDOMAIN ),
+		    'id' => 'tooltip',
+		    'type' => 'checkbox',
+		) );
+		$themes = apply_filters( 'glossary-themes-dropdown', array(
+		    'classic' => 'Classic',
+		    'box' => 'Box',
+		    'line' => 'Line',
+		) );
+		$cmb->add_field( array(
+		    'name' => __( 'Tooltip style', GT_TEXTDOMAIN ),
+		    'desc' => __( 'Only classic shows featured images', GT_TEXTDOMAIN ),
+		    'id' => 'tooltip_style',
+		    'type' => 'select',
+		    'options' => $themes
+		) );
+		$cmb->add_field( array(
+		    'name' => __( 'Enable image in tooltips', GT_TEXTDOMAIN ),
+		    'desc' => __( 'Check it if you want also term\'s featured image in classic tooltips', GT_TEXTDOMAIN ),
+		    'id' => 't_image',
+		    'type' => 'checkbox',
+		) );
+		$cmb->add_field( array(
+		    'name' => __( 'Excerpt', GT_TEXTDOMAIN ),
+		    'id' => 'title_excerpt_limit',
+		    'type' => 'title'
+		) );
+		$cmb->add_field( array(
+		    'name' => __( 'Limit the excerpt by words', GT_TEXTDOMAIN ),
+		    'id' => 'excerpt_words',
+		    'type' => 'checkbox',
+		) );
+		$cmb->add_field( array(
+		    'name' => __( 'Excerpt length in char or words', GT_TEXTDOMAIN ),
+		    'desc' => __( 'This value is used for the option below', GT_TEXTDOMAIN ),
+		    'id' => 'excerpt_limit',
+		    'type' => 'text_number',
+		    'default' => '60'
 		) );
 		cmb2_metabox_form( GT_SETTINGS . '_options', GT_SETTINGS . '-settings' );
 		?>

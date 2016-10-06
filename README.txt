@@ -82,6 +82,7 @@ Yes, we love Genesis Framework and we care about other Genesis fans. SEO, Layout
 
 * Fix: Search support
 * Feature: Option to disable public archive for the Glossary taxonomy
+* Feature: Option to limit the excerpt by words
 
 = 1.1.2 =
 
