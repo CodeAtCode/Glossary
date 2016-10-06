@@ -4,7 +4,7 @@ Donate link: http://codeat.com/
 Tags: glossary, vocabulary, dictionary, tooltips, terms,
 Requires at least: 4.4
 Tested up to: 4.5
-Stable tag: 1.1.1
+Stable tag: 1.2.0
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -68,7 +68,7 @@ Yes, we love Genesis Framework and we care about other Genesis fans. SEO, Layout
 
 == Screenshots ==
 
-1. GLossary general settings
+1. Glossary general settings
 2. Glossary Single auto-link setting
 3. Glossary Terms list in WordPress Dashboard
 4. Tooltip Line template
@@ -78,6 +78,10 @@ Yes, we love Genesis Framework and we care about other Genesis fans. SEO, Layout
 8. Glossary features
 
 == Changelog ==
+= 1.2.0 =
+
+* Fix: Search support
+* Feature: Option to disable public archive for the Glossary taxonomy
 
 = 1.1.2 =
 

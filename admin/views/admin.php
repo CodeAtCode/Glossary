@@ -102,9 +102,14 @@ ba<?php
 		    'default' => 'glossary-cat'
 		) );
 		$cmb->add_field( array(
-		    'name' => __( 'Disable Archive page for Glossary Terms', GT_TEXTDOMAIN ),
+		    'name' => __( 'Disable Archive in the frontend for Glossary Terms', GT_TEXTDOMAIN ),
 		    'desc' => __( 'Don\'t forget to flush the permalinks', GT_TEXTDOMAIN ),
 		    'id' => 'archive',
+		    'type' => 'checkbox',
+		) );
+		$cmb->add_field( array(
+		    'name' => __( 'Disable Archive in the frontend for Glossary Taxonomy', GT_TEXTDOMAIN ),
+		    'id' => 'tax_archive',
 		    'type' => 'checkbox',
 		) );
 		$cmb->add_field( array(

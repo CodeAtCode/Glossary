@@ -87,6 +87,10 @@ class Glossary {
 	add_filter( 'pre_get_posts', array( $this, 'order_glossary' ) );
     }
 
+    if ( isset( $this->settings[ 'tax_archive' ] ) ) {
+	add_action( 'pre_get_posts', array( $this, 'hide_taxonomy_frontend' ) );
+    }
+
     add_filter( 'glossary-themes-url', array( $this, 'add_glossary_url' ) );
   }
 
@@ -163,11 +167,33 @@ class Glossary {
     wp_enqueue_style( GT_SETTINGS . '-hint', $url_themes[ $this->settings[ 'tooltip_style' ] ], array(), GT_VERSION );
   }
 
+  /**
+   * Add the path to the themes
+   * 
+   * @param array $themes
+   * @return array
+   */
   public function add_glossary_url( $themes ) {
     $themes[ 'classic' ] = plugins_url( 'assets/css/tooltip-classic.css', __FILE__ );
     $themes[ 'box' ] = plugins_url( 'assets/css/tooltip-box.css', __FILE__ );
     $themes[ 'line' ] = plugins_url( 'assets/css/tooltip-line.css', __FILE__ );
     return $themes;
+  }
+
+  /**
+   * Hide the taxonomy on the frontend
+   * 
+   * @param object $query
+   * @return object
+   */
+  public function hide_taxonomy_frontend( $query ) {
+    if ( is_admin() ) {
+	return;
+    }
+
+    if ( is_tax( 'glossary-cat' ) ) {
+	$query->set_404();
+    }
   }
 
 }
