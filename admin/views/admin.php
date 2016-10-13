@@ -19,11 +19,11 @@
 
     <div id="tabs" class="settings-tab">
         <ul>
-            <li><a href="#tabs-1"><?php _e( 'Settings' ); ?></a></li>
-            <li><a href="#tabs-2"><?php _e( 'Import/Export', GT_TEXTDOMAIN ); ?></a></li>
+            <li><a href="#tabs-settings"><?php _e( 'Settings' ); ?></a></li>
+            <li><a href="#tabs-impexp"><?php _e( 'Import/Export', GT_TEXTDOMAIN ); ?></a></li>
 		<?php do_action( 'glossary_settings_tabs' ); ?>
         </ul>
-        <div id="tabs-1" class="wrap">
+        <div id="tabs-settings" class="wrap">
 		<?php
 		$cmb = new_cmb2_box( array(
 		    'id' => GT_SETTINGS . '_options',
@@ -149,7 +149,7 @@
 
             <!-- @TODO: Provide other markup for your options page here. -->
         </div>
-        <div id="tabs-2" class="metabox-holder">
+        <div id="tabs-impexp" class="metabox-holder">
             <div class="postbox">
                 <h3 class="hndle"><span><?php _e( 'Export Settings', GT_TEXTDOMAIN ); ?></span></h3>
                 <div class="inside">
