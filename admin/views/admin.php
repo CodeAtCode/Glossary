@@ -1,4 +1,4 @@
-ba<?php
+<?php
 /**
  * Represents the view for the administration dashboard.
  *
