@@ -12,6 +12,7 @@
 	display: inline-block;
 	font-weight: 700;
 	padding: 0 10px;
+	border:0px !important;
 }
 
 /* Gap filler */
