@@ -19,7 +19,7 @@ class Glossary_Tooltip_Engine {
    */
   public function __construct() {
     $this->settings = get_option( GT_SETTINGS . '-settings' );
-    add_filter( 'the_content', array( $this, 'glossary_auto_link' ) );
+    add_filter( 'the_content', array( $this, 'glossary_auto_link' ), 999 );
     add_filter( 'the_excerpt', array( $this, 'glossary_auto_link' ) );
     add_action( 'genesis_entry_content', array( $this, 'genesis_content' ), 9 );
   }
