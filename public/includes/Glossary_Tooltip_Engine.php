@@ -24,15 +24,23 @@ class Glossary_Tooltip_Engine {
     add_action( 'genesis_entry_content', array( $this, 'genesis_content' ), 9 );
   }
 
-  /**
-   *
-   * The magic function that add the glossary terms to your content
-   *
-   * @global object $post
-   * @param string $text
-   * @return string
-   */
-  public function glossary_auto_link( $text ) {
+	/**
+	 *
+	 * The magic function that add the glossary terms to your content
+	 *
+	 * @global object $post
+	 * @param string $text
+	 * @return string
+	 */
+	public function glossary_auto_link( $text ) {
+		$queried_object = get_queried_object();
+
+		if ( $this->g_is_singular() && is_a( $queried_object, 'WP_Post' ) ) {
+			if ( get_post_meta( $queried_object->ID, '_glossary_disable', true ) ) {
+				return $text;
+			}
+		}
+
     if (
 		$this->g_is_singular() ||
 		$this->g_is_home() ||
