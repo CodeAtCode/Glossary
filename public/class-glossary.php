@@ -238,7 +238,7 @@ class Glossary {
 	 * @param WP_Post $post WP_Post object.
 	 */
 	function save_post( $post_id, $post ) {
-		if ( ! in_array( $post->post_type, $this->settings['posttypes'], true ) ) {
+		if ( ! in_array( $post->post_type, (array) $this->settings['posttypes'], true ) ) {
 			return;
 		}
 
