@@ -12,6 +12,32 @@
  */
 class Glossary_a2z_Archive {
 
+	/**
+	 * The single instance of the class.
+	 *
+	 * @since 1.3.0
+	 */
+	protected static $instance = null;
+
+	/**
+	 * Main Glossary_a2z_Archive.
+	 *
+	 * Ensure only one instance of Glossary_a2z_Archive is loaded.
+	 *
+	 * @static
+	 *
+	 * @since 1.3.0
+	 *
+	 * @return Glossary_a2z_Archive - Main instance.
+	 */
+	public static function get_instance() {
+		if ( null === self::$instance ) {
+			self::$instance = new self();
+		}
+
+		return self::$instance;
+	}
+
   /**
    * Initialize the plugin by setting localization and loading public scripts
    * and styles.
@@ -25,7 +51,7 @@ class Glossary_a2z_Archive {
 
   /**
    * Add our value
-   * 
+   *
    * @param array $query_vars
    * @return array
    */
@@ -36,7 +62,7 @@ class Glossary_a2z_Archive {
 
   /**
    * Check our value
-   * 
+   *
    * @global object $wp_query
    * @param object $query
    */
@@ -50,7 +76,7 @@ class Glossary_a2z_Archive {
 
   /**
    * Alter the SQL
-   * 
+   *
    * @global object $wp_query
    * @global object $wpdb
    * @param string $where
@@ -65,7 +91,7 @@ class Glossary_a2z_Archive {
 
   /**
    * Alter the SQL
-   * 
+   *
    * @global object $wpdb
    * @param string $orderby
    * @return string
@@ -80,4 +106,17 @@ class Glossary_a2z_Archive {
 
 }
 
-new Glossary_a2z_Archive();
+/**
+ * Main instance of Glossary_a2z_Archive.
+ *
+ * Returns the main instance of Glossary_a2z_Archive to prevent the need to use globals.
+ *
+ * @since 1.3.0
+ *
+ * @return Glossary_a2z_Archive
+ */
+function Glossary_a2z_Archive() {
+	return Glossary_a2z_Archive::get_instance();
+}
+
+Glossary_a2z_Archive();

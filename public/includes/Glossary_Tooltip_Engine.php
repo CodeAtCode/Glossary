@@ -11,6 +11,31 @@
  * @copyright 2015 GPL
  */
 class Glossary_Tooltip_Engine {
+	/**
+	 * The single instance of the class.
+	 *
+	 * @since 1.3.0
+	 */
+	protected static $instance = null;
+
+	/**
+	 * Main Glossary_Tooltip_Engine.
+	 *
+	 * Ensure only one instance of Glossary_Tooltip_Engine is loaded.
+	 *
+	 * @static
+	 *
+	 * @since 1.3.0
+	 *
+	 * @return Glossary_Tooltip_Engine - Main instance.
+	 */
+	public static function get_instance() {
+		if ( null === self::$instance ) {
+			self::$instance = new self();
+		}
+
+		return self::$instance;
+	}
 
   /**
    * Initialize the class with all the hooks
@@ -272,4 +297,17 @@ class Glossary_Tooltip_Engine {
 
 }
 
-new Glossary_Tooltip_Engine();
+/**
+ * Main instance of Glossary_Tooltip_Engine.
+ *
+ * Returns the main instance of Glossary_Tooltip_Engine to prevent the need to use globals.
+ *
+ * @since 1.3.0
+ *
+ * @return Glossary_Tooltip_Engine
+ */
+function Glossary_Tooltip_Engine() {
+	return Glossary_Tooltip_Engine::get_instance();
+}
+
+Glossary_Tooltip_Engine();
