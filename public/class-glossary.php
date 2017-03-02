@@ -92,6 +92,9 @@ class Glossary {
     }
 
     add_filter( 'glossary-themes-url', array( $this, 'add_glossary_url' ) );
+
+		add_action( 'add_meta_boxes', array( $this, 'add_meta_boxes' ) );
+		add_action( 'save_post', array( $this, 'save_post' ), 10, 2 );
   }
 
   /**
@@ -169,7 +172,7 @@ class Glossary {
 
   /**
    * Add the path to the themes
-   * 
+   *
    * @param array $themes
    * @return array
    */
@@ -182,7 +185,7 @@ class Glossary {
 
   /**
    * Hide the taxonomy on the frontend
-   * 
+   *
    * @param object $query
    * @return object
    */
@@ -196,4 +199,67 @@ class Glossary {
     }
   }
 
+	/**
+	 * Add action hook for Glossary disable checkbox field on supported post types.
+	 *
+	 * @param string $post_type Post type.
+	 */
+	function add_meta_boxes( $post_type ) {
+  		if ( ! in_array( $post_type, $this->settings['posttypes'], true ) ) {
+  			return;
+		}
+
+		add_action( 'post_submitbox_misc_actions', array( $this, 'post_submitbox_misc_actions' ) );
+	}
+
+	/**
+	 * Add a checkbox for disabling Glossary term linking on a page.
+	 */
+	function post_submitbox_misc_actions() {
+		$screen = get_current_screen();
+		$post_id = 0;
+
+		if ( 'add' !== $screen->action ) {
+			$post_id = (int) wp_unslash( $_GET['post'] );
+		}
+
+		?>
+		<div class="misc-pub-section glossary-disable">
+			<?php wp_nonce_field( '_glossary_exclude_nonce', '_glossary_exclude_noncename' ); ?>
+			<span><?php _e( 'Disable Glossary linking' ); ?>:</span>&nbsp;<input type="checkbox" name="_glossary_disable" id="_glossary_disable" <?php checked( (bool) get_post_meta( $post_id, '_glossary_disable', true ) ); ?> />
+		</div>
+		<?php
+	}
+
+	/**
+	 * Save the Glossary disable post meta for supported post types.
+	 *
+	 * @param int $post_id Post ID.
+	 * @param WP_Post $post WP_Post object.
+	 */
+	function save_post( $post_id, $post ) {
+		if ( ! in_array( $post->post_type, (array) $this->settings['posttypes'], true ) ) {
+			return;
+		}
+
+		//Skip revisions and autosaves
+		if ( wp_is_post_revision( $post_id ) || ( defined( 'DOING_AUTOSAVE' ) && DOING_AUTOSAVE ) || ( defined( 'DOING_AJAX' ) && DOING_AJAX ) ) {
+			return;
+		}
+
+		//Users should have the ability to edit.
+		if ( ! current_user_can( 'edit_post', $post_id ) ) {
+			return;
+		}
+
+		if ( isset( $_POST['_glossary_exclude_noncename'] ) && wp_verify_nonce( $_POST['_glossary_exclude_noncename'], '_glossary_exclude_nonce' ) ) {
+			$disable_glossary = (bool) $_POST['_glossary_disable'];
+
+			if ( $disable_glossary ) {
+				update_post_meta( $post_id, '_glossary_disable', 1 );
+			} else {
+				delete_post_meta( $post_id, '_glossary_disable' );
+			}
+		}
+	}
 }
