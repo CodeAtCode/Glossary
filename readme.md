@@ -1,4 +1,4 @@
-#Warning
+# Warning
 *This repo is outdated*, please if you are looking for the last version of “Glossary by codeat” WordPress plugin simply download it from the official WordPress.org directory.  
 [https://wordpress.org/plugins/glossary-by-codeat/](https://wordpress.org/plugins/glossary-by-codeat/).
 
@@ -8,5 +8,5 @@ We are happy if you want to contribute to the project and we encourage you to do
 
 Thank you from the codeat team.
  
-##Composer
+## Composer
 We love composer and to continue to get updates you can use [https://wpackagist.org/](https://wpackagist.org/) using `wpackagist-plugin/glossary-by-codeat`
